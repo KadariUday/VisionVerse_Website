@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface BrandLogoProps {
@@ -12,22 +13,26 @@ export function BrandLogo({ className, showTagline = false, size = "md" }: Brand
   const sizeMap = {
     sm: {
       text: "text-base tracking-tight",
-      code: "text-xs px-1.5 py-0.5",
+      logoContainer: "w-6 h-6 rounded-lg",
+      logoSize: 24,
       tagline: "text-[9px] tracking-[0.25em]",
     },
     md: {
       text: "text-lg md:text-xl tracking-tight",
-      code: "text-xs md:text-sm px-2 py-0.5",
+      logoContainer: "w-8 h-8 rounded-lg",
+      logoSize: 32,
       tagline: "text-[9px] md:text-[10px] tracking-[0.28em]",
     },
     lg: {
       text: "text-2xl md:text-3xl tracking-tight",
-      code: "text-base md:text-lg px-2.5 py-1",
+      logoContainer: "w-10 h-10 rounded-xl",
+      logoSize: 40,
       tagline: "text-xs md:text-sm tracking-[0.3em]",
     },
     xl: {
       text: "text-3xl md:text-5xl tracking-tight",
-      code: "text-xl md:text-2xl px-3 py-1.5",
+      logoContainer: "w-14 h-14 rounded-2xl",
+      logoSize: 56,
       tagline: "text-xs md:text-base tracking-[0.35em]",
     },
   };
@@ -37,15 +42,22 @@ export function BrandLogo({ className, showTagline = false, size = "md" }: Brand
   return (
     <Link href="/" className={cn("group inline-flex flex-col items-start select-none", className)}>
       <div className="flex items-center gap-2.5">
-        {/* Crisp Monospace Studio Mark */}
-        <span
+        {/* Official VisionVerse Brand Icon Emblem */}
+        <div
           className={cn(
-            "font-mono font-bold rounded-md bg-[#181A1F] border border-white/10 text-[#F59E0B] group-hover:border-[#F59E0B]/50 group-hover:bg-[#F59E0B]/10 transition-all duration-300",
-            currentSize.code
+            "relative overflow-hidden shrink-0 border border-white/10 group-hover:border-[#F59E0B]/50 transition-all duration-300 shadow-sm bg-[#131517]",
+            currentSize.logoContainer
           )}
         >
-          &lt;/&gt;
-        </span>
+          <Image
+            src="/images/visionverse-logo.png"
+            alt="VISION VERSE24 Logo"
+            width={currentSize.logoSize}
+            height={currentSize.logoSize}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            priority
+          />
+        </div>
 
         {/* Brand Typography */}
         <div className="font-heading font-black flex items-baseline">
