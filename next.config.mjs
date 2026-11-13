@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   optimizeFonts: false,
+  experimental: {
+    instrumentationHook: true,
+  },
   images: {
     remotePatterns: [
       {

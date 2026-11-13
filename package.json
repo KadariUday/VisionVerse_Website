@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/check-db.mjs && next dev",
+    "check-db": "node scripts/check-db.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
