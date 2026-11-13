@@ -87,11 +87,11 @@ export default function RootLayout({
     email: siteConfig.owner.email,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Institute of Aeronautical Engineering, Dundigal",
+      streetAddress: "Hyderabad",
       addressLocality: "Hyderabad",
       addressRegion: "Telangana",
-      postalCode: "500043",
-      addressCountry: "IN",
+      postalCode: "500001",
+      addressCountry: "India",
     },
     geo: {
       "@type": "GeoCoordinates",

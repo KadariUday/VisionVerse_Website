@@ -183,7 +183,7 @@ export function Footer() {
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-pink-400 mt-1 shrink-0" />
                 <span className="text-xs leading-relaxed">
-                  Institute of Aeronautical Engineering, Dundigal, Hyderabad, Telangana — 500043
+                  Hyderabad, Telangana, India
                 </span>
               </li>
             </ul>

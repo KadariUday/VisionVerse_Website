@@ -144,7 +144,7 @@ export default function ContactPage({ searchParams }: Props) {
                   <div>
                     <div className="font-semibold text-white">Location:</div>
                     <span className="text-slate-400">
-                      Institute of Aeronautical Engineering, Dundigal, Hyderabad, Telangana — 500043
+                      Hyderabad, Telangana, India
                     </span>
                   </div>
                 </div>

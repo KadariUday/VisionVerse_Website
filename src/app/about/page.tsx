@@ -138,7 +138,7 @@ export default function AboutPage() {
 
             <div className="text-center pt-1">
               <span className="text-xs text-slate-400 font-medium">
-                Institute of Aeronautical Engineering, Dundigal, Hyderabad
+                Hyderabad, Telangana, India
               </span>
             </div>
           </div>
