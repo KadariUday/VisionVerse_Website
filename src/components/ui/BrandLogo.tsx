@@ -40,7 +40,7 @@ export function BrandLogo({ className, showTagline = false, size = "md" }: Brand
         {/* Crisp Monospace Studio Mark */}
         <span
           className={cn(
-            "font-mono font-bold rounded-md bg-[#1B1E26] border border-white/10 text-[#315BFF] group-hover:border-[#315BFF]/50 group-hover:text-white transition-all duration-300",
+            "font-mono font-bold rounded-md bg-[#181A1F] border border-white/10 text-[#F59E0B] group-hover:border-[#F59E0B]/50 group-hover:bg-[#F59E0B]/10 transition-all duration-300",
             currentSize.code
           )}
         >
@@ -54,7 +54,7 @@ export function BrandLogo({ className, showTagline = false, size = "md" }: Brand
           </span>
           <span
             className={cn(
-              "ml-1.5 text-white/90 bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent group-hover:text-white transition-all duration-300",
+              "ml-1.5 text-[#F59E0B] transition-all duration-300",
               currentSize.text
             )}
           >
@@ -66,7 +66,7 @@ export function BrandLogo({ className, showTagline = false, size = "md" }: Brand
       {showTagline && (
         <span
           className={cn(
-            "font-mono text-[#777982] group-hover:text-slate-300 transition-colors duration-300 uppercase mt-1 tracking-widest",
+            "font-mono text-[#71717A] group-hover:text-[#A1A1AA] transition-colors duration-300 uppercase mt-1 tracking-widest",
             currentSize.tagline
           )}
         >

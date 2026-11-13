@@ -80,11 +80,11 @@ const faqs = [
 
 export default function FaqPage() {
   return (
-    <div className="pt-32 pb-24 space-y-20">
+    <div className="pt-32 pb-24 space-y-20 bg-[#0C0D0E]">
       {/* Studio Header */}
       <section className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-medium text-[#315BFF] mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-medium text-[#F59E0B] mb-6">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>KNOWLEDGE & PROTOCOLS</span>
           </div>
@@ -93,7 +93,7 @@ export default function FaqPage() {
             FREQUENTLY ASKED QUESTIONS.
           </h1>
 
-          <p className="font-serif italic text-xl sm:text-2xl text-[#D9A441] mt-4">
+          <p className="font-serif italic text-xl sm:text-2xl text-[#F59E0B] mt-4">
             Everything you need to know about our engineering standards, student pricing, and delivery milestones.
           </p>
         </div>
@@ -105,7 +105,7 @@ export default function FaqPage() {
           {faqs.map((group, gIdx) => (
             <div key={gIdx} className="space-y-5">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-mono font-semibold text-[#315BFF] uppercase tracking-wider">
+                <span className="text-xs font-mono font-semibold text-[#F59E0B] uppercase tracking-wider">
                   0{gIdx + 1} /
                 </span>
                 <h2 className="font-heading text-lg font-bold text-white tracking-tight">
@@ -120,7 +120,7 @@ export default function FaqPage() {
                     className="p-6 md:p-7 rounded-2xl bg-[#15171C] border border-white/10 space-y-3 shadow-studio"
                   >
                     <h3 className="font-heading text-base font-bold text-white flex items-start gap-3">
-                      <span className="text-[#315BFF] font-mono text-sm shrink-0 mt-0.5">Q.</span>
+                      <span className="text-[#F59E0B] font-mono text-sm shrink-0 mt-0.5">Q.</span>
                       <span>{faq.q}</span>
                     </h3>
                     <p className="text-xs sm:text-sm text-[#A0A2AD] leading-relaxed pl-6">

@@ -40,7 +40,7 @@ export function Navbar() {
         <BrandLogo showTagline size="md" />
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 bg-[#15171C]/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/[0.08]">
+        <nav className="hidden lg:flex items-center gap-1 bg-[#131517]/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/[0.08]">
           {siteConfig.navLinks.map((link) => {
             const isActive =
               link.href === "/"
@@ -54,8 +54,8 @@ export function Navbar() {
                 className={cn(
                   "relative px-4 py-1.5 text-xs font-medium tracking-wide uppercase rounded-full transition-all duration-200",
                   isActive
-                    ? "text-white bg-white/10 font-semibold"
-                    : "text-[#777982] hover:text-white hover:bg-white/[0.04]"
+                    ? "text-[#F59E0B] bg-[#F59E0B]/10 border border-[#F59E0B]/20 font-semibold"
+                    : "text-[#71717A] hover:text-white hover:bg-white/[0.04]"
                 )}
               >
                 {link.name}
@@ -68,10 +68,10 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-[#315BFF] hover:bg-[#2546CC] transition-all duration-200 active:scale-[0.98] shadow-subtle"
+            className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider text-black bg-[#F59E0B] hover:bg-[#D97706] transition-all duration-200 active:scale-[0.98] shadow-[0_0_20px_rgba(245,158,11,0.25)]"
           >
             <span>Get Started</span>
-            <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-black" />
           </Link>
         </div>
 
@@ -79,13 +79,13 @@ export function Navbar() {
         <div className="flex items-center gap-2 lg:hidden">
           <Link
             href="/contact"
-            className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-white bg-[#315BFF] active:scale-95 transition-transform"
+            className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-black bg-[#F59E0B] active:scale-95 transition-transform shadow-[0_0_15px_rgba(245,158,11,0.2)]"
           >
             Get Started
           </Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg bg-[#15171C] border border-white/10 text-white focus:outline-none"
+            className="p-2 rounded-lg bg-[#131517] border border-white/10 text-white focus:outline-none"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -111,12 +111,12 @@ export function Navbar() {
                   className={cn(
                     "flex items-center justify-between px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                     isActive
-                      ? "text-white bg-white/10 font-semibold"
-                      : "text-[#777982] hover:text-white hover:bg-white/[0.04]"
+                      ? "text-[#F59E0B] bg-[#F59E0B]/10 font-semibold"
+                      : "text-[#71717A] hover:text-white hover:bg-white/[0.04]"
                   )}
                 >
                   <span className="tracking-wide uppercase text-xs">{link.name}</span>
-                  {isActive && <div className="w-1.5 h-1.5 rounded-full bg-[#315BFF]" />}
+                  {isActive && <div className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]" />}
                 </Link>
               );
             })}
@@ -125,10 +125,10 @@ export function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-lg text-xs font-semibold uppercase tracking-wider text-white bg-[#315BFF] hover:bg-[#2546CC] transition-colors"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-lg text-xs font-semibold uppercase tracking-wider text-black bg-[#F59E0B] hover:bg-[#D97706] transition-colors shadow-[0_0_15px_rgba(245,158,11,0.2)]"
               >
                 <span>Get Started — Talk to Us</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowUpRight className="w-4 h-4 text-black" />
               </Link>
 
               <div className="grid grid-cols-2 gap-2 pt-1">

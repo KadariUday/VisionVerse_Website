@@ -18,10 +18,10 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="pt-28 pb-20 space-y-24 bg-[#101114]">
+    <div className="pt-28 pb-20 space-y-24 bg-[#0C0D0E]">
       {/* Header */}
       <section className="relative overflow-hidden text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-12">
-        <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+        <div className="inline-flex items-center gap-2 font-mono text-xs text-[#F59E0B] uppercase tracking-widest">
           <span>{"// DISCIPLINES & RATE CARD"}</span>
         </div>
 
@@ -44,7 +44,7 @@ export default function ServicesPage() {
       <section className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto rounded-3xl bg-[#15171C] border border-white/[0.08] p-6 sm:p-10 shadow-studio space-y-8">
           <div className="space-y-2">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#315BFF]">
+            <div className="font-mono text-xs uppercase tracking-widest text-[#F59E0B]">
               {"// FEATURE MATRIX"}
             </div>
             <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight">
@@ -60,10 +60,10 @@ export default function ServicesPage() {
               <thead>
                 <tr className="border-b border-white/[0.08] text-[#777982] font-mono text-xs">
                   <th className="py-3.5 px-4 font-semibold">Features & Benefits</th>
-                  <th className="py-3.5 px-4 font-semibold text-center text-[#60A5FA]">Resume (₹299)</th>
-                  <th className="py-3.5 px-4 font-semibold text-center text-[#A78BFA]">Portfolio (₹499)</th>
+                  <th className="py-3.5 px-4 font-semibold text-center text-[#F59E0B]">Resume (₹299)</th>
+                  <th className="py-3.5 px-4 font-semibold text-center text-[#FBBF24]">Portfolio (₹499)</th>
                   <th className="py-3.5 px-4 font-semibold text-center text-emerald-400">College Project (₹699)</th>
-                  <th className="py-3.5 px-4 font-semibold text-center text-[#FF5D65]">Business (₹1500+)</th>
+                  <th className="py-3.5 px-4 font-semibold text-center text-[#F97316]">Business (₹1500+)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/[0.06] text-[#D3D5DC]">
@@ -111,10 +111,10 @@ export default function ServicesPage() {
                 </tr>
                 <tr>
                   <td className="py-3.5 px-4 font-medium text-white">Delivery Turnaround</td>
-                  <td className="text-center py-3.5 px-4 font-mono text-[#60A5FA]">24–48 Hours</td>
-                  <td className="text-center py-3.5 px-4 font-mono text-[#A78BFA]">2–3 Days</td>
+                  <td className="text-center py-3.5 px-4 font-mono text-[#F59E0B]">24–48 Hours</td>
+                  <td className="text-center py-3.5 px-4 font-mono text-[#FBBF24]">2–3 Days</td>
                   <td className="text-center py-3.5 px-4 font-mono text-emerald-400">3–5 Days</td>
-                  <td className="text-center py-3.5 px-4 font-mono text-[#FF5D65]">5–10 Days</td>
+                  <td className="text-center py-3.5 px-4 font-mono text-[#F97316]">5–10 Days</td>
                 </tr>
               </tbody>
             </table>
@@ -126,7 +126,7 @@ export default function ServicesPage() {
       <section className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto space-y-8">
           <div className="text-center space-y-2">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#315BFF]">
+            <div className="font-mono text-xs uppercase tracking-widest text-[#F59E0B]">
               {"// ANSWERS"}
             </div>
             <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white">Frequently Asked Questions</h3>
@@ -136,7 +136,7 @@ export default function ServicesPage() {
           <div className="space-y-4">
             <div className="p-5 rounded-2xl bg-[#15171C] border border-white/[0.08] space-y-2">
               <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                <HelpCircle className="w-4 h-4 text-[#315BFF]" />
+                <HelpCircle className="w-4 h-4 text-[#F59E0B]" />
                 <span>How does the payment and delivery workflow proceed?</span>
               </h4>
               <p className="text-xs text-[#A2A6B2] leading-relaxed pl-6">
@@ -147,7 +147,7 @@ export default function ServicesPage() {
 
             <div className="p-5 rounded-2xl bg-[#15171C] border border-white/[0.08] space-y-2">
               <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                <HelpCircle className="w-4 h-4 text-[#753BDB]" />
+                <HelpCircle className="w-4 h-4 text-[#10B981]" />
                 <span>Do I receive full access and ownership of the source code?</span>
               </h4>
               <p className="text-xs text-[#A2A6B2] leading-relaxed pl-6">
@@ -158,7 +158,7 @@ export default function ServicesPage() {
 
             <div className="p-5 rounded-2xl bg-[#15171C] border border-white/[0.08] space-y-2">
               <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                <HelpCircle className="w-4 h-4 text-[#FF5D65]" />
+                <HelpCircle className="w-4 h-4 text-[#F97316]" />
                 <span>What is your revision policy following project delivery?</span>
               </h4>
               <p className="text-xs text-[#A2A6B2] leading-relaxed pl-6">

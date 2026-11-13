@@ -60,12 +60,12 @@ export default function ProjectDetailsPage({ params }: Props) {
   const isSRJewellery = project.slug === "sr-jewellery-collections";
 
   return (
-    <div className="pt-28 pb-20 space-y-16 bg-[#101114]">
+    <div className="pt-28 pb-20 space-y-16 bg-[#0C0D0E]">
       {/* Top Breadcrumb & Back Link */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 font-mono text-xs text-[#777982] hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 font-mono text-xs text-[#777982] hover:text-[#F59E0B] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>&larr; BACK TO ALL PROJECTS</span>
@@ -79,7 +79,7 @@ export default function ProjectDetailsPage({ params }: Props) {
             {isSRJewellery ? (
               <Crown className="w-3.5 h-3.5 text-[#D9A441] fill-[#D9A441]" />
             ) : (
-              <Layers className="w-3.5 h-3.5 text-[#315BFF]" />
+              <Layers className="w-3.5 h-3.5 text-[#F59E0B]" />
             )}
             <span>{project.category} CASE STUDY</span>
           </div>
@@ -102,7 +102,7 @@ export default function ProjectDetailsPage({ params }: Props) {
                 className={`inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 shadow-studio ${
                   isSRJewellery
                     ? "text-black bg-[#D9A441] hover:bg-[#F5E6BE] shadow-glow-gold"
-                    : "text-white bg-[#315BFF] hover:bg-[#2546CC]"
+                    : "text-black bg-[#F59E0B] hover:bg-[#D97706]"
                 }`}
               >
                 <span>View Live Deployment</span>
@@ -156,7 +156,7 @@ export default function ProjectDetailsPage({ params }: Props) {
             </div>
             <div>
               <div className="text-[10px] text-[#777982] uppercase tracking-wider">Category</div>
-              <div className="text-xs sm:text-sm font-bold text-[#315BFF] mt-1">{project.category}</div>
+              <div className="text-xs sm:text-sm font-bold text-[#F59E0B] mt-1">{project.category}</div>
             </div>
             <div>
               <div className="text-[10px] text-[#777982] uppercase tracking-wider">Production Status</div>
@@ -173,7 +173,7 @@ export default function ProjectDetailsPage({ params }: Props) {
         <div className="max-w-4xl mx-auto space-y-14">
           {/* Project Overview */}
           <div className="space-y-4">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#315BFF]">
+            <div className="font-mono text-xs uppercase tracking-widest text-[#F59E0B]">
               {"// PROJECT OVERVIEW"}
             </div>
             <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white">
@@ -186,15 +186,15 @@ export default function ProjectDetailsPage({ params }: Props) {
 
           {/* Challenges & Solutions */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-2xl bg-[#15171C] border border-[#FF5D65]/20 space-y-3">
-              <div className="flex items-center gap-2 text-[#FF5D65] font-bold text-sm font-mono uppercase tracking-wider">
+            <div className="p-6 rounded-2xl bg-[#15171C] border border-[#F97316]/20 space-y-3">
+              <div className="flex items-center gap-2 text-[#F97316] font-bold text-sm font-mono uppercase tracking-wider">
                 <AlertCircle className="w-4 h-4" />
                 <span>The Engineering Challenges</span>
               </div>
               <ul className="space-y-2.5 pt-2">
                 {project.challenges.map((c, i) => (
                   <li key={i} className="text-xs text-[#D3D5DC] flex items-start gap-2.5 leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF5D65] shrink-0 mt-1.5" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F97316] shrink-0 mt-1.5" />
                     <span>{c}</span>
                   </li>
                 ))}
@@ -219,7 +219,7 @@ export default function ProjectDetailsPage({ params }: Props) {
 
           {/* Key Implemented Features */}
           <div className="space-y-6">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#315BFF]">
+            <div className="font-mono text-xs uppercase tracking-widest text-[#F59E0B]">
               {"// FEATURE IMPLEMENTATION"}
             </div>
             <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white">
@@ -232,7 +232,7 @@ export default function ProjectDetailsPage({ params }: Props) {
                   className="p-5 rounded-2xl bg-[#15171C] border border-white/[0.08] space-y-1.5"
                 >
                   <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                    <Check className="w-4 h-4 text-[#315BFF] shrink-0" />
+                    <Check className="w-4 h-4 text-[#F59E0B] shrink-0" />
                     <span>{feat.title}</span>
                   </h3>
                   <p className="text-xs text-[#A2A6B2] leading-relaxed pl-6">

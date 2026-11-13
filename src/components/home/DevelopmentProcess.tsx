@@ -56,14 +56,14 @@ const processSteps = [
 
 export function DevelopmentProcess() {
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden bg-[#101114]">
+    <section className="py-24 lg:py-32 relative overflow-hidden bg-[#0C0D0E]">
       {/* Subtle Studio Grid */}
       <div className="absolute inset-0 bg-studio-grid pointer-events-none opacity-40" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
         <div className="max-w-3xl mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 font-mono text-xs text-[#F59E0B] uppercase tracking-widest">
             <span>{"// EXECUTION ROADMAP"}</span>
           </div>
 
@@ -73,7 +73,7 @@ export function DevelopmentProcess() {
             TO DEPLOYMENT.
           </h2>
 
-          <p className="text-base sm:text-lg text-[#A2A6B2] leading-relaxed max-w-2xl font-normal">
+          <p className="text-base sm:text-lg text-[#A1A1AA] leading-relaxed max-w-2xl font-normal">
             No guessing games. Every project follows a disciplined, transparent execution cycle
             with direct access to your lead developers at every stage.
           </p>
@@ -94,15 +94,15 @@ export function DevelopmentProcess() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="rounded-2xl bg-[#15171C] border border-white/[0.08] hover:border-white/20 p-6 flex flex-col justify-between transition-all duration-300 group"
+                  className="rounded-2xl bg-[#131517] border border-white/[0.08] hover:border-[#F59E0B]/30 p-6 flex flex-col justify-between transition-all duration-300 group"
                 >
                   <div className="space-y-4">
                     {/* Top Step Number & Icon */}
                     <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-full bg-[#1B1E26] border border-white/10 flex items-center justify-center font-mono text-xs font-bold text-white group-hover:border-[#315BFF] group-hover:text-[#315BFF] transition-colors">
+                      <div className="w-10 h-10 rounded-full bg-[#181A1F] border border-white/10 flex items-center justify-center font-mono text-xs font-bold text-white group-hover:border-[#F59E0B] group-hover:text-[#F59E0B] transition-colors">
                         {item.step}
                       </div>
-                      <span className="font-mono text-[10px] text-[#777982] uppercase tracking-wider">
+                      <span className="font-mono text-[10px] text-[#71717A] uppercase tracking-wider">
                         {item.phase}
                       </span>
                     </div>
@@ -111,17 +111,17 @@ export function DevelopmentProcess() {
                       <h3 className="font-heading text-lg font-bold text-white tracking-tight">
                         {item.step} — {item.title}
                       </h3>
-                      <p className="text-xs text-[#A2A6B2] mt-2 leading-relaxed">
+                      <p className="text-xs text-[#A1A1AA] mt-2 leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
                   </div>
 
                   <div className="pt-4 mt-4 border-t border-white/[0.06]">
-                    <div className="font-mono text-[10px] text-[#777982] uppercase tracking-wider">
+                    <div className="font-mono text-[10px] text-[#71717A] uppercase tracking-wider">
                       Output:
                     </div>
-                    <div className="text-[11px] font-medium text-[#D3D5DC] mt-0.5">
+                    <div className="text-[11px] font-medium text-[#D4D4D8] mt-0.5">
                       {item.deliverables}
                     </div>
                   </div>

@@ -7,13 +7,13 @@ import { ArrowUpRight, MessageSquareCode } from "lucide-react";
 
 export function FinalCta() {
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden bg-[#101114]">
+    <section className="py-24 lg:py-32 relative overflow-hidden bg-[#0C0D0E]">
       {/* Studio Grid Overlay */}
       <div className="absolute inset-0 bg-studio-grid pointer-events-none opacity-40" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto rounded-3xl bg-[#15171C] border border-white/[0.12] p-8 sm:p-14 lg:p-16 text-center space-y-6 shadow-studio-elevated relative overflow-hidden">
-          <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+        <div className="max-w-4xl mx-auto rounded-3xl bg-[#131517] border border-[#F59E0B]/20 p-8 sm:p-14 lg:p-16 text-center space-y-6 shadow-studio-elevated relative overflow-hidden">
+          <div className="inline-flex items-center gap-2 font-mono text-xs text-[#F59E0B] uppercase tracking-widest">
             <span>{"// LET'S COLLABORATE"}</span>
           </div>
 
@@ -22,17 +22,17 @@ export function FinalCta() {
             <span className="font-serif italic font-normal text-white/90">OF BUILDING?</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#A2A6B2] max-w-xl mx-auto leading-relaxed">
-            Tell us your idea. Let's work together to make it real.
+          <p className="text-base sm:text-lg text-[#A1A1AA] max-w-xl mx-auto leading-relaxed">
+            Tell us your idea. Let&apos;s work together to make it real.
           </p>
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-[#315BFF] hover:bg-[#2546CC] transition-all duration-200 shadow-studio group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-wider text-black bg-[#F59E0B] hover:bg-[#D97706] transition-all duration-200 shadow-[0_0_25px_rgba(245,158,11,0.25)] group"
             >
               <span>Start a Project</span>
-              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-black" />
             </Link>
 
             <a

@@ -22,17 +22,17 @@ export const metadata: Metadata = {
 
 export function generateViewport() {
   return {
-    themeColor: "#101114",
+    themeColor: "#0C0D0E",
   };
 }
 
 export default function AboutPage() {
   return (
-    <div className="pt-28 pb-20 space-y-24 bg-[#101114]">
+    <div className="pt-28 pb-20 space-y-24 bg-[#0C0D0E]">
       {/* Hero Header */}
       <section className="relative overflow-hidden pt-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-4xl space-y-6">
-          <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 font-mono text-xs text-[#F59E0B] uppercase tracking-widest">
             <span>{"// ABOUT VISION VERSE24"}</span>
           </div>
 
@@ -54,7 +54,7 @@ export default function AboutPage() {
       <section className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           <div className="lg:col-span-6 space-y-6">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#FF5D65]">
+            <div className="font-mono text-xs uppercase tracking-widest text-[#F97316]">
               {"// PURPOSE & MOTIVATION"}
             </div>
             <h2 className="font-heading text-2xl sm:text-4xl font-bold text-white tracking-tight leading-snug">
@@ -79,7 +79,7 @@ export default function AboutPage() {
                 "Reliable Vercel Edge hosting and scalable database architecture.",
               ].map((point, i) => (
                 <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#D3D5DC]">
-                  <Check className="w-4 h-4 text-[#315BFF] shrink-0 mt-0.5" />
+                  <Check className="w-4 h-4 text-[#F59E0B] shrink-0 mt-0.5" />
                   <span>{point}</span>
                 </div>
               ))}
@@ -91,8 +91,8 @@ export default function AboutPage() {
             {/* Top Terminal Bar */}
             <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5D65]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#D9A441]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#F97316]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]" />
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
                 <span className="ml-2 font-mono text-xs text-[#777982]">manifesto.ts</span>
               </div>
@@ -123,7 +123,7 @@ export default function AboutPage() {
                       </div>
                       <div>
                         <div className="text-xs font-bold text-white">{member.name}</div>
-                        <div className="text-[11px] text-[#315BFF]">{member.role}</div>
+                        <div className="text-[11px] text-[#F59E0B] font-mono">{member.role}</div>
                       </div>
                     </div>
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-[#777982] hidden sm:inline">
@@ -155,10 +155,10 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="bg-[#0B0C0E] py-20 border-y border-white/[0.08]">
+      <section className="bg-[#0C0D0E] py-20 border-y border-white/[0.08]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-14 space-y-3">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#315BFF]">
+            <div className="font-mono text-xs uppercase tracking-widest text-[#F59E0B]">
               {"// CORE PRINCIPLES"}
             </div>
             <h3 className="font-heading text-2xl sm:text-4xl font-bold text-white tracking-tight">
@@ -171,7 +171,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <div className="p-6 rounded-2xl bg-[#15171C] border border-white/[0.08] space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#1B1E26] border border-white/10 flex items-center justify-center text-[#315BFF]">
+              <div className="w-10 h-10 rounded-lg bg-[#1B1E26] border border-white/10 flex items-center justify-center text-[#F59E0B]">
                 <Code2 className="w-5 h-5" />
               </div>
               <h4 className="font-heading text-lg font-bold text-white">Clean Engineering</h4>
@@ -182,7 +182,7 @@ export default function AboutPage() {
             </div>
 
             <div className="p-6 rounded-2xl bg-[#15171C] border border-white/[0.08] space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#1B1E26] border border-white/10 flex items-center justify-center text-[#753BDB]">
+              <div className="w-10 h-10 rounded-lg bg-[#1B1E26] border border-white/10 flex items-center justify-center text-[#10B981]">
                 <HeartHandshake className="w-5 h-5" />
               </div>
               <h4 className="font-heading text-lg font-bold text-white">Unconditional Transparency</h4>
@@ -193,7 +193,7 @@ export default function AboutPage() {
             </div>
 
             <div className="p-6 rounded-2xl bg-[#15171C] border border-white/[0.08] space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#1B1E26] border border-white/10 flex items-center justify-center text-[#FF5D65]">
+              <div className="w-10 h-10 rounded-lg bg-[#1B1E26] border border-white/10 flex items-center justify-center text-[#F97316]">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h4 className="font-heading text-lg font-bold text-white">Real Impact</h4>

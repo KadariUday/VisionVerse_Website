@@ -13,7 +13,7 @@ export const servicesData: ServiceItem[] = [
       "Professional resume websites and resume-building services that help students and job seekers present their skills effectively.",
     category: "Career",
     popular: false,
-    gradient: "from-blue-500 to-cyan-400",
+    gradient: "from-amber-400 to-amber-600",
     iconName: "FileText",
     features: [
       "Modern ATS-Friendly Layout",
@@ -37,7 +37,7 @@ export const servicesData: ServiceItem[] = [
       "Professional personal portfolio websites to showcase skills, achievements, experience and projects.",
     category: "Student",
     popular: true,
-    gradient: "from-purple-500 to-indigo-500",
+    gradient: "from-amber-500 to-amber-300",
     iconName: "Layout",
     features: [
       "Custom Aesthetic Design (Dark/Light)",

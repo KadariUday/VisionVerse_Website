@@ -75,12 +75,12 @@ const strengths = [
 
 export function WhyChooseUs() {
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden bg-[#0E0F12] border-y border-white/[0.08]">
+    <section className="py-24 lg:py-32 relative overflow-hidden bg-[#0C0D0E] border-y border-white/[0.08]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Heading & Studio Principles */}
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#F59E0B] uppercase tracking-widest">
               <span>{"// ENGINEERING PRINCIPLES"}</span>
             </div>
 
@@ -90,17 +90,17 @@ export function WhyChooseUs() {
               DEVELOPMENT.
             </h2>
 
-            <p className="text-base sm:text-lg text-[#A2A6B2] leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-[#A1A1AA] leading-relaxed font-normal">
               We approach every digital build with the care of artisans and the discipline of systems engineers.
               No fragile no-code workarounds, no inflated overheads — just clean, reliable software that
               serves your goals.
             </p>
 
-            <div className="p-5 rounded-2xl bg-[#15171C] border border-white/[0.08] space-y-3">
-              <div className="text-xs font-mono text-[#D9A441] uppercase tracking-wider">
+            <div className="p-5 rounded-2xl bg-[#131517] border border-white/[0.08] space-y-3">
+              <div className="text-xs font-mono text-[#F59E0B] uppercase tracking-wider">
                 The Vision Verse24 Standard
               </div>
-              <ul className="space-y-2 text-xs text-[#D3D5DC]">
+              <ul className="space-y-2 text-xs text-[#D4D4D8]">
                 <li className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span>Direct communication with your developer</span>
@@ -128,14 +128,14 @@ export function WhyChooseUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: (idx % 4) * 0.08 }}
-                  className="p-5 rounded-xl bg-[#15171C] border border-white/[0.08] hover:border-white/20 transition-all duration-200 flex flex-col justify-between space-y-3"
+                  className="p-5 rounded-xl bg-[#131517] border border-white/[0.08] hover:border-[#F59E0B]/30 transition-all duration-200 flex flex-col justify-between space-y-3"
                 >
                   <div className="space-y-2.5">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs font-bold text-[#315BFF]">
+                      <span className="font-mono text-xs font-bold text-[#F59E0B]">
                         {item.num}
                       </span>
-                      <span className="font-mono text-[10px] text-[#A2A6B2] uppercase tracking-wider bg-white/[0.04] px-2 py-0.5 rounded border border-white/5">
+                      <span className="font-mono text-[10px] text-[#A1A1AA] uppercase tracking-wider bg-white/[0.04] px-2 py-0.5 rounded border border-white/5">
                         {item.highlight}
                       </span>
                     </div>
@@ -144,7 +144,7 @@ export function WhyChooseUs() {
                       {item.title}
                     </h3>
 
-                    <p className="text-xs text-[#777982] leading-relaxed">
+                    <p className="text-xs text-[#71717A] leading-relaxed">
                       {item.desc}
                     </p>
                   </div>

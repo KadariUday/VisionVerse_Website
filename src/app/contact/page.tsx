@@ -32,12 +32,12 @@ export default function ContactPage({ searchParams }: Props) {
   const initialService = searchParams.service;
 
   return (
-    <div className="pt-32 pb-24 space-y-16">
+    <div className="pt-32 pb-24 space-y-16 bg-[#0C0D0E]">
       {/* Studio Header */}
       <section className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-medium text-[#315BFF] mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#315BFF] animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-medium text-[#F59E0B] mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-pulse" />
             <span>COMMISSIONS & ENQUIRIES</span>
           </div>
 
@@ -45,7 +45,7 @@ export default function ContactPage({ searchParams }: Props) {
             LET&apos;S START SOMETHING.
           </h1>
 
-          <p className="font-serif italic text-xl sm:text-2xl text-[#D9A441] mt-4">
+          <p className="font-serif italic text-xl sm:text-2xl text-[#F59E0B] mt-4">
             Every breakthrough project starts with a candid technical conversation.
           </p>
         </div>
@@ -115,14 +115,14 @@ export default function ContactPage({ searchParams }: Props) {
 
               <div className="space-y-4 text-xs">
                 <div className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-[#315BFF] shrink-0 mt-0.5" />
+                  <Phone className="w-4 h-4 text-[#10B981] shrink-0 mt-0.5" />
                   <div>
                     <div className="text-[#777982] uppercase text-[10px] tracking-wider font-mono">
                       Telephone & WhatsApp
                     </div>
                     <a
                       href={`tel:${siteConfig.owner.phone}`}
-                      className="font-medium text-white hover:text-[#315BFF] transition-colors"
+                      className="font-medium text-white hover:text-[#F59E0B] transition-colors"
                     >
                       {siteConfig.owner.phone}
                     </a>
@@ -130,14 +130,14 @@ export default function ContactPage({ searchParams }: Props) {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-[#753BDB] shrink-0 mt-0.5" />
+                  <Mail className="w-4 h-4 text-[#F59E0B] shrink-0 mt-0.5" />
                   <div>
                     <div className="text-[#777982] uppercase text-[10px] tracking-wider font-mono">
                       Official Inquiries
                     </div>
                     <a
                       href={`mailto:${siteConfig.owner.email}`}
-                      className="font-medium text-white hover:text-[#315BFF] transition-colors break-all"
+                      className="font-medium text-white hover:text-[#F59E0B] transition-colors break-all"
                     >
                       {siteConfig.owner.email}
                     </a>
@@ -145,7 +145,7 @@ export default function ContactPage({ searchParams }: Props) {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Instagram className="w-4 h-4 text-[#FF5D65] shrink-0 mt-0.5" />
+                  <Instagram className="w-4 h-4 text-[#F97316] shrink-0 mt-0.5" />
                   <div>
                     <div className="text-[#777982] uppercase text-[10px] tracking-wider font-mono">
                       Instagram Updates
@@ -154,7 +154,7 @@ export default function ContactPage({ searchParams }: Props) {
                       href={siteConfig.socials.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-white hover:text-[#FF5D65] transition-colors inline-flex items-center gap-1"
+                      className="font-medium text-white hover:text-[#F97316] transition-colors inline-flex items-center gap-1"
                     >
                       <span>@vision_verse24</span>
                       <ArrowUpRight className="w-3 h-3 text-[#777982]" />
@@ -163,7 +163,7 @@ export default function ContactPage({ searchParams }: Props) {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-[#D9A441] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#F59E0B] shrink-0 mt-0.5" />
                   <div>
                     <div className="text-[#777982] uppercase text-[10px] tracking-wider font-mono">
                       Studio Location
@@ -199,7 +199,7 @@ export default function ContactPage({ searchParams }: Props) {
                 />
               </div>
               <div className="space-y-1">
-                <span className="text-[10px] font-mono font-medium text-[#FF5D65] uppercase tracking-wider">
+                <span className="text-[10px] font-mono font-medium text-[#F97316] uppercase tracking-wider">
                   Instagram Studio Reel
                 </span>
                 <div className="text-sm font-bold text-white">@vision_verse24</div>

@@ -29,11 +29,11 @@ export default function HomePage() {
       <FeaturedProject />
 
       {/* Section E: Selected Work & Projects Showcase */}
-      <section className="py-24 lg:py-32 relative overflow-hidden bg-[#0B0C0E] border-t border-white/[0.08]">
+      <section className="py-24 lg:py-32 relative overflow-hidden bg-[#0C0D0E] border-t border-white/[0.08]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
             <div className="space-y-4 max-w-2xl">
-              <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+              <div className="inline-flex items-center gap-2 font-mono text-xs text-[#F59E0B] uppercase tracking-widest">
                 <FolderGit2 className="w-3.5 h-3.5" />
                 <span>{"// CURATED PORTFOLIO"}</span>
               </div>
@@ -49,10 +49,10 @@ export default function HomePage() {
 
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-[#15171C] hover:bg-[#1B1E26] border border-white/[0.12] transition-colors shrink-0 group"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-[#15171C] hover:bg-[#1C1F26] border border-white/[0.12] hover:border-[#F59E0B]/40 transition-colors shrink-0 group"
             >
               <span>View All 16 Projects</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-[#F59E0B]" />
             </Link>
           </div>
 

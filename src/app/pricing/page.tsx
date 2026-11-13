@@ -18,10 +18,10 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
   return (
-    <div className="pt-28 pb-20 space-y-24 bg-[#101114]">
+    <div className="pt-28 pb-20 space-y-24 bg-[#0C0D0E]">
       {/* Header */}
       <section className="relative overflow-hidden text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-12">
-        <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+        <div className="inline-flex items-center gap-2 font-mono text-xs text-[#F59E0B] uppercase tracking-widest">
           <span>{"// TRANSPARENT RATE CARD"}</span>
         </div>
 
@@ -44,7 +44,7 @@ export default function PricingPage() {
               key={service.id}
               className={`rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 border ${
                 service.popular
-                  ? "bg-[#181B24] border-[#315BFF]/40 shadow-studio"
+                  ? "bg-[#181B24] border-[#F59E0B]/50 shadow-studio"
                   : "bg-[#15171C] border-white/[0.08] hover:border-white/20"
               }`}
             >
@@ -54,7 +54,7 @@ export default function PricingPage() {
                     {service.category} Tier
                   </span>
                   {service.popular && (
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-white bg-[#315BFF] px-2.5 py-0.5 rounded-full">
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-black bg-[#F59E0B] px-2.5 py-0.5 rounded-full">
                       Most Popular
                     </span>
                   )}
@@ -90,7 +90,7 @@ export default function PricingPage() {
                   <ul className="space-y-1.5 text-xs text-[#D3D5DC]">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2">
-                        <Check className="w-3.5 h-3.5 text-[#315BFF] shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-[#F59E0B] shrink-0" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -103,8 +103,8 @@ export default function PricingPage() {
                   href={`/contact?service=${encodeURIComponent(service.key)}`}
                   className={`w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-200 group ${
                     service.popular
-                      ? "bg-[#315BFF] hover:bg-[#2546CC] text-white shadow-subtle"
-                      : "bg-[#1B1E26] hover:bg-[#315BFF] text-white border border-white/10 hover:border-[#315BFF]"
+                      ? "bg-[#F59E0B] hover:bg-[#D97706] text-black font-bold shadow-subtle"
+                      : "bg-[#1B1E26] hover:bg-[#F59E0B] hover:text-black text-white border border-white/10 hover:border-[#F59E0B]"
                   }`}
                 >
                   <span>Select {service.key}</span>
@@ -129,7 +129,7 @@ export default function PricingPage() {
           </div>
           <Link
             href="/contact?service=Custom%20Web%20Application"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-[#315BFF] hover:bg-[#2546CC] transition-colors shrink-0"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider text-black bg-[#F59E0B] hover:bg-[#D97706] transition-colors shrink-0"
           >
             <span>Custom Quote</span>
             <ArrowUpRight className="w-3.5 h-3.5" />

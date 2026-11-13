@@ -189,9 +189,9 @@ export function ContactForm({ initialService }: ContactFormProps) {
           className={cn(
             "w-16 h-16 rounded-2xl flex items-center justify-center mx-auto border",
             channel === "Email"
-              ? "bg-[#315BFF]/10 border-[#315BFF]/30 text-[#315BFF]"
+              ? "bg-[#F59E0B]/10 border-[#F59E0B]/30 text-[#F59E0B]"
               : channel === "Instagram"
-              ? "bg-[#FF5D65]/10 border-[#FF5D65]/30 text-[#FF5D65]"
+              ? "bg-[#F97316]/10 border-[#F97316]/30 text-[#F97316]"
               : "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
           )}
         >
@@ -209,9 +209,9 @@ export function ContactForm({ initialService }: ContactFormProps) {
             className={cn(
               "inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium border",
               channel === "Email"
-                ? "bg-[#315BFF]/10 border-[#315BFF]/20 text-[#315BFF]"
+                ? "bg-[#F59E0B]/10 border-[#F59E0B]/20 text-[#F59E0B]"
                 : channel === "Instagram"
-                ? "bg-[#FF5D65]/10 border-[#FF5D65]/20 text-[#FF5D65]"
+                ? "bg-[#F97316]/10 border-[#F97316]/20 text-[#F97316]"
                 : "bg-emerald-500/10 border-emerald-500/20 text-emerald-400"
             )}
           >
@@ -228,7 +228,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
         {/* Unique Enquiry ID Badge */}
         <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-[#0C0D10] border border-white/10 font-mono text-base font-bold text-white shadow-inner">
           <span className="text-[#777982]">ID:</span>
-          <span className="text-[#315BFF]">{successData.enquiryNumber}</span>
+          <span className="text-[#F59E0B]">{successData.enquiryNumber}</span>
           <button
             onClick={handleCopyId}
             className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[#A0A2AD] hover:text-white transition-colors"
@@ -245,9 +245,9 @@ export function ContactForm({ initialService }: ContactFormProps) {
 
         {/* CHANNEL 1: EMAIL DISPATCH ACTION BOX */}
         {channel === "Email" && (
-          <div className="p-6 rounded-xl bg-[#0C0D10] border border-[#315BFF]/30 max-w-lg mx-auto space-y-4 text-left">
+          <div className="p-6 rounded-xl bg-[#0C0D10] border border-[#F59E0B]/30 max-w-lg mx-auto space-y-4 text-left">
             <div className="flex items-start gap-3">
-              <Mail className="w-5 h-5 text-[#315BFF] shrink-0 mt-0.5" />
+              <Mail className="w-5 h-5 text-[#F59E0B] shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-sm font-semibold text-white">
                   Next Step: Dispatch Email Specification
@@ -264,7 +264,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
               {successData.mailtoUrl && (
                 <a
                   href={successData.mailtoUrl}
-                  className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-medium text-xs text-white bg-[#315BFF] hover:bg-[#2546cc] transition-all shadow-studio"
+                  className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-medium text-xs text-black bg-[#F59E0B] hover:bg-[#D97706] transition-all shadow-studio font-semibold"
                 >
                   <Mail className="w-4 h-4" />
                   <span>Launch Default Email App</span>
@@ -308,9 +308,9 @@ export function ContactForm({ initialService }: ContactFormProps) {
 
         {/* CHANNEL 2: INSTAGRAM DM ACTION BOX */}
         {channel === "Instagram" && (
-          <div className="p-6 rounded-xl bg-[#0C0D10] border border-[#FF5D65]/30 max-w-lg mx-auto space-y-4 text-left">
+          <div className="p-6 rounded-xl bg-[#0C0D10] border border-[#F97316]/30 max-w-lg mx-auto space-y-4 text-left">
             <div className="flex items-start gap-3">
-              <Instagram className="w-5 h-5 text-[#FF5D65] shrink-0 mt-0.5" />
+              <Instagram className="w-5 h-5 text-[#F97316] shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-sm font-semibold text-white">
                   Next Step: Direct Message @vision_verse24 on Instagram
@@ -326,7 +326,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
                 href={successData.instagramUrl || "https://ig.me/m/vision_verse24"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-medium text-xs text-white bg-gradient-to-r from-purple-600 via-pink-600 to-rose-500 hover:opacity-90 transition-all shadow-studio"
+                className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-medium text-xs text-black bg-gradient-to-r from-[#F97316] via-[#FB923C] to-[#F59E0B] hover:opacity-95 transition-all shadow-studio font-semibold"
               >
                 <Instagram className="w-4 h-4" />
                 <span>Open Instagram DM (@vision_verse24)</span>
@@ -389,14 +389,14 @@ export function ContactForm({ initialService }: ContactFormProps) {
               href={`https://wa.me/${siteConfig.owner.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#315BFF] hover:underline"
+              className="text-[#F59E0B] hover:underline"
             >
               +91-9392438853
             </a>{" "}
             · Email:{" "}
             <a
               href={`mailto:${siteConfig.owner.email}`}
-              className="text-[#315BFF] hover:underline"
+              className="text-[#F59E0B] hover:underline"
             >
               {siteConfig.owner.email}
             </a>
@@ -419,7 +419,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
       className="rounded-2xl bg-[#15171C] border border-white/10 p-6 sm:p-8 md:p-10 shadow-studio-elevated space-y-6"
     >
       <div className="space-y-1.5 border-b border-white/10 pb-5">
-        <div className="flex items-center gap-2 text-xs font-mono font-medium text-[#315BFF] uppercase tracking-wider">
+        <div className="flex items-center gap-2 text-xs font-mono font-medium text-[#F59E0B] uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5" />
           <span>PROJECT COMMISSION INTAKE</span>
         </div>
@@ -446,7 +446,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
         <div className="space-y-2">
           <label className="text-xs font-medium text-[#E4E4E7] flex items-center justify-between">
             <span>
-              Full Name <span className="text-[#315BFF]">*</span>
+              Full Name <span className="text-[#F59E0B]">*</span>
             </span>
             <span className="text-[10px] text-[#777982]">e.g. Rahul Sharma</span>
           </label>
@@ -455,7 +455,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
             type="text"
             placeholder="Your name or organization"
             className={cn(
-              "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all",
+              "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all",
               errors.fullName ? "border-rose-500" : "border-white/10"
             )}
           />
@@ -467,7 +467,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
         <div className="space-y-2">
           <label className="text-xs font-medium text-[#E4E4E7] flex items-center justify-between">
             <span>
-              WhatsApp Number <span className="text-[#315BFF]">*</span>
+              WhatsApp Number <span className="text-[#F59E0B]">*</span>
             </span>
             <span className="text-[10px] text-[#777982]">10-digit mobile number</span>
           </label>
@@ -476,7 +476,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
             type="tel"
             placeholder="e.g. 9392438853"
             className={cn(
-              "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all",
+              "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all",
               errors.whatsappNumber ? "border-rose-500" : "border-white/10"
             )}
           />
@@ -490,14 +490,14 @@ export function ContactForm({ initialService }: ContactFormProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="space-y-2">
           <label className="text-xs font-medium text-[#E4E4E7]">
-            Email Address <span className="text-[#315BFF]">*</span>
+            Email Address <span className="text-[#F59E0B]">*</span>
           </label>
           <input
             {...register("email")}
             type="email"
             placeholder="name@example.com"
             className={cn(
-              "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all",
+              "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all",
               errors.email ? "border-rose-500" : "border-white/10"
             )}
           />
@@ -508,11 +508,11 @@ export function ContactForm({ initialService }: ContactFormProps) {
 
         <div className="space-y-2">
           <label className="text-xs font-medium text-[#E4E4E7]">
-            Client Profile <span className="text-[#315BFF]">*</span>
+            Client Profile <span className="text-[#F59E0B]">*</span>
           </label>
           <select
             {...register("customerType")}
-            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all"
           >
             <option value="Student">Student (Academic / Placement)</option>
             <option value="Startup">Startup Founder</option>
@@ -530,11 +530,11 @@ export function ContactForm({ initialService }: ContactFormProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="space-y-2">
           <label className="text-xs font-medium text-[#E4E4E7]">
-            Service Requested <span className="text-[#315BFF]">*</span>
+            Service Requested <span className="text-[#F59E0B]">*</span>
           </label>
           <select
             {...register("serviceRequired")}
-            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all"
           >
             <option value="Resume Build">Resume Build (₹299)</option>
             <option value="Portfolio Website">Portfolio Website (₹499)</option>
@@ -553,11 +553,11 @@ export function ContactForm({ initialService }: ContactFormProps) {
 
         <div className="space-y-2">
           <label className="text-xs font-medium text-[#E4E4E7]">
-            Budget Tier <span className="text-[#315BFF]">*</span>
+            Budget Tier <span className="text-[#F59E0B]">*</span>
           </label>
           <select
             {...register("budget")}
-            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all"
           >
             <option value="Below ₹500">Below ₹500 (Resume / Micro)</option>
             <option value="₹500–₹1,000">₹500–₹1,000 (Portfolio / Minor)</option>
@@ -576,7 +576,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
       <div className="space-y-2">
         <label className="text-xs font-medium text-[#E4E4E7] flex items-center justify-between">
           <span>
-            Project Specification <span className="text-[#315BFF]">*</span>
+            Project Specification <span className="text-[#F59E0B]">*</span>
           </span>
           <span className="text-[10px] text-[#777982]">Goals, features, or deadlines</span>
         </label>
@@ -585,7 +585,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
           rows={4}
           placeholder="Outline what you want to build, any reference sites, specific features needed, or deadline expectations..."
           className={cn(
-            "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all resize-y",
+            "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all resize-y",
             errors.projectDescription ? "border-rose-500" : "border-white/10"
           )}
         />
@@ -598,11 +598,11 @@ export function ContactForm({ initialService }: ContactFormProps) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="space-y-2">
           <label className="text-xs font-medium text-[#E4E4E7]">
-            Preferred Channel <span className="text-[#315BFF]">*</span>
+            Preferred Channel <span className="text-[#F59E0B]">*</span>
           </label>
           <select
             {...register("contactPreference")}
-            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all"
           >
             <option value="WhatsApp">WhatsApp (Fastest / Real-time)</option>
             <option value="Email">Email (kadariudaycl@gmail.com)</option>
@@ -619,7 +619,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
             {...register("deliveryDate")}
             type="text"
             placeholder="e.g. Within 48h / by Dec 1"
-            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all"
+            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all"
           />
         </div>
 
@@ -633,7 +633,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
             type="url"
             placeholder="https://inspiration.com"
             className={cn(
-              "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all",
+              "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all",
               errors.referenceUrl ? "border-rose-500" : "border-white/10"
             )}
           />
@@ -653,11 +653,11 @@ export function ContactForm({ initialService }: ContactFormProps) {
       <button
         type="submit"
         disabled={submitting}
-        className="w-full py-4 px-8 rounded-xl text-sm font-medium tracking-wide text-white bg-[#315BFF] hover:bg-[#2546cc] shadow-studio hover:shadow-glow-blue transition-all duration-200 flex items-center justify-center gap-3 disabled:opacity-60 disabled:cursor-not-allowed uppercase"
+        className="w-full py-4 px-8 rounded-xl text-sm font-semibold tracking-wide text-black bg-[#F59E0B] hover:bg-[#D97706] shadow-studio hover:shadow-subtle transition-all duration-200 flex items-center justify-center gap-3 disabled:opacity-60 disabled:cursor-not-allowed uppercase"
       >
         {submitting ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin" />
+            <Loader2 className="w-4 h-4 animate-spin text-black" />
             <span>
               {selectedPreference === "Email"
                 ? "Securing Specification & Preparing Email..."
@@ -670,17 +670,17 @@ export function ContactForm({ initialService }: ContactFormProps) {
           <>
             {selectedPreference === "Email" ? (
               <>
-                <Mail className="w-4 h-4 text-cyan-300" />
+                <Mail className="w-4 h-4 text-black" />
                 <span>Submit Specification & Send Email</span>
               </>
             ) : selectedPreference === "Instagram" ? (
               <>
-                <Instagram className="w-4 h-4 text-pink-300" />
+                <Instagram className="w-4 h-4 text-black" />
                 <span>Submit Specification & Open Instagram DM</span>
               </>
             ) : (
               <>
-                <MessageSquareCode className="w-4 h-4 text-emerald-300" />
+                <MessageSquareCode className="w-4 h-4 text-black" />
                 <span>Submit Specification & Connect on WhatsApp</span>
               </>
             )}

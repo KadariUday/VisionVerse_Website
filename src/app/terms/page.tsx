@@ -21,7 +21,7 @@ export default function TermsPage() {
         </Link>
 
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-[#315BFF] text-xs font-mono font-medium border border-white/10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-[#F59E0B] text-xs font-mono font-medium border border-white/10">
             <FileText className="w-3.5 h-3.5" />
             <span>TERMS OF ENGAGEMENT</span>
           </div>

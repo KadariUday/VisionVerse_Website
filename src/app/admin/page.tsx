@@ -213,7 +213,7 @@ export default function AdminPage() {
   if (isAuthenticated === null) {
     return (
       <div className="min-h-screen pt-32 pb-20 flex items-center justify-center text-[#777982]">
-        <RefreshCw className="w-6 h-6 animate-spin text-[#315BFF]" />
+        <RefreshCw className="w-6 h-6 animate-spin text-[#F59E0B]" />
       </div>
     );
   }
@@ -224,7 +224,7 @@ export default function AdminPage() {
       <div className="min-h-screen pt-32 pb-20 flex items-center justify-center container mx-auto px-4">
         <div className="w-full max-w-md rounded-2xl bg-[#15171C] border border-white/10 p-8 shadow-studio-elevated space-y-6">
           <div className="text-center space-y-2">
-            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#315BFF] mx-auto">
+            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#F59E0B] mx-auto">
               <Lock className="w-6 h-6" />
             </div>
             <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/5 text-[10px] font-mono text-[#777982] uppercase tracking-wider">
@@ -256,21 +256,21 @@ export default function AdminPage() {
                 onChange={(e) => setAdminKey(e.target.value)}
                 placeholder="Enter ADMIN_SECRET_KEY"
                 required
-                className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all"
               />
             </div>
 
             <button
               type="submit"
               disabled={loggingIn}
-              className="w-full py-3.5 px-6 rounded-xl font-medium text-xs tracking-wide text-white bg-[#315BFF] hover:bg-[#2546cc] shadow-studio transition-all disabled:opacity-50 uppercase"
+              className="w-full py-3.5 px-6 rounded-xl font-semibold text-xs tracking-wide text-black bg-[#F59E0B] hover:bg-[#D97706] shadow-studio transition-all disabled:opacity-50 uppercase"
             >
               {loggingIn ? "Verifying Credentials..." : "Authenticate & Enter"}
             </button>
           </form>
 
           <div className="p-3 rounded-xl bg-[#0C0D10] border border-white/5 text-[11px] text-[#777982] text-center font-mono">
-            Key configured via <code className="text-[#315BFF]">ADMIN_SECRET_KEY</code>.
+            Key configured via <code className="text-[#F59E0B]">ADMIN_SECRET_KEY</code>.
           </div>
         </div>
       </div>
@@ -328,15 +328,15 @@ export default function AdminPage() {
           <div className="text-[10px] text-[#777982]">Recorded in PostgreSQL</div>
         </div>
 
-        <div className="p-4 md:p-5 rounded-2xl bg-[#15171C] border border-[#315BFF]/30 space-y-1 shadow-studio relative overflow-hidden">
-          <div className="text-xs font-mono font-medium text-[#315BFF] flex items-center justify-between uppercase tracking-wider">
+        <div className="p-4 md:p-5 rounded-2xl bg-[#15171C] border border-[#F59E0B]/30 space-y-1 shadow-studio relative overflow-hidden">
+          <div className="text-xs font-mono font-medium text-[#F59E0B] flex items-center justify-between uppercase tracking-wider">
             <span>New Enquiries</span>
-            <span className="w-2 h-2 rounded-full bg-[#315BFF] animate-ping" />
+            <span className="w-2 h-2 rounded-full bg-[#F59E0B] animate-ping" />
           </div>
           <div className="font-heading text-2xl md:text-3xl font-bold text-white">
             {newEnquiries}
           </div>
-          <div className="text-[10px] text-[#315BFF]">Awaiting consultation</div>
+          <div className="text-[10px] text-[#F59E0B]">Awaiting consultation</div>
         </div>
 
         <div className="p-4 md:p-5 rounded-2xl bg-[#15171C] border border-amber-500/20 space-y-1 shadow-studio">
@@ -375,7 +375,7 @@ export default function AdminPage() {
               onClick={() => setActiveTab(tab.key as any)}
               className={`flex items-center gap-2 py-3 px-4 rounded-t-xl transition-all whitespace-nowrap ${
                 isActive
-                  ? "bg-[#15171C] text-white border-t-2 border-[#315BFF] border-x border-white/10"
+                  ? "bg-[#15171C] text-white border-t-2 border-[#F59E0B] border-x border-white/10"
                   : "text-[#777982] hover:text-white"
               }`}
             >
@@ -397,13 +397,13 @@ export default function AdminPage() {
               placeholder="Search by ID, name, email or phone..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0C0D10] border border-white/10 text-xs text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] transition-all"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#0C0D10] border border-white/10 text-xs text-white placeholder-[#777982] focus:outline-none focus:border-[#F59E0B] transition-all"
             />
           </div>
 
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
             <div className="flex items-center gap-2 text-xs text-[#A0A2AD]">
-              <Filter className="w-3.5 h-3.5 text-[#315BFF]" />
+              <Filter className="w-3.5 h-3.5 text-[#F59E0B]" />
               <span className="font-mono text-[11px]">STATUS:</span>
               <select
                 value={statusFilter}
@@ -452,7 +452,7 @@ export default function AdminPage() {
                 className="p-4 rounded-2xl bg-[#15171C] border border-white/10 space-y-3 shadow-studio"
               >
                 <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                  <span className="font-mono text-xs font-bold text-[#315BFF]">
+                  <span className="font-mono text-xs font-bold text-[#F59E0B]">
                     {item.enquiry_number}
                   </span>
                   <select
@@ -463,7 +463,7 @@ export default function AdminPage() {
                     disabled={updatingStatus}
                     className={`px-2.5 py-1 rounded-full text-[10px] font-mono font-medium border focus:outline-none cursor-pointer ${
                       item.status === "new"
-                        ? "bg-[#315BFF]/10 text-[#315BFF] border-[#315BFF]/30"
+                        ? "bg-[#F59E0B]/10 text-[#F59E0B] border-[#F59E0B]/30"
                         : item.status === "in-progress"
                         ? "bg-amber-500/10 text-amber-300 border-amber-500/30"
                         : item.status === "completed"
@@ -481,7 +481,7 @@ export default function AdminPage() {
                 <div>
                   <h4 className="font-heading text-sm font-bold text-white">{item.full_name}</h4>
                   <div className="flex items-center gap-2 text-xs text-[#A0A2AD] mt-0.5">
-                    <span className="text-[#315BFF]">{item.service_required}</span>
+                    <span className="text-[#F59E0B]">{item.service_required}</span>
                     <span className="text-white/20">•</span>
                     <span>{item.budget}</span>
                   </div>
@@ -544,7 +544,7 @@ export default function AdminPage() {
                 <tbody className="divide-y divide-white/5 text-[#E4E4E7]">
                   {filteredEnquiries.map((item) => (
                     <tr key={item.id} className="hover:bg-white/[0.02] transition-colors">
-                      <td className="py-3.5 px-4 font-mono font-bold text-[#315BFF]">
+                      <td className="py-3.5 px-4 font-mono font-bold text-[#F59E0B]">
                         {item.enquiry_number}
                       </td>
                       <td className="py-3.5 px-4">
@@ -572,7 +572,7 @@ export default function AdminPage() {
                           disabled={updatingStatus}
                           className={`px-2.5 py-1 rounded-full text-[11px] font-mono font-medium border focus:outline-none cursor-pointer ${
                             item.status === "new"
-                              ? "bg-[#315BFF]/10 text-[#315BFF] border-[#315BFF]/30"
+                              ? "bg-[#F59E0B]/10 text-[#F59E0B] border-[#F59E0B]/30"
                               : item.status === "in-progress"
                               ? "bg-amber-500/10 text-amber-300 border-amber-500/30"
                               : item.status === "completed"
@@ -637,7 +637,7 @@ export default function AdminPage() {
             >
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#315BFF]">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#F59E0B]">
                     {project.category}
                   </span>
                   {project.featured && (
@@ -685,7 +685,7 @@ export default function AdminPage() {
             <button
               onClick={checkLiveHealth}
               disabled={checkingHealth}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium text-white bg-[#315BFF] hover:bg-[#2546cc] shadow-studio transition-all disabled:opacity-50"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-black bg-[#F59E0B] hover:bg-[#D97706] shadow-studio transition-all disabled:opacity-50"
             >
               <Activity className={`w-3.5 h-3.5 ${checkingHealth ? "animate-spin" : ""}`} />
               <span>{checkingHealth ? "Pinging DB..." : "Test Live Connection"}</span>
@@ -730,7 +730,7 @@ export default function AdminPage() {
             <div className="p-4 rounded-xl bg-[#0C0D10] border border-white/5 space-y-1">
               <div className="text-[#777982] font-mono text-[10px] uppercase">Database Engine</div>
               <div className="text-white font-bold">Supabase PostgreSQL + RLS</div>
-              <div className="text-[10px] text-[#315BFF]">Tokyo ap-northeast-1</div>
+              <div className="text-[10px] text-[#F59E0B]">Tokyo ap-northeast-1</div>
             </div>
 
             <div className="p-4 rounded-xl bg-[#0C0D10] border border-white/5 space-y-1">
@@ -754,7 +754,7 @@ export default function AdminPage() {
           <div className="w-full max-w-2xl rounded-2xl bg-[#15171C] border border-white/15 p-6 md:p-8 shadow-studio-elevated space-y-6 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-white/10">
               <div>
-                <span className="text-xs font-mono text-[#315BFF] font-bold">
+                <span className="text-xs font-mono text-[#F59E0B] font-bold">
                   {selectedEnquiry.enquiry_number}
                 </span>
                 <h3 className="font-heading text-xl font-bold text-white mt-0.5">
@@ -781,7 +781,7 @@ export default function AdminPage() {
               </div>
               <div className="p-3 rounded-xl bg-[#0C0D10] border border-white/5">
                 <span className="text-[#777982] block text-[10px] font-mono uppercase">Client Profile</span>
-                <span className="text-[#315BFF] font-semibold">{selectedEnquiry.customer_type}</span>
+                <span className="text-[#F59E0B] font-semibold">{selectedEnquiry.customer_type}</span>
               </div>
               <div className="p-3 rounded-xl bg-[#0C0D10] border border-white/5">
                 <span className="text-[#777982] block text-[10px] font-mono uppercase">Service Required</span>
@@ -811,7 +811,7 @@ export default function AdminPage() {
                   href={selectedEnquiry.reference_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#315BFF] hover:underline break-all inline-flex items-center gap-1 mt-0.5"
+                  className="text-[#F59E0B] hover:underline break-all inline-flex items-center gap-1 mt-0.5"
                 >
                   <span>{selectedEnquiry.reference_url}</span>
                   <ExternalLink className="w-3 h-3" />

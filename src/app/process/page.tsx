@@ -24,8 +24,8 @@ const detailedSteps = [
     name: "DISCOVER",
     headline: "Understanding Your Vision & Core Objectives",
     icon: Compass,
-    color: "text-[#315BFF]",
-    bg: "bg-[#315BFF]/10 border-[#315BFF]/30",
+    color: "text-[#F59E0B]",
+    bg: "bg-[#F59E0B]/10 border-[#F59E0B]/30",
     description:
       "We begin with a focused discovery session over WhatsApp, Google Meet, or direct phone call. We examine your target audience, reference sites you admire, feature requirements, and timeline milestones.",
     deliverables: [
@@ -40,8 +40,8 @@ const detailedSteps = [
     name: "PLAN",
     headline: "Wireframes, Architecture & Database Design",
     icon: FileCode2,
-    color: "text-[#753BDB]",
-    bg: "bg-[#753BDB]/10 border-[#753BDB]/30",
+    color: "text-[#FBBF24]",
+    bg: "bg-[#FBBF24]/10 border-[#FBBF24]/30",
     description:
       "Before writing a line of code, we organize user journeys. We sketch responsive layout wireframes, select typography and color themes, and architect normalized database schemas with proper security constraints.",
     deliverables: [
@@ -72,8 +72,8 @@ const detailedSteps = [
     name: "LAUNCH",
     headline: "Production Rollout on Vercel Global Edge",
     icon: Rocket,
-    color: "text-[#D9A441]",
-    bg: "bg-[#D9A441]/10 border-[#D9A441]/30",
+    color: "text-[#F97316]",
+    bg: "bg-[#F97316]/10 border-[#F97316]/30",
     description:
       "We deploy your application to Vercel's global edge network. We connect your custom domain (or provide a free .vercel.app domain), configure automatic SSL certificates, optimize assets for Core Web Vitals, and run security audits.",
     deliverables: [
@@ -88,8 +88,8 @@ const detailedSteps = [
     name: "SUPPORT",
     headline: "Comprehensive Walkthrough, Viva Prep & Maintenance",
     icon: Headphones,
-    color: "text-[#FF5D65]",
-    bg: "bg-[#FF5D65]/10 border-[#FF5D65]/30",
+    color: "text-[#10B981]",
+    bg: "bg-[#10B981]/10 border-[#10B981]/30",
     description:
       "Our relationship does not end at deployment. For students, we provide 1-on-1 code explanations and viva defense preparation tips. For businesses, we guide store management and provide ongoing bug-fix warranties.",
     deliverables: [
@@ -103,10 +103,10 @@ const detailedSteps = [
 
 export default function ProcessPage() {
   return (
-    <div className="pt-28 pb-20 space-y-24 bg-[#101114]">
+    <div className="pt-28 pb-20 space-y-24 bg-[#0C0D0E]">
       {/* Header */}
       <section className="relative overflow-hidden text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-12">
-        <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+        <div className="inline-flex items-center gap-2 font-mono text-xs text-[#F59E0B] uppercase tracking-widest">
           <span>{"// HOW WE WORK"}</span>
         </div>
 
