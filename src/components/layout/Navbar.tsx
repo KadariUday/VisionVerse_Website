@@ -111,6 +111,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
                   className={cn(
                     "flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-colors",
                     isActive
@@ -127,6 +128,7 @@ export function Navbar() {
             <div className="pt-4 mt-2 border-t border-slate-800 flex flex-col gap-3">
               <Link
                 href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 shadow-glow-sm"
               >
                 <span>Start Your Project</span>

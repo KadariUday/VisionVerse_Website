@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Enquiry, EnquiryStatus } from "@/types";
 import { projectsData } from "@/config/projects";
 import { formatDate } from "@/lib/utils";
@@ -12,18 +12,22 @@ import {
   CheckCircle,
   Clock,
   AlertCircle,
-  ChevronRight,
   ExternalLink,
   MessageSquareCode,
   Eye,
   RefreshCw,
   FolderGit2,
   Shield,
-  Layers,
   Database,
   Calendar,
   X,
   UserCheck,
+  Activity,
+  Check,
+  Phone,
+  Mail,
+  Tag,
+  Zap,
 } from "lucide-react";
 
 export default function AdminPage() {
@@ -36,7 +40,7 @@ export default function AdminPage() {
   const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<"enquiries" | "projects" | "system">("enquiries");
-  
+
   // Filters & Search
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
@@ -46,6 +50,10 @@ export default function AdminPage() {
   const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
   const [updatingStatus, setUpdatingStatus] = useState(false);
 
+  // Live Health State
+  const [healthStatus, setHealthStatus] = useState<any>(null);
+  const [checkingHealth, setCheckingHealth] = useState(false);
+
   // Check auth on load
   useEffect(() => {
     const initAuth = async () => {
@@ -53,7 +61,6 @@ export default function AdminPage() {
         const res = await fetch("/api/auth/admin");
         if (res.ok) {
           setIsAuthenticated(true);
-          // fetch enquiries
           try {
             const eqRes = await fetch("/api/enquiries");
             if (eqRes.ok) {
@@ -74,20 +81,6 @@ export default function AdminPage() {
     };
     initAuth();
   }, []);
-
-  const checkAuth = async () => {
-    try {
-      const res = await fetch("/api/auth/admin");
-      if (res.ok) {
-        setIsAuthenticated(true);
-        fetchEnquiries();
-      } else {
-        setIsAuthenticated(false);
-      }
-    } catch {
-      setIsAuthenticated(false);
-    }
-  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -139,6 +132,21 @@ export default function AdminPage() {
     }
   };
 
+  const checkLiveHealth = async () => {
+    setCheckingHealth(true);
+    try {
+      const t0 = performance.now();
+      const res = await fetch("/api/health");
+      const t1 = performance.now();
+      const data = await res.json();
+      setHealthStatus({ ...data, latencyMs: Math.round(t1 - t0) });
+    } catch (err: any) {
+      setHealthStatus({ status: "error", error: err.message });
+    } finally {
+      setCheckingHealth(false);
+    }
+  };
+
   const handleUpdateStatus = async (id: string, newStatus: EnquiryStatus) => {
     setUpdatingStatus(true);
     try {
@@ -163,25 +171,41 @@ export default function AdminPage() {
     }
   };
 
-  // Metrics
-  const totalEnquiries = enquiries.length;
-  const newEnquiries = enquiries.filter((e) => e.status === "new").length;
-  const inProgressEnquiries = enquiries.filter((e) => e.status === "in-progress").length;
-  const completedEnquiries = enquiries.filter((e) => e.status === "completed").length;
+  // Instant Memoized Metrics
+  const { totalEnquiries, newEnquiries, inProgressEnquiries, completedEnquiries } = useMemo(() => {
+    let newCount = 0;
+    let inProgressCount = 0;
+    let completedCount = 0;
+    for (const e of enquiries) {
+      if (e.status === "new") newCount++;
+      else if (e.status === "in-progress") inProgressCount++;
+      else if (e.status === "completed") completedCount++;
+    }
+    return {
+      totalEnquiries: enquiries.length,
+      newEnquiries: newCount,
+      inProgressEnquiries: inProgressCount,
+      completedEnquiries: completedCount,
+    };
+  }, [enquiries]);
 
-  // Filtered List
-  const filteredEnquiries = enquiries.filter((item) => {
-    const matchesSearch =
-      item.full_name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.enquiry_number?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.email?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.whatsapp_number?.includes(searchQuery);
+  // Instant Memoized Filtered List
+  const filteredEnquiries = useMemo(() => {
+    const q = searchQuery.toLowerCase().trim();
+    return enquiries.filter((item) => {
+      const matchesSearch =
+        !q ||
+        item.full_name?.toLowerCase().includes(q) ||
+        item.enquiry_number?.toLowerCase().includes(q) ||
+        item.email?.toLowerCase().includes(q) ||
+        item.whatsapp_number?.includes(q);
 
-    const matchesStatus = statusFilter === "all" || item.status === statusFilter;
-    const matchesService = serviceFilter === "all" || item.service_required === serviceFilter;
+      const matchesStatus = statusFilter === "all" || item.status === statusFilter;
+      const matchesService = serviceFilter === "all" || item.service_required === serviceFilter;
 
-    return matchesSearch && matchesStatus && matchesService;
-  });
+      return matchesSearch && matchesStatus && matchesService;
+    });
+  }, [enquiries, searchQuery, statusFilter, serviceFilter]);
 
   // 1. Loading state
   if (isAuthenticated === null) {
@@ -285,37 +309,37 @@ export default function AdminPage() {
       </div>
 
       {/* Metrics Row */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-5 rounded-2xl bg-[#0D1127] border border-purple-500/20 space-y-1">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+        <div className="p-4 md:p-5 rounded-2xl bg-[#0D1127] border border-purple-500/20 space-y-1">
           <div className="text-xs font-semibold text-slate-400">Total Enquiries</div>
-          <div className="text-2xl font-black text-white">{totalEnquiries}</div>
+          <div className="text-2xl md:text-3xl font-black text-white">{totalEnquiries}</div>
           <div className="text-[10px] text-slate-500">Database recorded</div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-[#0D1127] border border-blue-500/30 space-y-1 relative overflow-hidden">
+        <div className="p-4 md:p-5 rounded-2xl bg-[#0D1127] border border-blue-500/30 space-y-1 relative overflow-hidden">
           <div className="text-xs font-semibold text-blue-400 flex items-center justify-between">
             <span>New Enquiries</span>
             <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping" />
           </div>
-          <div className="text-2xl font-black text-white">{newEnquiries}</div>
+          <div className="text-2xl md:text-3xl font-black text-white">{newEnquiries}</div>
           <div className="text-[10px] text-blue-300">Awaiting contact</div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-[#0D1127] border border-amber-500/20 space-y-1">
+        <div className="p-4 md:p-5 rounded-2xl bg-[#0D1127] border border-amber-500/20 space-y-1">
           <div className="text-xs font-semibold text-amber-400">In Progress</div>
-          <div className="text-2xl font-black text-white">{inProgressEnquiries}</div>
+          <div className="text-2xl md:text-3xl font-black text-white">{inProgressEnquiries}</div>
           <div className="text-[10px] text-slate-500">Active development</div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-[#0D1127] border border-emerald-500/20 space-y-1">
+        <div className="p-4 md:p-5 rounded-2xl bg-[#0D1127] border border-emerald-500/20 space-y-1">
           <div className="text-xs font-semibold text-emerald-400">Completed</div>
-          <div className="text-2xl font-black text-white">{completedEnquiries}</div>
+          <div className="text-2xl md:text-3xl font-black text-white">{completedEnquiries}</div>
           <div className="text-[10px] text-slate-500">Delivered & launched</div>
         </div>
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex border-b border-slate-800 space-x-2 text-xs font-bold">
+      <div className="flex border-b border-slate-800 space-x-2 text-xs font-bold overflow-x-auto no-scrollbar">
         {[
           { key: "enquiries", label: `Enquiries (${enquiries.length})`, icon: MessageSquareCode },
           { key: "projects", label: `Projects (${projectsData.length})`, icon: FolderGit2 },
@@ -326,7 +350,7 @@ export default function AdminPage() {
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key as any)}
-              className={`flex items-center gap-2 py-3 px-4 rounded-t-xl transition-all ${
+              className={`flex items-center gap-2 py-3 px-4 rounded-t-xl transition-all whitespace-nowrap ${
                 activeTab === tab.key
                   ? "bg-[#111633] text-white border-t-2 border-purple-500 border-x border-slate-800"
                   : "text-slate-400 hover:text-white"
@@ -351,7 +375,7 @@ export default function AdminPage() {
                 placeholder="Search by ID, name, email or phone..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#080B1C] border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-400"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#080B1C] border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-400"
               />
             </div>
 
@@ -391,8 +415,86 @@ export default function AdminPage() {
             </div>
           </div>
 
-          {/* Enquiries Table */}
-          <div className="rounded-3xl bg-[#0D1127] border border-purple-500/20 overflow-hidden shadow-2xl">
+          {/* Enquiries Mobile Card View (< md screens) */}
+          <div className="md:hidden space-y-3">
+            {filteredEnquiries.length === 0 ? (
+              <div className="p-8 text-center text-slate-400 rounded-2xl bg-[#0D1127] border border-purple-500/20">
+                <MessageSquareCode className="w-8 h-8 mx-auto text-slate-600 mb-2" />
+                <p className="text-sm font-semibold text-white">No enquiries match your search.</p>
+                <p className="text-xs text-slate-500 mt-1">Try clearing your search query or filters.</p>
+              </div>
+            ) : (
+              filteredEnquiries.map((item) => (
+                <div
+                  key={item.id}
+                  className="p-4 rounded-2xl bg-[#0D1127] border border-purple-500/20 space-y-3 shadow-md"
+                >
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <span className="font-mono text-xs font-bold text-purple-400">
+                      {item.enquiry_number}
+                    </span>
+                    <select
+                      value={item.status}
+                      onChange={(e) =>
+                        handleUpdateStatus(item.id, e.target.value as EnquiryStatus)
+                      }
+                      disabled={updatingStatus}
+                      className={`px-2.5 py-1 rounded-full text-[10px] font-bold border focus:outline-none cursor-pointer ${
+                        item.status === "new"
+                          ? "bg-blue-500/20 text-blue-300 border-blue-500/40"
+                          : item.status === "in-progress"
+                          ? "bg-amber-500/20 text-amber-300 border-amber-500/40"
+                          : item.status === "completed"
+                          ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/40"
+                          : "bg-slate-700/50 text-slate-400 border-slate-600"
+                      }`}
+                    >
+                      <option value="new" className="bg-[#080B1C] text-white">New</option>
+                      <option value="in-progress" className="bg-[#080B1C] text-white">In Progress</option>
+                      <option value="completed" className="bg-[#080B1C] text-white">Completed</option>
+                      <option value="cancelled" className="bg-[#080B1C] text-white">Cancelled</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-bold text-white">{item.full_name}</h4>
+                    <div className="flex items-center gap-2 text-xs text-cyan-300 mt-0.5">
+                      <span>{item.service_required}</span>
+                      <span className="text-slate-600">•</span>
+                      <span className="text-slate-400">{item.budget}</span>
+                    </div>
+                  </div>
+
+                  <div className="text-[11px] text-slate-400 flex items-center justify-between pt-1">
+                    <span>{formatDate(item.created_at)}</span>
+                    <span className="text-purple-300 font-mono">{item.whatsapp_number}</span>
+                  </div>
+
+                  <div className="flex items-center gap-2 pt-2 border-t border-slate-800/80">
+                    <button
+                      onClick={() => setSelectedEnquiry(item)}
+                      className="flex-1 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5"
+                    >
+                      <Eye className="w-3.5 h-3.5" />
+                      <span>Details</span>
+                    </button>
+                    <a
+                      href={`https://wa.me/${item.whatsapp_number.replace(/\D/g, "")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-xs font-semibold flex items-center justify-center gap-1.5"
+                    >
+                      <MessageSquareCode className="w-3.5 h-3.5" />
+                      <span>WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+
+          {/* Enquiries Desktop Table View (>= md screens) */}
+          <div className="hidden md:block rounded-3xl bg-[#0D1127] border border-purple-500/20 overflow-hidden shadow-2xl">
             {filteredEnquiries.length === 0 ? (
               <div className="p-12 text-center text-slate-400 space-y-2">
                 <MessageSquareCode className="w-10 h-10 mx-auto text-slate-600" />
@@ -546,15 +648,53 @@ export default function AdminPage() {
         </div>
       )}
 
-
-      {/* TAB 4: SYSTEM & INFRASTRUCTURE */}
+      {/* TAB 3: SYSTEM & INFRASTRUCTURE */}
       {activeTab === "system" && (
         <div className="space-y-6 max-w-4xl">
-          <div className="p-6 rounded-3xl bg-[#0D1127] border border-purple-500/20 space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
-              <Shield className="w-5 h-5 text-emerald-400" />
-              <span>Production Architecture Verification</span>
-            </h3>
+          <div className="p-6 rounded-3xl bg-[#0D1127] border border-purple-500/20 space-y-5">
+            <div className="flex items-center justify-between flex-wrap gap-3">
+              <h3 className="text-base font-bold text-white flex items-center gap-2">
+                <Shield className="w-5 h-5 text-emerald-400" />
+                <span>Production Architecture & Database Health</span>
+              </h3>
+
+              <button
+                onClick={checkLiveHealth}
+                disabled={checkingHealth}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-sm transition-all disabled:opacity-50"
+              >
+                <Activity className={`w-3.5 h-3.5 ${checkingHealth ? "animate-spin" : ""}`} />
+                <span>{checkingHealth ? "Pinging DB..." : "Test Live Connection"}</span>
+              </button>
+            </div>
+
+            {healthStatus && (
+              <div
+                className={`p-4 rounded-2xl border text-xs space-y-2 ${
+                  healthStatus.status === "healthy"
+                    ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-300"
+                    : healthStatus.status === "schema_pending"
+                    ? "bg-amber-500/10 border-amber-500/30 text-amber-300"
+                    : "bg-rose-500/10 border-rose-500/30 text-rose-300"
+                }`}
+              >
+                <div className="font-bold flex items-center gap-2">
+                  <span>Status: {healthStatus.status?.toUpperCase()}</span>
+                  {healthStatus.latencyMs !== undefined && (
+                    <span className="font-mono text-[11px] bg-white/10 px-2 py-0.5 rounded">
+                      {healthStatus.latencyMs}ms latency
+                    </span>
+                  )}
+                </div>
+                {healthStatus.database?.host && (
+                  <div className="font-mono text-[11px]">Host: {healthStatus.database.host}</div>
+                )}
+                {healthStatus.database?.message && <div>{healthStatus.database.message}</div>}
+                {healthStatus.database?.action && (
+                  <div className="font-semibold text-white">Action needed: {healthStatus.database.action}</div>
+                )}
+              </div>
+            )}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div className="p-4 rounded-xl bg-[#080B1C] border border-slate-800 space-y-1">
@@ -566,7 +706,7 @@ export default function AdminPage() {
               <div className="p-4 rounded-xl bg-[#080B1C] border border-slate-800 space-y-1">
                 <div className="text-slate-400 font-semibold">Database Engine</div>
                 <div className="text-white font-bold">Supabase PostgreSQL + RLS</div>
-                <div className="text-[10px] text-purple-400">Local fallback active if unconfigured</div>
+                <div className="text-[10px] text-purple-400">Tokyo ap-northeast-1</div>
               </div>
 
               <div className="p-4 rounded-xl bg-[#080B1C] border border-slate-800 space-y-1">
@@ -604,7 +744,7 @@ export default function AdminPage() {
               </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div className="p-3 rounded-xl bg-[#080B1C] border border-slate-800">
                 <span className="text-slate-500 block">WhatsApp Number:</span>
                 <span className="text-white font-mono font-semibold">{selectedEnquiry.whatsapp_number}</span>
@@ -659,7 +799,7 @@ export default function AdminPage() {
               </div>
             </div>
 
-            <div className="pt-2 flex items-center justify-between border-t border-slate-800">
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-800">
               <div className="text-[11px] text-slate-500">
                 Submitted on {formatDate(selectedEnquiry.created_at)}
               </div>
@@ -667,7 +807,7 @@ export default function AdminPage() {
                 href={`https://wa.me/${selectedEnquiry.whatsapp_number.replace(/\D/g, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs text-black bg-emerald-400 hover:bg-emerald-300 transition-colors"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs text-black bg-emerald-400 hover:bg-emerald-300 transition-colors"
               >
                 <MessageSquareCode className="w-4 h-4" />
                 <span>Open Chat with Client</span>

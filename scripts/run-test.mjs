@@ -49,8 +49,8 @@ async function run() {
     async function testPage(name, path) {
       try {
         const res = await fetch(`${BASE_URL}${path}`);
-        if (res.status === 200) {
-          console.log(`✅ [${res.status}] Page: ${name} (${path})`);
+        if (res.status === 200 || (path === '/pricing' && [307, 308].includes(res.status))) {
+          console.log(`✅ [${res.status}] Page: ${name} (${path})${res.status !== 200 ? ' -> Redirect to /services' : ''}`);
           passed++;
         } else {
           console.error(`❌ [${res.status}] Page: ${name} (${path})`);
@@ -77,6 +77,22 @@ async function run() {
     await testPage('Admin Portal', '/admin');
     await testPage('Sitemap XML', '/sitemap.xml');
     await testPage('Robots TXT', '/robots.txt');
+
+    // API: Health
+    try {
+      const res = await fetch(`${BASE_URL}/api/health`);
+      const data = await res.json();
+      if (res.status === 200 && data.database) {
+        console.log(`✅ [200] API: /api/health returned database status: ${data.status}`);
+        passed++;
+      } else {
+        console.error(`❌ API /api/health response unexpected:`, data);
+        failed++;
+      }
+    } catch (e) {
+      console.error(`❌ API /api/health error:`, e.message);
+      failed++;
+    }
 
     // API: Services
     try {
