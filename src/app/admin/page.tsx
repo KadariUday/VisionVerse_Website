@@ -48,7 +48,31 @@ export default function AdminPage() {
 
   // Check auth on load
   useEffect(() => {
-    checkAuth();
+    const initAuth = async () => {
+      try {
+        const res = await fetch("/api/auth/admin");
+        if (res.ok) {
+          setIsAuthenticated(true);
+          // fetch enquiries
+          try {
+            const eqRes = await fetch("/api/enquiries");
+            if (eqRes.ok) {
+              const data = await eqRes.json();
+              setEnquiries(data.enquiries || []);
+            }
+          } catch {
+            // handle error
+          }
+        } else {
+          setIsAuthenticated(false);
+        }
+      } catch {
+        setIsAuthenticated(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+    initAuth();
   }, []);
 
   const checkAuth = async () => {
