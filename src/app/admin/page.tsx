@@ -364,8 +364,7 @@ export default function AdminPage() {
       </div>
 
       {/* TAB 1: ENQUIRIES */}
-      {activeTab === "enquiries" && (
-        <div className="space-y-6">
+      <div className={activeTab === "enquiries" ? "space-y-6" : "hidden"}>
           {/* Search & Filter Bar */}
           <div className="p-4 rounded-2xl bg-[#0D1127] border border-purple-500/20 flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="relative w-full md:w-96">
@@ -595,11 +594,9 @@ export default function AdminPage() {
             )}
           </div>
         </div>
-      )}
 
       {/* TAB 2: PROJECTS */}
-      {activeTab === "projects" && (
-        <div className="space-y-4">
+      <div className={activeTab === "projects" ? "space-y-4" : "hidden"}>
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-bold text-white">Configured Agency Projects</h3>
             <span className="text-xs text-slate-400 font-mono">
@@ -646,11 +643,9 @@ export default function AdminPage() {
             ))}
           </div>
         </div>
-      )}
 
       {/* TAB 3: SYSTEM & INFRASTRUCTURE */}
-      {activeTab === "system" && (
-        <div className="space-y-6 max-w-4xl">
+      <div className={activeTab === "system" ? "space-y-6 max-w-4xl" : "hidden"}>
           <div className="p-6 rounded-3xl bg-[#0D1127] border border-purple-500/20 space-y-5">
             <div className="flex items-center justify-between flex-wrap gap-3">
               <h3 className="text-base font-bold text-white flex items-center gap-2">
@@ -723,7 +718,6 @@ export default function AdminPage() {
             </div>
           </div>
         </div>
-      )}
 
       {/* ENQUIRY DETAILS MODAL */}
       {selectedEnquiry && (
