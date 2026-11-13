@@ -125,13 +125,16 @@ ADMIN_EMAIL=kadariudaycl@gmail.com
 # Install dependencies
 npm install
 
-# Start local development server
+# Test and verify database connection
+npm run check-db
+
+# Start local development server (with automatic DB verification)
 npm run dev
 
 # Run production build
 npm run build
 
-# Run automated end-to-end test suite
+# Run automated end-to-end test suite (23 integration tests)
 node scripts/run-test.mjs
 ```
 
