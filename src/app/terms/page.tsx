@@ -4,78 +4,94 @@ import Link from "next/link";
 import { FileText, ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | VISION VERSE24",
-  description: "Terms and Conditions of service for Vision Verse24 digital development agency.",
+  title: "Terms and Conditions | VISION VERSE24 — Independent Digital Product Studio",
+  description: "Terms and conditions of service for Vision Verse24 digital product studio.",
 };
 
 export default function TermsPage() {
   return (
-    <div className="pt-28 pb-20 container mx-auto px-4 md:px-6">
+    <div className="pt-32 pb-24 container mx-auto px-4 md:px-6">
       <div className="max-w-3xl mx-auto space-y-8">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-mono text-[#777982] hover:text-white transition-colors"
         >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Back to Home</span>
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>RETURN TO STUDIO</span>
         </Link>
 
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold border border-blue-500/30">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-[#315BFF] text-xs font-mono font-medium border border-white/10">
             <FileText className="w-3.5 h-3.5" />
-            <span>TERMS OF SERVICE</span>
+            <span>TERMS OF ENGAGEMENT</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black text-white">Terms & Conditions</h1>
-          <p className="text-xs text-slate-400">Effective Date: November 2026</p>
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-white tracking-tight">
+            Terms & Conditions
+          </h1>
+          <p className="text-xs font-mono text-[#777982]">Effective Date: November 2026 · Hyderabad, India</p>
         </div>
 
-        <div className="prose prose-invert max-w-none text-slate-300 text-sm space-y-6 leading-relaxed bg-[#0D1127] p-8 rounded-3xl border border-purple-500/20">
+        <div className="rounded-2xl bg-[#15171C] border border-white/10 p-8 sm:p-10 space-y-8 text-sm text-[#A0A2AD] leading-relaxed shadow-studio">
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-white">1. Agreement to Terms</h2>
+            <h2 className="font-heading text-base font-bold text-white uppercase tracking-wider text-xs">
+              01 / Agreement to Terms
+            </h2>
             <p>
-              By accessing our website (visionverse24.vercel.app) or engaging VISION VERSE24 for software engineering, web design, resume building, or academic guidance, you agree to be bound by these Terms and Conditions.
+              By accessing our website or commissioning <strong className="text-white">VISION VERSE24</strong> for software engineering, web design, resume systems, or academic guidance, you agree to these Terms and Conditions.
             </p>
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-white">2. Scope of Services</h2>
+            <h2 className="font-heading text-base font-bold text-white uppercase tracking-wider text-xs">
+              02 / Scope of Engagement
+            </h2>
             <p>
-              Vision Verse24 provides custom website development, portfolio design, resume websites, academic college project implementation, and technical mentoring. All deliverables are defined prior to project commencement via written communication.
+              Vision Verse24 delivers bespoke web engineering, developer portfolio architecture, academic engineering implementations, and commercial web platforms. All project milestones are formally defined prior to engineering kick-off.
             </p>
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-white">3. Source Code Ownership & Copyright</h2>
+            <h2 className="font-heading text-base font-bold text-white uppercase tracking-wider text-xs">
+              03 / Source Code Ownership & Transfer
+            </h2>
             <p>
-              Upon receipt of final payment, full ownership of the developed project source code is transferred to the client or student. You retain the right to modify, host, deploy, and distribute your code freely.
+              Upon settlement of the final project milestone, 100% full intellectual property and source code rights transfer to the client or student. You possess complete freedom to fork, host, commercialize, or re-license your repository.
             </p>
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-white">4. Payment & Delivery Milestones</h2>
+            <h2 className="font-heading text-base font-bold text-white uppercase tracking-wider text-xs">
+              04 / Pricing & Milestone Structure
+            </h2>
             <p>
-              Prices listed on our website represent baseline rates. Payment is conducted in Indian Rupees (INR) via UPI (Google Pay, PhonePe, Paytm) or bank transfer. Standard payment terms require a 50% initial commitment deposit and 50% upon review and approval of the staging build.
+              Listed figures denote baseline rates for standardized configurations. Transactions are settled in Indian Rupees (INR) via UPI (Google Pay, PhonePe, Paytm) or verified banking rails. Standard engagement utilizes a milestone structure: 50% kick-off deposit and 50% upon client acceptance on staging.
             </p>
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-white">5. Revision Policy</h2>
+            <h2 className="font-heading text-base font-bold text-white uppercase tracking-wider text-xs">
+              05 / Scope Revisions
+            </h2>
             <p>
-              We provide revisions within the original agreed project scope. Significant feature additions requested beyond the agreed initial specification may incur additional nominal charges.
+              We provide full revisions within the originally agreed scope parameters. Material feature expansions beyond the initial specification are scoped transparently at nominal rates.
             </p>
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-lg font-bold text-white">6. Academic Integrity Notice</h2>
+            <h2 className="font-heading text-base font-bold text-white uppercase tracking-wider text-xs">
+              06 / Academic Systems Compliance
+            </h2>
             <p>
-              For academic college projects, our source code and documentation are provided as learning aids, architecture templates, and implementation references to help students understand modern software engineering. Students are expected to understand the code for their examination defense.
+              For academic engineering commissions, code repositories and accompanying technical reports serve as structured architectural foundations and educational references. Students are guided to understand all underlying logic for their viva voce defense.
             </p>
           </section>
 
-          <section className="space-y-2">
-            <h2 className="text-lg font-bold text-white">7. Governing Law</h2>
+          <section className="space-y-2 border-t border-white/10 pt-6">
+            <h2 className="font-heading text-base font-bold text-white uppercase tracking-wider text-xs">
+              07 / Jurisdiction
+            </h2>
             <p>
-              These terms are governed by and construed in accordance with the laws of Telangana, India.
+              These terms are governed by and construed under the legal jurisdiction of Hyderabad, Telangana, India.
             </p>
           </section>
         </div>

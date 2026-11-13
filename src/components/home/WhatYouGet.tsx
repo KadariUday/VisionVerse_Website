@@ -11,100 +11,110 @@ import {
   CloudUpload,
   BookOpen,
   Award,
-  Sparkles,
+  Check,
 } from "lucide-react";
 
 const deliverables = [
   {
-    title: "100% Responsive Design",
+    title: "100% Responsive Fluidity",
     desc: "Seamless visual fidelity across mobile phones, tablets, laptops, and ultra-wide screens.",
     icon: Smartphone,
-    color: "from-blue-500 to-cyan-400",
+    metric: "320px — 4K",
   },
   {
-    title: "Blazing Fast Loading",
-    desc: "Sub-second initial paint with Next.js static and server edge optimizations.",
+    title: "Sub-Second Loading",
+    desc: "Optimized Next.js edge caching, static generation, and image transforms.",
     icon: Zap,
-    color: "from-amber-400 to-yellow-500",
+    metric: "< 1.0s LCP",
   },
   {
-    title: "SEO Optimization",
-    desc: "Structured schema metadata, Open Graph cards, sitemaps, and robots configuration.",
+    title: "Production SEO Schema",
+    desc: "Structured JSON-LD schema metadata, Open Graph cards, dynamic sitemaps, and robots.",
     icon: Search,
-    color: "from-purple-500 to-indigo-500",
+    metric: "Google-Ready",
   },
   {
     title: "Secure Architecture",
     desc: "Protected environment secrets, backend input sanitization, and Supabase RLS policies.",
     icon: ShieldCheck,
-    color: "from-emerald-400 to-teal-500",
+    metric: "RLS Enabled",
   },
   {
-    title: "Clean & Documented Code",
-    desc: "Modular React components, readable TypeScript interfaces, and zero spaghetti code.",
+    title: "Clean, Typed Code",
+    desc: "Modular React components, strict TypeScript interfaces, and zero spaghetti code.",
     icon: Code2,
-    color: "from-pink-500 to-rose-500",
+    metric: "100% Typed",
   },
   {
-    title: "Vercel Deployment Support",
-    desc: "Instant live production URL with SSL certificate and custom domain linkage assistance.",
+    title: "Vercel Edge Deployment",
+    desc: "Live production URL with SSL certificates and custom domain DNS configuration assistance.",
     icon: CloudUpload,
-    color: "from-blue-600 to-purple-600",
+    metric: "Zero Downtime",
   },
   {
-    title: "Complete Documentation",
+    title: "Full Documentation",
     desc: "Architecture diagrams, local setup commands, API descriptions, and viva explanations.",
     icon: BookOpen,
-    color: "from-indigo-500 to-blue-400",
+    metric: "Viva Ready",
   },
   {
-    title: "100% Satisfaction Guarantee",
-    desc: "Scope revisions included to ensure your website meets every single expectation.",
+    title: "Satisfaction Guarantee",
+    desc: "Iterative revisions included to guarantee every deliverable matches your specifications.",
     icon: Award,
-    color: "from-yellow-400 to-amber-500",
+    metric: "100% Focused",
   },
 ];
 
 export function WhatYouGet() {
   return (
-    <section className="py-24 relative overflow-hidden bg-[#060814] border-t border-slate-800/80">
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#111633] border border-emerald-500/30 text-xs font-semibold text-emerald-400">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>STANDARDS & DELIVERABLES</span>
+    <section className="py-24 lg:py-32 relative overflow-hidden bg-[#101114] border-t border-white/[0.08]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+            <span>{"// THE STUDIO STANDARD"}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-            What You Get With <span className="text-gradient-brand">Every Project</span>
+          <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.08]">
+            DELIVERED WITH{" "}
+            <span className="font-serif italic font-normal text-white/90">EVERY</span> BUILD.
           </h2>
 
-          <p className="text-base text-slate-300 max-w-2xl mx-auto">
-            We don't just hand over code and vanish. Every solution comes packed with enterprise-grade craftsmanship, performance, and launch support.
+          <p className="text-base sm:text-lg text-[#A2A6B2] leading-relaxed max-w-2xl font-normal">
+            We don't just hand over code and vanish. Every solution comes equipped with production
+            engineering, accessibility standards, and complete deployment ownership.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {deliverables.map((item, idx) => {
             const Icon = item.icon;
             return (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="p-6 rounded-2xl bg-[#0D1127] border border-purple-500/15 hover:border-emerald-400/40 transition-all duration-300 hover:-translate-y-1 shadow-card-glass"
+                transition={{ duration: 0.35, delay: idx * 0.05 }}
+                className="p-5 sm:p-6 rounded-2xl bg-[#15171C] border border-white/[0.08] hover:border-white/20 transition-all duration-200 flex flex-col justify-between space-y-4 group"
               >
-                <div
-                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} p-0.5 mb-4 shadow-sm`}
-                >
-                  <div className="w-full h-full bg-[#0D1127] rounded-[10px] flex items-center justify-center text-white">
-                    <Icon className="w-5 h-5 text-white" />
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="w-10 h-10 rounded-xl bg-[#1B1E26] border border-white/10 flex items-center justify-center text-[#315BFF] group-hover:scale-105 transition-transform">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className="font-mono text-[10px] text-[#A2A6B2] uppercase tracking-wider bg-white/[0.03] px-2 py-0.5 rounded border border-white/5">
+                      {item.metric}
+                    </span>
                   </div>
+
+                  <h3 className="font-heading text-base font-bold text-white group-hover:text-[#315BFF] transition-colors">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-xs text-[#777982] leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-                <h3 className="text-base font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
               </motion.div>
             );
           })}

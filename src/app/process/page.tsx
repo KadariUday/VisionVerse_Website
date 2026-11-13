@@ -1,40 +1,36 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DevelopmentProcess } from "@/components/home/DevelopmentProcess";
 import { FinalCta } from "@/components/home/FinalCta";
 import {
-  Sparkles,
-  MessageSquare,
   Compass,
+  FileCode2,
   Code2,
   Rocket,
   Headphones,
-  CheckCircle2,
-  ArrowRight,
-  Clock,
-  ShieldCheck,
+  Check,
+  ArrowUpRight,
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Our Process | VISION VERSE24",
+  title: "Our Process | VISION VERSE24 — IDEAS. CODE. IMPACT.",
   description:
-    "Explore Vision Verse24's 5-step development lifecycle: Discuss, Plan, Develop, Deploy, and Support. Clear communication and reliable delivery.",
+    "Explore Vision Verse24's 5-step development lifecycle: Discover, Plan, Build, Launch, and Support. Clear communication and reliable delivery.",
 };
 
 const detailedSteps = [
   {
     step: "01",
-    name: "DISCUSS",
+    name: "DISCOVER",
     headline: "Understanding Your Vision & Core Objectives",
-    icon: MessageSquare,
-    color: "text-blue-400",
-    bg: "bg-blue-500/10 border-blue-500/30",
+    icon: Compass,
+    color: "text-[#315BFF]",
+    bg: "bg-[#315BFF]/10 border-[#315BFF]/30",
     description:
-      "We begin with a friendly, comprehensive discussion over WhatsApp, Google Meet, or phone. We examine your target audience, reference sites you admire, feature wishlists, and timeline requirements.",
+      "We begin with a focused discovery session over WhatsApp, Google Meet, or direct phone call. We examine your target audience, reference sites you admire, feature requirements, and timeline milestones.",
     deliverables: [
       "Initial requirements summary document",
-      "Technology recommendation (Next.js, Supabase, Tailwind, Python)",
+      "Technology recommendations (Next.js, Supabase, Tailwind, Python)",
       "Fixed, upfront price quotation (Zero surprises)",
       "Target delivery calendar & milestone schedule",
     ],
@@ -43,43 +39,43 @@ const detailedSteps = [
     step: "02",
     name: "PLAN",
     headline: "Wireframes, Architecture & Database Design",
-    icon: Compass,
-    color: "text-purple-400",
-    bg: "bg-purple-500/10 border-purple-500/30",
+    icon: FileCode2,
+    color: "text-[#753BDB]",
+    bg: "bg-[#753BDB]/10 border-[#753BDB]/30",
     description:
-      "Before writing a line of code, we organize the user flow. We sketch responsive layout wireframes, select typography and color themes, and architect normalized database schemas with proper security constraints.",
+      "Before writing a line of code, we organize user journeys. We sketch responsive layout wireframes, select typography and color themes, and architect normalized database schemas with proper security constraints.",
     deliverables: [
-      "Figma UI wireframe or visual design mockup",
+      "Figma UI wireframe or visual design blueprint",
       "Database schema & relationship diagram (PostgreSQL)",
-      "API route definitions & validation rules",
+      "API route definitions & validation contracts",
       "Component structure blueprint",
     ],
   },
   {
     step: "03",
-    name: "DEVELOP",
+    name: "BUILD",
     headline: "Writing Clean, Performant & Documented Code",
     icon: Code2,
-    color: "text-pink-400",
-    bg: "bg-pink-500/10 border-pink-500/30",
+    color: "text-emerald-400",
+    bg: "bg-emerald-500/10 border-emerald-500/30",
     description:
-      "We build your website using modern Next.js 14 App Router, TypeScript, and Tailwind CSS. We implement responsive design for 320px mobile screens up to 4K displays, wire backend APIs, and configure database access.",
+      "We engineer your solution using modern Next.js 14 App Router, TypeScript, and Tailwind CSS. We implement responsive design for 320px mobile screens up to 4K displays, wire backend APIs, and configure database access.",
     deliverables: [
       "100% modular, human-readable React components",
       "Strict TypeScript type safety and zero compiler warnings",
-      "Interactive micro-animations with Framer Motion",
+      "Micro-interactions and fluid layout transitions",
       "Continuous live preview staging link for feedback",
     ],
   },
   {
     step: "04",
-    name: "DEPLOY",
-    headline: "Production Launch on Vercel Global Edge",
+    name: "LAUNCH",
+    headline: "Production Rollout on Vercel Global Edge",
     icon: Rocket,
-    color: "text-amber-400",
-    bg: "bg-amber-500/10 border-amber-500/30",
+    color: "text-[#D9A441]",
+    bg: "bg-[#D9A441]/10 border-[#D9A441]/30",
     description:
-      "We deploy your application to Vercel's global edge network. We connect your custom domain (or provide a free .vercel.app domain), enable automatic SSL certificates, optimize assets for Core Web Vitals, and run security checks.",
+      "We deploy your application to Vercel's global edge network. We connect your custom domain (or provide a free .vercel.app domain), configure automatic SSL certificates, optimize assets for Core Web Vitals, and run security audits.",
     deliverables: [
       "Live production website with HTTPS / SSL",
       "Vercel CDN edge caching configured",
@@ -92,8 +88,8 @@ const detailedSteps = [
     name: "SUPPORT",
     headline: "Comprehensive Walkthrough, Viva Prep & Maintenance",
     icon: Headphones,
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/10 border-emerald-500/30",
+    color: "text-[#FF5D65]",
+    bg: "bg-[#FF5D65]/10 border-[#FF5D65]/30",
     description:
       "Our relationship does not end at deployment. For students, we provide 1-on-1 code explanations and viva defense preparation tips. For businesses, we guide store management and provide ongoing bug-fix warranties.",
     deliverables: [
@@ -107,65 +103,66 @@ const detailedSteps = [
 
 export default function ProcessPage() {
   return (
-    <div className="pt-28 pb-20 space-y-24">
+    <div className="pt-28 pb-20 space-y-24 bg-[#101114]">
       {/* Header */}
-      <section className="relative overflow-hidden text-center max-w-4xl mx-auto px-4 md:px-6 space-y-6">
-        <div className="glow-orb-purple -top-20 left-1/2 -translate-x-1/2 opacity-30" />
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#111633] border border-purple-500/30 text-xs font-semibold text-purple-300">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-          <span>HOW WE BRING IDEAS TO LIFE</span>
+      <section className="relative overflow-hidden text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 pt-12">
+        <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+          <span>{"// HOW WE WORK"}</span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight">
-          Our 5-Step Engineering <span className="text-gradient-brand">Lifecycle</span>
+        <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.06]">
+          05 PHASES.{" "}
+          <span className="font-serif italic font-normal text-white/90">DISCIPLINED</span>{" "}
+          EXECUTION.
         </h1>
 
-        <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-          Predictable milestones, direct developer communication, and complete clarity from your initial message to final production launch.
+        <p className="text-base sm:text-xl text-[#A2A6B2] max-w-2xl mx-auto leading-relaxed font-normal">
+          Predictable milestones, direct developer communication, and complete clarity from your initial
+          message to final production launch.
         </p>
       </section>
 
       {/* Deep Steps Section */}
-      <section className="container mx-auto px-4 md:px-6">
-        <div className="max-w-4xl mx-auto space-y-12">
-          {detailedSteps.map((step, idx) => {
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto space-y-8">
+          {detailedSteps.map((step) => {
             const Icon = step.icon;
             return (
               <div
                 key={step.step}
-                className="group p-8 rounded-3xl bg-[#0D1127] border border-purple-500/20 hover:border-purple-400/50 transition-all duration-300 shadow-card-glass space-y-6"
+                className="p-6 sm:p-8 rounded-2xl bg-[#15171C] border border-white/[0.08] hover:border-white/20 transition-all duration-200 shadow-studio space-y-6"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/[0.08]">
                   <div className="flex items-center gap-4">
                     <div
-                      className={`w-14 h-14 rounded-2xl border flex items-center justify-center ${step.bg}`}
+                      className={`w-12 h-12 rounded-xl border flex items-center justify-center ${step.bg}`}
                     >
-                      <Icon className={`w-7 h-7 ${step.color}`} />
+                      <Icon className={`w-6 h-6 ${step.color}`} />
                     </div>
                     <div>
-                      <span className="text-xs font-mono font-bold text-slate-400">
+                      <span className="text-xs font-mono text-[#777982] uppercase tracking-wider">
                         PHASE {step.step}
                       </span>
-                      <h2 className="text-2xl font-black text-white">{step.name}</h2>
+                      <h2 className="font-heading text-2xl font-bold text-white">{step.name}</h2>
                     </div>
                   </div>
-                  <span className="text-xs font-semibold text-slate-400 px-3 py-1 rounded-full bg-white/5 border border-white/10 self-start sm:self-auto">
+                  <span className="text-xs font-mono text-[#A2A6B2] px-3 py-1 rounded-full bg-white/[0.04] border border-white/5 self-start sm:self-auto">
                     {step.headline}
                   </span>
                 </div>
 
-                <p className="text-sm text-slate-300 leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#A2A6B2] leading-relaxed">
                   {step.description}
                 </p>
 
-                <div className="p-5 rounded-2xl bg-[#080B1C] border border-slate-800/80 space-y-3">
-                  <div className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+                <div className="p-4 sm:p-5 rounded-xl bg-[#1B1E26] border border-white/5 space-y-2.5">
+                  <div className="text-xs font-mono text-[#777982] uppercase tracking-wider">
                     Key Deliverables In This Phase:
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {step.deliverables.map((del, dIdx) => (
-                      <div key={dIdx} className="flex items-start gap-2 text-xs text-slate-300">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <div key={dIdx} className="flex items-start gap-2 text-xs text-[#D3D5DC]">
+                        <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                         <span>{del}</span>
                       </div>
                     ))}

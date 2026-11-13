@@ -28,29 +28,31 @@ export default function HomePage() {
       {/* Section D: Featured Project - SR Jewellery Collections */}
       <FeaturedProject />
 
-      {/* Section E: More Projects Showcase */}
-      <section className="py-24 relative overflow-hidden bg-[#060814]">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#111633] border border-purple-500/30 text-xs font-semibold text-purple-300">
-                <FolderGit2 className="w-3.5 h-3.5 text-cyan-400" />
-                <span>EXPANDABLE PORTFOLIO</span>
+      {/* Section E: Selected Work & Projects Showcase */}
+      <section className="py-24 lg:py-32 relative overflow-hidden bg-[#0B0C0E] border-t border-white/[0.08]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div className="space-y-4 max-w-2xl">
+              <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+                <FolderGit2 className="w-3.5 h-3.5" />
+                <span>{"// CURATED PORTFOLIO"}</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-                Our Proven Work & <span className="text-gradient-cyan">Projects</span>
+              <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.08]">
+                SELECTED WORK.{" "}
+                <span className="font-serif italic font-normal text-white/90">REAL</span> EXECUTION.
               </h2>
-              <p className="text-sm text-slate-300 max-w-xl">
-                Real development for real people. Explore our developer portfolios, e-commerce storefronts, and full-stack solutions.
+              <p className="text-base text-[#A2A6B2] leading-relaxed">
+                From luxury e-commerce platforms to client-side neural networks, browse our verified
+                production deployments and open-source repositories.
               </p>
             </div>
 
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold text-white bg-[#111633] hover:bg-[#18204A] border border-purple-500/30 hover:border-purple-400 transition-colors shrink-0"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-[#15171C] hover:bg-[#1B1E26] border border-white/[0.12] transition-colors shrink-0 group"
             >
-              <span>View All Projects</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>View All 16 Projects</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
 

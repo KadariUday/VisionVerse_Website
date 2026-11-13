@@ -79,10 +79,10 @@ export const siteConfig = {
   ],
   navLinks: [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
+    { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
-    { name: "Our Projects", href: "/projects" },
-    { name: "Our Process", href: "/process" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Work", href: "/projects" },
+    { name: "Pricing", href: "/pricing" },
+    { name: "Contact", href: "/contact" },
   ],
 };

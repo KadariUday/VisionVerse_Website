@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
+  ArrowUpRight,
   ExternalLink,
   Crown,
   Sparkles,
@@ -13,11 +14,7 @@ import {
   Heart,
   QrCode,
   ShieldCheck,
-  BarChart3,
-  Layers,
-  ArrowRight,
   Smartphone,
-  Laptop,
   Check,
 } from "lucide-react";
 
@@ -49,85 +46,86 @@ const jewelleryShowcase = [
 ];
 
 const customerFeatures = [
-  { title: "Product Catalogue", icon: ShoppingBag, desc: "Curated fine jewellery collections with high-res galleries" },
-  { title: "Search & Filtering", icon: Search, desc: "Dynamic multi-attribute filters by category, price & material" },
-  { title: "Cart & Wishlist", icon: Heart, desc: "Seamless session retention even across device tab reloads" },
-  { title: "Dynamic UPI Checkout", icon: QrCode, desc: "0% fee instant QR code and transaction ID verification" },
-  { title: "Customer Auth & History", icon: ShieldCheck, desc: "Secure passwordless authentication and order tracking" },
-  { title: "Mobile Experience", icon: Smartphone, desc: "Tailored bottom app bar and fluid gesture navigation" },
+  { title: "Dynamic Product Catalog", desc: "Curated collections with multi-tier category and gemstone filtering." },
+  { title: "Sub-Second Search", desc: "Instant search indexing across collections, carats, and design motifs." },
+  { title: "Session Cart & Wishlist", desc: "Persistent shopping cart state retained seamlessly across device reloads." },
+  { title: "Zero-Fee UPI Gateway", desc: "Direct dynamic QR code generation eliminating 2-3% aggregator fees." },
+  { title: "Verified Customer Tracking", desc: "Direct WhatsApp order confirmation and real-time status inquiry." },
+  { title: "Mobile Touch Optimization", desc: "Bespoke bottom sheet navigation and tactile swipe interactions." },
 ];
 
 const adminFeatures = [
-  "Real-time revenue & sales analytics dashboard",
-  "Product catalog & inventory stock alert controls",
-  "Order tracking & printable tax invoice generation",
-  "Custom coupon creator with discount percentages",
-  "Customer contact desk with direct WhatsApp triggers",
-  "Dynamic store banner and settings synchronizer",
+  "Real-time revenue, orders & sales analytics dashboard",
+  "Inventory management with automated out-of-stock indicators",
+  "Consolidated invoice generation and printable order slips",
+  "Promotional discount coupon code generator",
+  "Direct customer WhatsApp communication shortcuts",
+  "Synchronized store banner and announcements editor",
 ];
 
 export function FeaturedProject() {
   const [activeTab, setActiveTab] = useState<"customer" | "admin">("customer");
 
   return (
-    <section className="py-24 relative overflow-hidden bg-gradient-to-b from-[#080B1C] via-[#0E0C06] to-[#080B1C]">
-      {/* Gold & Amber background glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+    <section className="py-24 lg:py-32 relative overflow-hidden bg-[#0F080B] text-[#F7F6F2]">
+      {/* Luxury Ambient Lighting: Deep Burgundy & Champagne Gold */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-[#3D0C1D]/30 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[500px] h-[350px] bg-[#D9A441]/[0.08] rounded-full blur-[130px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        {/* Top Featured Pill */}
-        <div className="flex flex-col items-center text-center space-y-4 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 via-yellow-500/20 to-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold uppercase tracking-widest shadow-glow-gold">
-            <Crown className="w-4 h-4 text-amber-300 fill-amber-300" />
-            <span>PROUDLY BUILT & DEPLOYED BY US</span>
-            <div className="flex text-amber-400 text-xs">★★★★★</div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Top Editorial Label & Headline */}
+        <div className="max-w-3xl space-y-4 mb-14">
+          <div className="inline-flex items-center gap-2.5 font-mono text-xs uppercase tracking-widest text-[#D9A441]">
+            <Crown className="w-3.5 h-3.5 fill-[#D9A441]" />
+            <span>FLAGSHIP CASE STUDY — PRODUCTION RELEASE</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight">
-            SR Jewellery <span className="text-gradient-gold">Collections</span>
+          <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.08]">
+            SR JEWELLERY{" "}
+            <span className="font-serif italic font-normal text-[#D9A441]">COLLECTIONS</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-            A premium jewellery e-commerce platform designed to deliver a luxurious, seamless and secure
-            online shopping experience for an exclusive fine jewellery brand.
+          <p className="text-base sm:text-lg text-[#C8C2BC] leading-relaxed max-w-2xl font-normal">
+            A bespoke luxury e-commerce platform and backoffice operations suite engineered for
+            an exclusive fine jewellery house. Built with Next.js 14, Supabase PostgreSQL, and direct
+            zero-fee UPI payment infrastructure.
           </p>
 
-          {/* Action Links */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <div className="flex flex-wrap items-center gap-4 pt-2">
             <a
               href="https://sr-jewellery-collections.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold text-black bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 hover:from-yellow-200 hover:to-amber-400 shadow-glow-gold transition-all duration-300 hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider text-black bg-[#D9A441] hover:bg-[#F5E6BE] transition-all duration-200 shadow-glow-gold"
             >
-              <span>View Live Project</span>
-              <ExternalLink className="w-4 h-4" />
+              <span>View Live Platform</span>
+              <ExternalLink className="w-3.5 h-3.5" />
             </a>
 
             <Link
               href="/projects/sr-jewellery-collections"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-amber-400/30 hover:border-amber-400 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider text-white bg-white/5 hover:bg-white/10 border border-white/15 transition-colors"
             >
-              <span>Explore Case Study</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Read Architecture Case Study</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
 
-        {/* Large Luxury Stage Container */}
-        <div className="mt-16 rounded-3xl border border-amber-500/30 bg-[#0E0B05]/90 p-6 md:p-10 shadow-2xl backdrop-blur-xl relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Visual Column: Laptop Preview with Logo Badge */}
-            <div className="lg:col-span-7 space-y-4">
-              <div className="relative rounded-2xl overflow-hidden border border-amber-400/40 bg-black shadow-2xl group">
-                {/* Brand emblem badge overlay */}
-                <div className="absolute top-4 left-4 z-20 w-16 h-16 md:w-20 md:h-20 drop-shadow-2xl">
+        {/* Luxury Case Study Stage */}
+        <div className="rounded-3xl border border-[#D9A441]/25 bg-[#180A10]/80 p-6 sm:p-10 backdrop-blur-xl shadow-studio-elevated">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Visual Preview (7 cols) */}
+            <div className="lg:col-span-7 space-y-5">
+              <div className="relative rounded-2xl overflow-hidden border border-[#D9A441]/30 bg-black shadow-2xl group">
+                {/* Brand Emblem */}
+                <div className="absolute top-4 left-4 z-20 w-16 h-16 sm:w-20 sm:h-20 drop-shadow-2xl">
                   <Image
                     src="/projects/sr-jewellery-badge.png"
-                    alt="SR Jewellery Emblem"
+                    alt="SR Jewellery Royal Emblem"
                     width={80}
                     height={80}
-                    className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(247,184,59,0.5)]"
+                    className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(217,164,65,0.4)]"
                   />
                 </div>
 
@@ -138,44 +136,44 @@ export function FeaturedProject() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#100508] via-transparent to-transparent opacity-85" />
                 </div>
 
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-amber-200">
-                  <span className="bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-amber-500/30 font-semibold">
-                    Live Production Deployment on Vercel
+                <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2 text-xs">
+                  <span className="bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-white font-mono text-[11px]">
+                    Production Vercel Deployment
                   </span>
-                  <span className="bg-amber-500/20 text-amber-300 px-3 py-1.5 rounded-lg border border-amber-400/40 font-mono">
+                  <span className="bg-[#D9A441]/20 text-[#D9A441] px-3 py-1.5 rounded-lg border border-[#D9A441]/40 font-mono text-[11px]">
                     sr-jewellery-collections.vercel.app
                   </span>
                 </div>
               </div>
 
-              {/* Real Jewellery Collection Carousel Cards */}
+              {/* Real Handcrafted Items Showcase */}
               <div>
-                <div className="text-xs font-bold text-amber-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <div className="text-xs font-mono text-[#D9A441] uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Real Jewellery Showcase In Production:</span>
+                  <span>Real Catalog Photography Live In Store:</span>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {jewelleryShowcase.map((item, idx) => (
                     <div
                       key={idx}
-                      className="p-2.5 rounded-xl bg-black/60 border border-amber-500/20 hover:border-amber-400/60 transition-colors"
+                      className="p-2.5 rounded-xl bg-black/50 border border-white/10 hover:border-[#D9A441]/50 transition-colors"
                     >
-                      <div className="w-full h-24 rounded-lg overflow-hidden relative bg-black/40">
+                      <div className="w-full h-20 rounded-lg overflow-hidden relative bg-black/40">
                         <Image
                           src={item.image}
                           alt={item.name}
                           fill
-                          className="object-cover hover:scale-110 transition-transform duration-300"
+                          className="object-cover hover:scale-105 transition-transform duration-300"
                         />
                       </div>
                       <div className="mt-2">
                         <div className="text-[11px] font-bold text-white truncate">
                           {item.name}
                         </div>
-                        <div className="text-[10px] text-amber-400 font-medium">
+                        <div className="text-[10px] text-[#D9A441] font-mono">
                           {item.tag}
                         </div>
                       </div>
@@ -185,111 +183,86 @@ export function FeaturedProject() {
               </div>
             </div>
 
-            {/* Right Column: Platform Specifications & Admin Portal */}
+            {/* Architecture & Features Details (5 cols) */}
             <div className="lg:col-span-5 space-y-6">
-              {/* Feature Tab Switcher */}
-              <div className="flex p-1 rounded-xl bg-black/60 border border-amber-500/30">
+              {/* Tab Selector */}
+              <div className="flex items-center gap-2 p-1 rounded-xl bg-black/60 border border-white/10">
                 <button
                   onClick={() => setActiveTab("customer")}
-                  className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${
+                  className={`flex-1 py-2 px-3 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
                     activeTab === "customer"
-                      ? "bg-gradient-to-r from-amber-500 to-yellow-500 text-black shadow-sm"
-                      : "text-slate-400 hover:text-white"
+                      ? "bg-[#D9A441] text-black font-bold shadow-sm"
+                      : "text-[#A2A6B2] hover:text-white"
                   }`}
                 >
-                  Customer Storefront (6 Features)
+                  Customer Storefront
                 </button>
                 <button
                   onClick={() => setActiveTab("admin")}
-                  className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all ${
+                  className={`flex-1 py-2 px-3 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
                     activeTab === "admin"
-                      ? "bg-gradient-to-r from-amber-500 to-yellow-500 text-black shadow-sm"
-                      : "text-slate-400 hover:text-white"
+                      ? "bg-[#D9A441] text-black font-bold shadow-sm"
+                      : "text-[#A2A6B2] hover:text-white"
                   }`}
                 >
-                  Admin Operations Portal
+                  Admin Operations
                 </button>
               </div>
 
-              {/* Tab 1: Customer Features */}
+              {/* Dynamic Content based on active tab */}
               {activeTab === "customer" ? (
-                <div className="space-y-3">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {customerFeatures.map((feat, i) => {
-                      const Icon = feat.icon;
-                      return (
-                        <div
-                          key={i}
-                          className="p-3 rounded-xl bg-black/40 border border-amber-500/20 hover:border-amber-400/40 transition-colors"
-                        >
-                          <div className="flex items-center gap-2 text-amber-400 mb-1">
-                            <Icon className="w-4 h-4" />
-                            <h4 className="text-xs font-bold text-white">{feat.title}</h4>
-                          </div>
-                          <p className="text-[11px] text-slate-300 leading-tight">
-                            {feat.desc}
-                          </p>
+                <div className="space-y-3.5">
+                  <div className="font-mono text-xs text-[#D9A441] uppercase tracking-wider">
+                    Storefront Capabilities:
+                  </div>
+                  <div className="space-y-3">
+                    {customerFeatures.map((item, idx) => (
+                      <div
+                        key={idx}
+                        className="p-3.5 rounded-xl bg-black/40 border border-white/5 space-y-1"
+                      >
+                        <div className="text-xs font-bold text-white flex items-center gap-2">
+                          <Check className="w-3.5 h-3.5 text-[#D9A441]" />
+                          <span>{item.title}</span>
                         </div>
-                      );
-                    })}
+                        <p className="text-[11px] text-[#A2A6B2] pl-5 leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               ) : (
-                /* Tab 2: Admin Operations */
-                <div className="p-4 rounded-xl bg-black/50 border border-amber-500/30 space-y-3">
-                  <div className="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-2">
-                    <BarChart3 className="w-4 h-4 text-amber-400" />
-                    <span>Back-Office Operations Built In:</span>
+                <div className="space-y-3.5">
+                  <div className="font-mono text-xs text-[#D9A441] uppercase tracking-wider">
+                    Merchant Backoffice Modules:
                   </div>
-                  <ul className="space-y-2">
-                    {adminFeatures.map((feat, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs text-slate-200">
-                        <Check className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <div className="space-y-2.5">
+                    {adminFeatures.map((feat, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-3 p-3 rounded-xl bg-black/40 border border-white/5 text-xs text-[#E5E0DA]"
+                      >
+                        <Check className="w-4 h-4 text-[#D9A441] shrink-0 mt-0.5" />
                         <span>{feat}</span>
-                      </li>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               )}
 
-              {/* Tech Stack Badges */}
-              <div className="pt-2">
-                <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                  Verified Production Tech Stack:
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "Next.js 14.2.3",
-                    "React 18.3.1",
-                    "TypeScript 5.0",
-                    "Tailwind CSS",
-                    "Supabase PostgreSQL",
-                    "Recharts",
-                    "Lucide React",
-                    "Vercel Edge",
-                  ].map((tech) => (
+              {/* Architecture Badges */}
+              <div className="pt-4 border-t border-white/10 flex flex-wrap gap-2 text-[11px] font-mono text-[#D9A441]">
+                {["Next.js 14", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "UPI QR"].map(
+                  (tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/30"
+                      className="px-2.5 py-1 rounded-md bg-black/60 border border-[#D9A441]/30"
                     >
                       {tech}
                     </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Bottom Card Summary */}
-              <div className="p-4 rounded-xl bg-gradient-to-r from-amber-950/40 to-yellow-950/20 border border-amber-500/30 flex items-center justify-between">
-                <div>
-                  <div className="text-xs text-amber-300 font-semibold">Want a similar solution?</div>
-                  <div className="text-sm font-bold text-white">Let's build your store</div>
-                </div>
-                <Link
-                  href="/contact?service=E-commerce%20Website"
-                  className="px-4 py-2 rounded-lg text-xs font-bold text-black bg-amber-400 hover:bg-amber-300 transition-colors"
-                >
-                  Get E-Commerce Quote
-                </Link>
+                  )
+                )}
               </div>
             </div>
           </div>

@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import {
@@ -10,59 +9,55 @@ import {
   Linkedin,
   Globe,
   GraduationCap,
-  Sparkles,
   Phone,
-  Mail,
-  CheckCircle,
+  Check,
 } from "lucide-react";
 
 export function AboutTeamSection() {
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-[#080B1C]">
-      {/* Background orbs */}
-      <div className="glow-orb-purple -top-10 left-1/4 opacity-30" />
-      <div className="glow-orb-pink bottom-0 right-1/4 opacity-25" />
+    <section id="about" className="py-24 lg:py-32 relative overflow-hidden bg-[#101114]">
+      {/* Studio Grid Overlay */}
+      <div className="absolute inset-0 bg-studio-grid pointer-events-none opacity-40" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#111633] border border-purple-500/30 text-xs font-semibold text-purple-300">
-            <Sparkles className="w-3.5 h-3.5 text-pink-400" />
-            <span>REAL DEVELOPERS. REAL PASSION.</span>
+        <div className="max-w-3xl mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+            <span>{"// THE STUDIO LEADERSHIP"}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-            Creative Minds. Powerful Technology.{" "}
-            <span className="text-gradient-brand">Real Solutions.</span>
+          <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.08]">
+            SMALL TEAM.{" "}
+            <span className="font-serif italic font-normal text-white/90">BIG</span> IDEAS.
+            MEANINGFUL WORK.
           </h2>
 
-          <p className="text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Vision Verse24 is a digital development initiative focused on transforming ideas into
-            meaningful digital products. We work on websites, applications, AI-powered solutions
-            and student projects with an emphasis on creativity, quality and affordability.
+          <p className="text-base sm:text-lg text-[#A2A6B2] leading-relaxed max-w-2xl font-normal">
+            Vision Verse24 was founded by builders who believe high-performing software should be accessible,
+            transparent, and meticulously designed. We are hands-on developers who turn ideas into production code.
           </p>
 
-          <div className="pt-2 inline-flex items-center gap-2 text-xs font-medium text-slate-400 bg-white/5 px-4 py-2 rounded-full border border-white/10">
-            <GraduationCap className="w-4 h-4 text-cyan-400" />
-            <span>Institute of Aeronautical Engineering, Dundigal, Hyderabad • B.Tech CSE (AI & ML) 2027 Batch</span>
+          <div className="pt-1 inline-flex items-center gap-2 text-xs font-mono text-[#A2A6B2] bg-[#15171C] px-3.5 py-1.5 rounded-full border border-white/[0.08]">
+            <GraduationCap className="w-3.5 h-3.5 text-[#315BFF]" />
+            <span>Institute of Aeronautical Engineering, Hyderabad • B.Tech CSE (AI & ML) 2027</span>
           </div>
         </div>
 
         {/* 3 Co-Founders Team Cards Grid */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {siteConfig.coFounders.map((member, idx) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.15 }}
-              className="group rounded-3xl bg-[#0D1127] border border-purple-500/20 hover:border-purple-400/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-card-glass"
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              className="rounded-2xl bg-[#15171C] border border-white/[0.08] hover:border-white/20 p-6 flex flex-col justify-between transition-all duration-300 group"
             >
-              <div>
-                {/* Photo & Badge */}
+              <div className="space-y-5">
+                {/* Photo & Identity */}
                 <div className="flex items-center gap-4">
-                  <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-purple-400/40 bg-slate-800 shadow-md shrink-0">
+                  <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-white/10 bg-[#1B1E26] shrink-0">
                     <Image
                       src={member.avatar}
                       alt={member.name}
@@ -71,35 +66,35 @@ export function AboutTeamSection() {
                     />
                   </div>
                   <div>
-                    <h3 className="text-lg font-black text-white group-hover:text-purple-300 transition-colors">
+                    <h3 className="font-heading text-lg font-bold text-white group-hover:text-[#315BFF] transition-colors">
                       {member.name}
                     </h3>
-                    <p className="text-xs text-cyan-400 font-semibold mt-0.5">
+                    <p className="text-xs text-[#315BFF] font-medium mt-0.5">
                       {member.role}
                     </p>
-                    <p className="text-[11px] text-slate-400 mt-1">
+                    <p className="text-[11px] text-[#777982] font-mono mt-0.5">
                       {member.degree}
                     </p>
                   </div>
                 </div>
 
-                {/* Tagline */}
-                <p className="text-xs italic text-slate-300 mt-4 bg-white/5 p-3 rounded-xl border border-white/5">
+                {/* Quote / Tagline */}
+                <p className="text-xs font-serif italic text-[#D3D5DC] bg-white/[0.03] p-3 rounded-xl border border-white/5">
                   "{member.tagline}"
                 </p>
 
-                {/* Core Strengths */}
-                <div className="mt-4 space-y-1.5">
-                  <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                    Core Focus:
+                {/* Strengths */}
+                <div className="space-y-1.5">
+                  <div className="font-mono text-[10px] text-[#777982] uppercase tracking-wider">
+                    Focus Areas:
                   </div>
                   <div className="grid grid-cols-2 gap-1.5">
                     {member.strengths.map((str, sIdx) => (
                       <div
                         key={sIdx}
-                        className="text-[11px] text-slate-300 flex items-center gap-1.5"
+                        className="text-[11px] text-[#A2A6B2] flex items-center gap-1.5"
                       >
-                        <CheckCircle className="w-3 h-3 text-purple-400 shrink-0" />
+                        <Check className="w-3 h-3 text-[#315BFF] shrink-0" />
                         <span className="truncate">{str}</span>
                       </div>
                     ))}
@@ -107,11 +102,11 @@ export function AboutTeamSection() {
                 </div>
 
                 {/* Tech Skills */}
-                <div className="mt-4 pt-3 border-t border-slate-800 flex flex-wrap gap-1.5">
+                <div className="pt-3 border-t border-white/[0.06] flex flex-wrap gap-1.5">
                   {member.skills.map((skill, skIdx) => (
                     <span
                       key={skIdx}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#111633] text-slate-300 border border-purple-500/20"
+                      className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1B1E26] text-[#A2A6B2] border border-white/5"
                     >
                       {skill}
                     </span>
@@ -120,34 +115,34 @@ export function AboutTeamSection() {
               </div>
 
               {/* Links & Connect */}
-              <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+              <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <a
                     href={member.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
+                    className="p-2 rounded-lg bg-[#1B1E26] hover:bg-white/10 text-[#A2A6B2] hover:text-white transition-colors"
                     aria-label={`${member.name} GitHub`}
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="w-3.5 h-3.5" />
                   </a>
                   <a
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-blue-400 hover:text-blue-300 transition-colors"
+                    className="p-2 rounded-lg bg-[#1B1E26] hover:bg-white/10 text-[#315BFF] hover:text-white transition-colors"
                     aria-label={`${member.name} LinkedIn`}
                   >
-                    <Linkedin className="w-4 h-4" />
+                    <Linkedin className="w-3.5 h-3.5" />
                   </a>
                   <a
                     href={member.portfolio}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-cyan-400 hover:text-cyan-300 transition-colors"
+                    className="p-2 rounded-lg bg-[#1B1E26] hover:bg-white/10 text-[#753BDB] hover:text-white transition-colors"
                     aria-label={`${member.name} Portfolio`}
                   >
-                    <Globe className="w-4 h-4" />
+                    <Globe className="w-3.5 h-3.5" />
                   </a>
                 </div>
 
@@ -155,7 +150,7 @@ export function AboutTeamSection() {
                   href={`https://wa.me/${member.whatsappNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 px-3 py-1.5 rounded-lg border border-emerald-500/30"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 px-3 py-1.5 rounded-lg border border-emerald-500/30 transition-colors"
                 >
                   <Phone className="w-3 h-3" />
                   <span>Connect</span>

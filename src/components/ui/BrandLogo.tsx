@@ -11,23 +11,23 @@ interface BrandLogoProps {
 export function BrandLogo({ className, showTagline = false, size = "md" }: BrandLogoProps) {
   const sizeMap = {
     sm: {
-      text: "text-lg",
-      code: "text-base px-1.5 py-0.5",
-      tagline: "text-[9px] tracking-widest",
+      text: "text-base tracking-tight",
+      code: "text-xs px-1.5 py-0.5",
+      tagline: "text-[9px] tracking-[0.25em]",
     },
     md: {
-      text: "text-xl md:text-2xl",
-      code: "text-base md:text-lg px-2 py-0.5",
-      tagline: "text-[10px] md:text-xs tracking-[0.25em]",
+      text: "text-lg md:text-xl tracking-tight",
+      code: "text-xs md:text-sm px-2 py-0.5",
+      tagline: "text-[9px] md:text-[10px] tracking-[0.28em]",
     },
     lg: {
-      text: "text-2xl md:text-3xl",
-      code: "text-xl md:text-2xl px-2.5 py-1",
+      text: "text-2xl md:text-3xl tracking-tight",
+      code: "text-base md:text-lg px-2.5 py-1",
       tagline: "text-xs md:text-sm tracking-[0.3em]",
     },
     xl: {
-      text: "text-3xl md:text-5xl",
-      code: "text-2xl md:text-4xl px-3 py-1.5",
+      text: "text-3xl md:text-5xl tracking-tight",
+      code: "text-xl md:text-2xl px-3 py-1.5",
       tagline: "text-xs md:text-base tracking-[0.35em]",
     },
   };
@@ -36,25 +36,25 @@ export function BrandLogo({ className, showTagline = false, size = "md" }: Brand
 
   return (
     <Link href="/" className={cn("group inline-flex flex-col items-start select-none", className)}>
-      <div className="flex items-center gap-2">
-        {/* Code Symbol Icon Badge */}
+      <div className="flex items-center gap-2.5">
+        {/* Crisp Monospace Studio Mark */}
         <span
           className={cn(
-            "font-mono font-black rounded-lg bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-400/40 text-blue-400 group-hover:border-purple-400/60 group-hover:text-purple-300 transition-all duration-300 shadow-glow-sm",
+            "font-mono font-bold rounded-md bg-[#1B1E26] border border-white/10 text-[#315BFF] group-hover:border-[#315BFF]/50 group-hover:text-white transition-all duration-300",
             currentSize.code
           )}
         >
           &lt;/&gt;
         </span>
 
-        {/* Brand Name */}
-        <div className="font-extrabold tracking-tight flex items-baseline">
+        {/* Brand Typography */}
+        <div className="font-heading font-black flex items-baseline">
           <span className={cn("text-white transition-colors duration-300", currentSize.text)}>
             VISION
           </span>
           <span
             className={cn(
-              "ml-1.5 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:to-pink-400 transition-all duration-300",
+              "ml-1.5 text-white/90 bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent group-hover:text-white transition-all duration-300",
               currentSize.text
             )}
           >
@@ -66,7 +66,7 @@ export function BrandLogo({ className, showTagline = false, size = "md" }: Brand
       {showTagline && (
         <span
           className={cn(
-            "font-semibold text-slate-400 group-hover:text-slate-300 transition-colors duration-300 uppercase mt-0.5 pl-0.5",
+            "font-mono text-[#777982] group-hover:text-slate-300 transition-colors duration-300 uppercase mt-1 tracking-widest",
             currentSize.tagline
           )}
         >

@@ -9,9 +9,8 @@ import {
   GraduationCap,
   Lightbulb,
   Briefcase,
-  CheckCircle2,
-  ArrowRight,
-  Sparkles,
+  Check,
+  ArrowUpRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -34,74 +33,67 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
   return (
     <div
       className={cn(
-        "group relative rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl border",
+        "group relative rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 border",
         service.popular || featured
-          ? "bg-gradient-to-b from-[#18204A]/90 to-[#0D1127]/95 border-purple-400/50 shadow-glow-md"
-          : "bg-[#0D1127]/80 hover:bg-[#111633]/90 border-purple-500/20 hover:border-purple-400/40 shadow-card-glass"
+          ? "bg-[#181B24] border-[#315BFF]/40 shadow-studio"
+          : "bg-[#15171C] hover:bg-[#181B24] border-white/[0.08] hover:border-white/20"
       )}
     >
-      {/* Popular / Best Value Badge */}
+      {/* Popular Badge */}
       {service.popular && (
-        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-glow-pink flex items-center gap-1.5">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Most Popular</span>
+        <div className="absolute -top-3 right-6 px-3 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[#315BFF] text-white shadow-subtle">
+          Most Popular
         </div>
       )}
 
-      <div>
+      <div className="space-y-4">
         {/* Header: Icon & Category */}
         <div className="flex items-center justify-between">
-          <div
-            className={cn(
-              "w-14 h-14 rounded-2xl flex items-center justify-center border shadow-sm transition-transform duration-300 group-hover:scale-110",
-              `bg-gradient-to-br ${service.gradient} text-white border-white/20`
-            )}
-          >
-            <IconComponent className="w-7 h-7" />
+          <div className="w-11 h-11 rounded-lg bg-[#1B1E26] border border-white/10 flex items-center justify-center text-[#315BFF]">
+            <IconComponent className="w-5 h-5" />
           </div>
-          <span className="text-xs font-semibold px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+          <span className="font-mono text-[11px] text-[#A2A6B2] uppercase tracking-wider bg-white/[0.04] px-2.5 py-1 rounded-full border border-white/5">
             {service.category}
           </span>
         </div>
 
         {/* Title & Tagline */}
-        <div className="mt-5">
-          <h3 className="text-xl font-black text-white group-hover:text-purple-300 transition-colors">
+        <div>
+          <h3 className="font-heading text-xl font-bold text-white group-hover:text-white transition-colors">
             {service.title}
           </h3>
-          <p className="text-xs text-purple-400/90 font-medium mt-1">
+          <p className="text-xs text-[#777982] font-mono uppercase tracking-wider mt-1">
             {service.tagline}
           </p>
         </div>
 
         {/* Price Display */}
-        <div className="mt-5 py-3 px-4 rounded-xl bg-[#080B1C]/80 border border-slate-800">
-          <div className="flex items-baseline gap-1">
-            <span className="text-2xl md:text-3xl font-black text-white">
+        <div className="py-2">
+          <div className="flex items-baseline gap-1.5">
+            <span className="font-heading text-3xl font-black text-white">
               {service.priceFormatted}
             </span>
+            <span className="text-xs text-[#777982] font-mono">fixed rate</span>
           </div>
           {service.priceNote && (
-            <p className="text-[11px] text-slate-400 mt-0.5">
-              {service.priceNote}
-            </p>
+            <p className="text-[11px] text-[#A2A6B2] mt-0.5">{service.priceNote}</p>
           )}
         </div>
 
         {/* Description */}
-        <p className="text-sm text-slate-300 mt-4 leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#A2A6B2] leading-relaxed">
           {service.description}
         </p>
 
         {/* Feature List */}
-        <div className="mt-6 pt-5 border-t border-slate-800/80">
-          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
-            What's Included:
+        <div className="pt-4 border-t border-white/[0.08] space-y-2">
+          <div className="font-mono text-[11px] text-[#777982] uppercase tracking-wider">
+            Included Deliverables:
           </div>
-          <ul className="space-y-2.5">
+          <ul className="space-y-1.5 text-xs text-[#D3D5DC]">
             {service.features.map((feature, idx) => (
-              <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-200">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+              <li key={idx} className="flex items-center gap-2">
+                <Check className="w-3.5 h-3.5 text-[#315BFF] shrink-0" />
                 <span>{feature}</span>
               </li>
             ))}
@@ -109,19 +101,19 @@ export function ServiceCard({ service, featured = false }: ServiceCardProps) {
         </div>
       </div>
 
-      {/* Button: opens contact form with service preselected */}
-      <div className="mt-8 pt-4">
+      {/* Action Button */}
+      <div className="pt-6 mt-4 border-t border-white/[0.08]">
         <Link
           href={`/contact?service=${encodeURIComponent(service.key)}`}
           className={cn(
-            "w-full py-3.5 px-6 rounded-2xl text-sm font-bold flex items-center justify-center gap-2 transition-all duration-300 shadow-sm",
-            service.popular
-              ? "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white hover:from-blue-500 hover:to-pink-500 shadow-glow-sm hover:shadow-glow-md"
-              : "bg-[#18204A] hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 text-white border border-purple-500/30 hover:border-transparent"
+            "w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-200 group/btn",
+            service.popular || featured
+              ? "bg-[#315BFF] hover:bg-[#2546CC] text-white shadow-subtle"
+              : "bg-[#1B1E26] hover:bg-[#315BFF] text-white border border-white/10 hover:border-[#315BFF]"
           )}
         >
-          <span>Get Started</span>
-          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          <span>Enquire for {service.key}</span>
+          <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
         </Link>
       </div>
     </div>

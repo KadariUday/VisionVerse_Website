@@ -55,7 +55,7 @@ We bridge the gap between expensive corporate software agencies and generic, slu
 - **💬 Direct Enquiry-to-WhatsApp Flow:** Real-time form submissions validated with Zod, persisted into Supabase PostgreSQL, and piped directly into WhatsApp with auto-generated reference IDs (`VV-2026-0001`).
 - **🗄️ Supabase PostgreSQL + RLS:** Cloud database architecture with Row Level Security protecting client data and automated sequential ID sequences.
 - **🛡️ Secure Admin Portal (`/admin`):** Passwordless cookie-authenticated operations dashboard with real-time analytics, status toggles (`new` ➔ `in-progress` ➔ `completed`), client search, and live database latency ping tools.
-- **🎨 Glassmorphic Dark Aesthetics:** Bespoke Midnight (`#080B1C`) visual language accented with electric cyan, purple glow, and royal gold gradients.
+- **🎨 Studio Editorial Aesthetic:** Bespoke Ink Black (`#101114`) palette with Electric Blue (`#315BFF`), Premium Gold (`#D9A441`), Space Grotesk editorial typography, Newsreader serif pullquotes, and asymmetric studio layouts.
 - **🔍 SEO & Meta Engine:** Automated JSON-LD structured data, dynamic `sitemap.xml`, `robots.txt`, and OpenGraph social share cards.
 
 ---

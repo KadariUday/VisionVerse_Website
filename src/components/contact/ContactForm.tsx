@@ -130,46 +130,47 @@ export function ContactForm({ initialService }: ContactFormProps) {
   // SUCCESS CONFIRMATION SCREEN
   if (successData) {
     return (
-      <div className="rounded-3xl bg-[#0D1127] border border-emerald-500/40 p-8 md:p-12 shadow-glow-md text-center space-y-6">
-        <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto">
-          <CheckCircle2 className="w-10 h-10" />
+      <div className="rounded-2xl bg-[#15171C] border border-emerald-500/30 p-8 md:p-12 shadow-studio-elevated text-center space-y-6">
+        <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mx-auto">
+          <CheckCircle2 className="w-8 h-8" />
         </div>
 
         <div className="space-y-2">
-          <span className="text-xs uppercase font-bold tracking-widest text-emerald-400">
-            Enquiry Recorded Successfully!
-          </span>
-          <h3 className="text-2xl md:text-3xl font-black text-white">
-            Thank You, {successData.values.fullName}!
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono font-medium text-emerald-400">
+            COMMISSION REGISTERED
+          </div>
+          <h3 className="font-heading text-2xl md:text-3xl font-bold text-white">
+            Thank You, {successData.values.fullName}
           </h3>
-          <p className="text-sm text-slate-300 max-w-lg mx-auto">
-            Your project details have been safely registered into our system. Your unique reference number is:
+          <p className="text-sm text-[#A0A2AD] max-w-lg mx-auto">
+            Your project specification has been recorded into our database. Reference this enquiry identifier for tracking:
           </p>
         </div>
 
         {/* Unique Enquiry ID Badge */}
-        <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#080B1C] border border-purple-500/40 font-mono text-lg font-bold text-white shadow-inner">
-          <span className="text-purple-400">ID:</span>
-          <span>{successData.enquiryNumber}</span>
+        <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-[#0C0D10] border border-white/10 font-mono text-base font-bold text-white shadow-inner">
+          <span className="text-[#777982]">ID:</span>
+          <span className="text-[#315BFF]">{successData.enquiryNumber}</span>
           <button
             onClick={handleCopyId}
-            className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+            className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[#A0A2AD] hover:text-white transition-colors"
             title="Copy Enquiry ID"
+            aria-label="Copy identifier"
           >
-            {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+            {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-[#A0A2AD]" />}
           </button>
         </div>
 
-        {/* WhatsApp Notification Prompt */}
-        <div className="p-6 rounded-2xl bg-[#111633] border border-emerald-500/30 max-w-lg mx-auto space-y-4 text-left">
+        {/* WhatsApp Continuation Prompt */}
+        <div className="p-6 rounded-xl bg-[#0C0D10] border border-emerald-500/20 max-w-lg mx-auto space-y-4 text-left">
           <div className="flex items-start gap-3">
-            <MessageSquareCode className="w-6 h-6 text-emerald-400 shrink-0 mt-0.5" />
+            <MessageSquareCode className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
             <div>
-              <h4 className="text-sm font-bold text-white">
-                Next Step: Continue in WhatsApp
+              <h4 className="text-sm font-semibold text-white">
+                Immediate Engineering Consultation
               </h4>
-              <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                We've prepared your complete message. Click below to open WhatsApp, then simply click <strong className="text-emerald-400">Send</strong> to start chatting directly with Kadari Uday.
+              <p className="text-xs text-[#A0A2AD] mt-1 leading-relaxed">
+                We've pre-filled your project parameters. Tap below to launch WhatsApp and connect directly with lead engineer Kadari Uday.
               </p>
             </div>
           </div>
@@ -178,29 +179,29 @@ export function ContactForm({ initialService }: ContactFormProps) {
             href={successData.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-bold text-sm text-black bg-gradient-to-r from-emerald-400 to-green-500 hover:from-emerald-300 hover:to-green-400 transition-all shadow-glow-sm"
+            className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-medium text-sm text-black bg-gradient-to-r from-emerald-400 to-green-500 hover:from-emerald-300 hover:to-green-400 transition-all shadow-glow-sm"
           >
-            <span>Open WhatsApp Chat Now</span>
+            <span>Continue on WhatsApp (+91-9392438853)</span>
             <ExternalLink className="w-4 h-4" />
           </a>
         </div>
 
         {/* Fallback Option */}
-        <div className="text-xs text-slate-400 pt-2 space-y-1">
+        <div className="text-xs text-[#777982] pt-2 space-y-2">
           <p>
-            WhatsApp not opening? You can also email us directly at{" "}
+            Prefer asynchronous email? Message us at{" "}
             <a
               href={`mailto:${siteConfig.owner.email}?subject=Project Enquiry ${successData.enquiryNumber}`}
-              className="text-purple-400 hover:underline"
+              className="text-[#315BFF] hover:underline"
             >
               {siteConfig.owner.email}
             </a>
           </p>
           <button
             onClick={() => setSuccessData(null)}
-            className="text-slate-500 hover:text-slate-300 text-xs underline pt-2"
+            className="text-[#A0A2AD] hover:text-white text-xs underline pt-1 block mx-auto transition-colors"
           >
-            Submit Another Enquiry
+            Submit Another Project Brief
           </button>
         </div>
       </div>
@@ -211,26 +212,26 @@ export function ContactForm({ initialService }: ContactFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-3xl bg-[#0D1127]/90 border border-purple-500/20 p-6 md:p-10 shadow-2xl backdrop-blur-xl space-y-6"
+      className="rounded-2xl bg-[#15171C] border border-white/10 p-6 sm:p-8 md:p-10 shadow-studio-elevated space-y-6"
     >
-      <div className="space-y-1 border-b border-slate-800 pb-4">
-        <div className="flex items-center gap-2 text-xs font-bold text-purple-400 uppercase tracking-wider">
+      <div className="space-y-1.5 border-b border-white/10 pb-5">
+        <div className="flex items-center gap-2 text-xs font-mono font-medium text-[#315BFF] uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>PROJECT ENQUIRY SYSTEM</span>
+          <span>PROJECT COMMISSION INTAKE</span>
         </div>
-        <h3 className="text-xl md:text-2xl font-black text-white">
-          Tell Us About Your Project
+        <h3 className="font-heading text-xl md:text-2xl font-bold text-white tracking-tight">
+          Define Your Project Scope
         </h3>
-        <p className="text-xs text-slate-400">
-          Fill in your details below. Once submitted, your enquiry is saved in our database and opens instantly in WhatsApp.
+        <p className="text-xs text-[#A0A2AD]">
+          Provide your specifications below. Submissions are committed to our database and open immediately in WhatsApp.
         </p>
       </div>
 
       {submitError && (
         <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-start gap-3 text-rose-300 text-xs">
-          <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-rose-400" />
+          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-rose-400" />
           <div>
-            <div className="font-bold">Submission Notice</div>
+            <div className="font-semibold text-rose-200">Notice</div>
             <div>{submitError}</div>
           </div>
         </div>
@@ -238,18 +239,18 @@ export function ContactForm({ initialService }: ContactFormProps) {
 
       {/* Row 1: Full Name & WhatsApp Number */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-slate-300 flex items-center justify-between">
-            <span>Full Name *</span>
-            <span className="text-[10px] text-slate-500">e.g. Rahul Sharma</span>
+        <div className="space-y-2">
+          <label className="text-xs font-medium text-[#E4E4E7] flex items-center justify-between">
+            <span>Full Name <span className="text-[#315BFF]">*</span></span>
+            <span className="text-[10px] text-[#777982]">e.g. Rahul Sharma</span>
           </label>
           <input
             {...register("fullName")}
             type="text"
-            placeholder="Your Full Name"
+            placeholder="Your name or organization"
             className={cn(
-              "w-full px-4 py-3 rounded-xl bg-[#080B1C] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-colors",
-              errors.fullName ? "border-rose-500" : "border-slate-800 focus:border-purple-400"
+              "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all",
+              errors.fullName ? "border-rose-500" : "border-white/10"
             )}
           />
           {errors.fullName && (
@@ -257,18 +258,18 @@ export function ContactForm({ initialService }: ContactFormProps) {
           )}
         </div>
 
-        <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-slate-300 flex items-center justify-between">
-            <span>WhatsApp Number *</span>
-            <span className="text-[10px] text-slate-500">10-digit mobile number</span>
+        <div className="space-y-2">
+          <label className="text-xs font-medium text-[#E4E4E7] flex items-center justify-between">
+            <span>WhatsApp Number <span className="text-[#315BFF]">*</span></span>
+            <span className="text-[10px] text-[#777982]">10-digit mobile number</span>
           </label>
           <input
             {...register("whatsappNumber")}
             type="tel"
             placeholder="e.g. 9392438853"
             className={cn(
-              "w-full px-4 py-3 rounded-xl bg-[#080B1C] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-colors",
-              errors.whatsappNumber ? "border-rose-500" : "border-slate-800 focus:border-purple-400"
+              "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all",
+              errors.whatsappNumber ? "border-rose-500" : "border-white/10"
             )}
           />
           {errors.whatsappNumber && (
@@ -279,17 +280,17 @@ export function ContactForm({ initialService }: ContactFormProps) {
 
       {/* Row 2: Email & Customer Type */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-slate-300">
-            Email Address *
+        <div className="space-y-2">
+          <label className="text-xs font-medium text-[#E4E4E7]">
+            Email Address <span className="text-[#315BFF]">*</span>
           </label>
           <input
             {...register("email")}
             type="email"
             placeholder="name@example.com"
             className={cn(
-              "w-full px-4 py-3 rounded-xl bg-[#080B1C] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-colors",
-              errors.email ? "border-rose-500" : "border-slate-800 focus:border-purple-400"
+              "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all",
+              errors.email ? "border-rose-500" : "border-white/10"
             )}
           />
           {errors.email && (
@@ -297,13 +298,13 @@ export function ContactForm({ initialService }: ContactFormProps) {
           )}
         </div>
 
-        <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-slate-300">
-            Customer Type *
+        <div className="space-y-2">
+          <label className="text-xs font-medium text-[#E4E4E7]">
+            Client Profile <span className="text-[#315BFF]">*</span>
           </label>
           <select
             {...register("customerType")}
-            className="w-full px-4 py-3 rounded-xl bg-[#080B1C] border border-slate-800 text-sm text-white focus:outline-none focus:border-purple-400 transition-colors"
+            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all"
           >
             <option value="Student">Student (Academic / Placement)</option>
             <option value="Startup">Startup Founder</option>
@@ -319,13 +320,13 @@ export function ContactForm({ initialService }: ContactFormProps) {
 
       {/* Row 3: Service Required & Budget */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-slate-300">
-            Service Required *
+        <div className="space-y-2">
+          <label className="text-xs font-medium text-[#E4E4E7]">
+            Service Requested <span className="text-[#315BFF]">*</span>
           </label>
           <select
             {...register("serviceRequired")}
-            className="w-full px-4 py-3 rounded-xl bg-[#080B1C] border border-slate-800 text-sm text-white focus:outline-none focus:border-purple-400 transition-colors"
+            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all"
           >
             <option value="Resume Build">Resume Build (₹299)</option>
             <option value="Portfolio Website">Portfolio Website (₹499)</option>
@@ -342,13 +343,13 @@ export function ContactForm({ initialService }: ContactFormProps) {
           )}
         </div>
 
-        <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-slate-300">
-            Project Budget *
+        <div className="space-y-2">
+          <label className="text-xs font-medium text-[#E4E4E7]">
+            Budget Tier <span className="text-[#315BFF]">*</span>
           </label>
           <select
             {...register("budget")}
-            className="w-full px-4 py-3 rounded-xl bg-[#080B1C] border border-slate-800 text-sm text-white focus:outline-none focus:border-purple-400 transition-colors"
+            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all"
           >
             <option value="Below ₹500">Below ₹500 (Resume / Micro)</option>
             <option value="₹500–₹1,000">₹500–₹1,000 (Portfolio / Minor)</option>
@@ -364,18 +365,18 @@ export function ContactForm({ initialService }: ContactFormProps) {
       </div>
 
       {/* Row 4: Project Description */}
-      <div className="space-y-1.5">
-        <label className="text-xs font-semibold text-slate-300 flex items-center justify-between">
-          <span>Project Description *</span>
-          <span className="text-[10px] text-slate-500">Be as descriptive as you like</span>
+      <div className="space-y-2">
+        <label className="text-xs font-medium text-[#E4E4E7] flex items-center justify-between">
+          <span>Project Specification <span className="text-[#315BFF]">*</span></span>
+          <span className="text-[10px] text-[#777982]">Goals, features, or deadlines</span>
         </label>
         <textarea
           {...register("projectDescription")}
           rows={4}
-          placeholder="Describe your idea, desired features, target deadline, or any special requirements..."
+          placeholder="Outline what you want to build, any reference sites, specific features needed, or deadline expectations..."
           className={cn(
-            "w-full px-4 py-3 rounded-xl bg-[#080B1C] border text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-colors",
-            errors.projectDescription ? "border-rose-500" : "border-slate-800 focus:border-purple-400"
+            "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all resize-y",
+            errors.projectDescription ? "border-rose-500" : "border-white/10"
           )}
         />
         {errors.projectDescription && (
@@ -385,13 +386,13 @@ export function ContactForm({ initialService }: ContactFormProps) {
 
       {/* Row 5: Preferred Contact, Expected Delivery & Reference URL */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-slate-300">
-            Preferred Contact *
+        <div className="space-y-2">
+          <label className="text-xs font-medium text-[#E4E4E7]">
+            Preferred Channel <span className="text-[#315BFF]">*</span>
           </label>
           <select
             {...register("contactPreference")}
-            className="w-full px-4 py-3 rounded-xl bg-[#080B1C] border border-slate-800 text-sm text-white focus:outline-none focus:border-purple-400 transition-colors"
+            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all"
           >
             <option value="WhatsApp">WhatsApp (Fastest)</option>
             <option value="Email">Email</option>
@@ -399,31 +400,31 @@ export function ContactForm({ initialService }: ContactFormProps) {
           </select>
         </div>
 
-        <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-slate-300 flex items-center gap-1">
-            <Calendar className="w-3.5 h-3.5 text-slate-400" />
-            <span>Expected Delivery (Optional)</span>
+        <div className="space-y-2">
+          <label className="text-xs font-medium text-[#E4E4E7] flex items-center gap-1">
+            <Calendar className="w-3.5 h-3.5 text-[#777982]" />
+            <span>Target Date (Optional)</span>
           </label>
           <input
             {...register("deliveryDate")}
             type="text"
-            placeholder="e.g. Within 3 days / by Dec 1"
-            className="w-full px-4 py-3 rounded-xl bg-[#080B1C] border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-400 transition-colors"
+            placeholder="e.g. Within 48h / by Dec 1"
+            className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all"
           />
         </div>
 
-        <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-slate-300 flex items-center gap-1">
-            <LinkIcon className="w-3.5 h-3.5 text-slate-400" />
+        <div className="space-y-2">
+          <label className="text-xs font-medium text-[#E4E4E7] flex items-center gap-1">
+            <LinkIcon className="w-3.5 h-3.5 text-[#777982]" />
             <span>Reference URL (Optional)</span>
           </label>
           <input
             {...register("referenceUrl")}
             type="url"
-            placeholder="https://example.com"
+            placeholder="https://inspiration.com"
             className={cn(
-              "w-full px-4 py-3 rounded-xl bg-[#080B1C] border text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-400 transition-colors",
-              errors.referenceUrl ? "border-rose-500" : "border-slate-800"
+              "w-full px-4 py-3 rounded-xl bg-[#0C0D10] border text-sm text-white placeholder-[#777982] focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all",
+              errors.referenceUrl ? "border-rose-500" : "border-white/10"
             )}
           />
           {errors.referenceUrl && (
@@ -433,26 +434,26 @@ export function ContactForm({ initialService }: ContactFormProps) {
       </div>
 
       {/* Trust Notice */}
-      <div className="pt-2 flex items-center gap-2 text-xs text-slate-400">
+      <div className="pt-2 flex items-center gap-2 text-xs text-[#777982]">
         <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-        <span>Your contact info is strictly confidential and never shared with third parties.</span>
+        <span>Client confidentiality guaranteed. We never distribute specifications or contact info.</span>
       </div>
 
       {/* Big Submit Button */}
       <button
         type="submit"
         disabled={submitting}
-        className="w-full py-4 px-8 rounded-2xl text-base font-black text-white bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-500 hover:to-pink-500 shadow-glow-md hover:shadow-glow-pink transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed uppercase tracking-wide"
+        className="w-full py-4 px-8 rounded-xl text-sm font-medium tracking-wide text-white bg-[#315BFF] hover:bg-[#2546cc] shadow-studio hover:shadow-glow-blue transition-all duration-200 flex items-center justify-center gap-3 disabled:opacity-60 disabled:cursor-not-allowed uppercase"
       >
         {submitting ? (
           <>
-            <Loader2 className="w-5 h-5 animate-spin" />
-            <span>Securing Enquiry & Connecting to WhatsApp...</span>
+            <Loader2 className="w-4 h-4 animate-spin" />
+            <span>Securing Specification & Launching WhatsApp...</span>
           </>
         ) : (
           <>
-            <MessageSquareCode className="w-5 h-5 text-cyan-300" />
-            <span>SUBMIT ENQUIRY & CONTINUE TO WHATSAPP</span>
+            <MessageSquareCode className="w-4 h-4" />
+            <span>Submit Specification & Connect on WhatsApp</span>
           </>
         )}
       </button>

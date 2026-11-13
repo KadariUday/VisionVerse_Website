@@ -7,140 +7,151 @@ import {
   Bot,
   Code2,
   Search,
-  ShieldCheck,
   Tag,
-  Clock,
-  MessageSquareHeart,
   CloudUpload,
   Headphones,
-  CheckCircle,
+  Check,
+  ShieldCheck,
 } from "lucide-react";
 
-const reasons = [
+const strengths = [
   {
-    title: "Modern & Responsive Design",
-    desc: "100% fluid layouts tailored for 320px mobile screens up to 4K ultra-wide monitors.",
+    num: "01",
+    title: "Modern Design & Responsive Fluidity",
+    desc: "Every interface is tailored from 320px mobile screens to ultra-wide displays with fluid typography, balanced contrast, and tactile touch targets.",
     icon: Smartphone,
-    color: "text-blue-400",
-    bg: "bg-blue-500/10 border-blue-500/30",
+    highlight: "100% Fluid & Adaptive",
   },
   {
-    title: "AI-Powered Solutions",
-    desc: "Smart assistants, intelligent workflows, and modern AI integrations built by AI/ML engineers.",
-    icon: Bot,
-    color: "text-purple-400",
-    bg: "bg-purple-500/10 border-purple-500/30",
-  },
-  {
-    title: "Clean & Optimized Code",
-    desc: "Maintainable TypeScript, component architecture, zero bloat, and performant builds.",
+    num: "02",
+    title: "Clean, Typed Code & Performance",
+    desc: "Strict TypeScript types, modular component architecture, zero bloated dependencies, and sub-second Core Web Vitals.",
     icon: Code2,
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/10 border-emerald-500/30",
+    highlight: "Zero Bloat Architecture",
   },
   {
-    title: "SEO-Friendly Development",
-    desc: "Meta tags, Open Graph cards, sitemaps, structured schema and fast Core Web Vitals.",
-    icon: Search,
-    color: "text-amber-400",
-    bg: "bg-amber-500/10 border-amber-500/30",
+    num: "03",
+    title: "AI-Powered Solutions & Intelligence",
+    desc: "Hands-on engineering of LLM prompt chains, client-side TensorFlow.js neural inference, and autonomous multi-agent pipelines.",
+    icon: Bot,
+    highlight: "AI/ML Engineered",
   },
   {
-    title: "Secure Implementation",
-    desc: "OWASP-conscious routes, input sanitization, database RLS, and secure environment keys.",
-    icon: ShieldCheck,
-    color: "text-rose-400",
-    bg: "bg-rose-500/10 border-rose-500/30",
-  },
-  {
-    title: "Affordable Pricing",
-    desc: "Student-friendly rates starting from ₹299, and transparent business pricing from ₹1,500.",
+    num: "04",
+    title: "Affordable, Transparent Pricing",
+    desc: "Fixed upfront rates from ₹299 for student resumes to ₹1,500+ for enterprise storefronts. Zero hidden retainer fees, ever.",
     icon: Tag,
-    color: "text-pink-400",
-    bg: "bg-pink-500/10 border-pink-500/30",
+    highlight: "₹299–₹5,000 Upfront",
   },
   {
-    title: "On-Time Delivery",
-    desc: "Respect for your deadlines with disciplined progress milestones and 24-48h rapid turns.",
-    icon: Clock,
-    color: "text-cyan-400",
-    bg: "bg-cyan-500/10 border-cyan-500/30",
+    num: "05",
+    title: "Production SEO Optimization",
+    desc: "Semantic HTML5, automated XML sitemaps, Open Graph social cards, and JSON-LD structured schemas for search engine indexation.",
+    icon: Search,
+    highlight: "Rank-Ready Metadata",
   },
   {
-    title: "Friendly Communication",
-    desc: "Direct chats via WhatsApp, regular video updates, and collaborative feedback loops.",
-    icon: MessageSquareHeart,
-    color: "text-indigo-400",
-    bg: "bg-indigo-500/10 border-indigo-500/30",
-  },
-  {
-    title: "Deployment Support",
-    desc: "Complete production hosting on Vercel with custom domain configuration and SSL certificates.",
+    num: "06",
+    title: "Deployment Assistance & Hosting",
+    desc: "Complete production rollout on Vercel Edge networks with custom domain DNS mapping, SSL certificates, and environment secret security.",
     icon: CloudUpload,
-    color: "text-teal-400",
-    bg: "bg-teal-500/10 border-teal-500/30",
+    highlight: "Vercel Edge & SSL",
   },
   {
-    title: "Ongoing Assistance",
-    desc: "Post-delivery support, viva explanations for students, and bug-fix warranty on all deliverables.",
+    num: "07",
+    title: "Dedicated Ongoing Support",
+    desc: "Post-delivery bug warranties, 1-on-1 viva walkthrough sessions for students, and ongoing guidance as your project grows.",
     icon: Headphones,
-    color: "text-yellow-400",
-    bg: "bg-yellow-500/10 border-yellow-500/30",
+    highlight: "Direct Lead Access",
+  },
+  {
+    num: "08",
+    title: "Responsible Security & Architecture",
+    desc: "Supabase PostgreSQL Row-Level Security, parameterized queries, and safe client-side credential handling.",
+    icon: ShieldCheck,
+    highlight: "Database RLS Enabled",
   },
 ];
 
 export function WhyChooseUs() {
   return (
-    <section className="py-24 relative overflow-hidden bg-[#060814]">
-      {/* Background orbs */}
-      <div className="glow-orb-blue top-1/2 -left-40 opacity-30" />
-      <div className="glow-orb-purple top-1/3 -right-40 opacity-30" />
+    <section className="py-24 lg:py-32 relative overflow-hidden bg-[#0E0F12] border-y border-white/[0.08]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Heading & Studio Principles */}
+          <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+              <span>{"// ENGINEERING PRINCIPLES"}</span>
+            </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#111633] border border-blue-500/30 text-xs font-semibold text-blue-300">
-            <CheckCircle className="w-3.5 h-3.5 text-blue-400" />
-            <span>REAL VALUE & TECHNICAL INTEGRITY</span>
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.1]">
+              THOUGHTFUL DESIGN.{" "}
+              <span className="font-serif italic font-normal text-white/90">SOLID</span>{" "}
+              DEVELOPMENT.
+            </h2>
+
+            <p className="text-base sm:text-lg text-[#A2A6B2] leading-relaxed font-normal">
+              We approach every digital build with the care of artisans and the discipline of systems engineers.
+              No fragile no-code workarounds, no inflated overheads — just clean, reliable software that
+              serves your goals.
+            </p>
+
+            <div className="p-5 rounded-2xl bg-[#15171C] border border-white/[0.08] space-y-3">
+              <div className="text-xs font-mono text-[#D9A441] uppercase tracking-wider">
+                The Vision Verse24 Standard
+              </div>
+              <ul className="space-y-2 text-xs text-[#D3D5DC]">
+                <li className="flex items-center gap-2">
+                  <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Direct communication with your developer</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Full source code ownership on your GitHub</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Zero monthly platform hosting commission</span>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-            Why Choose <span className="text-gradient-cyan">VISION VERSE24</span>?
-          </h2>
+          {/* Right Column: Editorial Matrix of 8 Strengths */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {strengths.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.num}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: (idx % 4) * 0.08 }}
+                  className="p-5 rounded-xl bg-[#15171C] border border-white/[0.08] hover:border-white/20 transition-all duration-200 flex flex-col justify-between space-y-3"
+                >
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs font-bold text-[#315BFF]">
+                        {item.num}
+                      </span>
+                      <span className="font-mono text-[10px] text-[#A2A6B2] uppercase tracking-wider bg-white/[0.04] px-2 py-0.5 rounded border border-white/5">
+                        {item.highlight}
+                      </span>
+                    </div>
 
-          <p className="text-base text-slate-300 max-w-2xl mx-auto">
-            We bridge the gap between creative visual design and rock-solid software engineering.
-            Here is what makes our development experience dependable.
-          </p>
-        </div>
+                    <h3 className="font-heading text-base font-bold text-white leading-snug">
+                      {item.title}
+                    </h3>
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {reasons.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="group p-5 rounded-2xl bg-[#0D1127] border border-purple-500/15 hover:border-blue-400/40 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between shadow-card-glass"
-              >
-                <div>
-                  <div
-                    className={`w-12 h-12 rounded-xl border flex items-center justify-center mb-4 transition-transform group-hover:scale-110 ${item.bg}`}
-                  >
-                    <Icon className={`w-6 h-6 ${item.color}`} />
+                    <p className="text-xs text-[#777982] leading-relaxed">
+                      {item.desc}
+                    </p>
                   </div>
-                  <h3 className="text-sm font-bold text-white group-hover:text-blue-300 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

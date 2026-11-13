@@ -1,74 +1,90 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Clock, ShieldCheck, Tag, MessageCircleQuestion } from "lucide-react";
-
-const indicators = [
-  {
-    title: "Fast Delivery",
-    desc: "Rapid turnarounds from 24-48 hours for portfolios to planned sprints for web applications.",
-    icon: Clock,
-    color: "from-blue-500 to-cyan-400",
-    iconBg: "bg-blue-500/10 text-blue-400 border-blue-500/30",
-  },
-  {
-    title: "Quality Development",
-    desc: "Clean code, modern Next.js/React architecture, strict TypeScript types, and zero shortcuts.",
-    icon: ShieldCheck,
-    color: "from-purple-500 to-indigo-400",
-    iconBg: "bg-purple-500/10 text-purple-400 border-purple-500/30",
-  },
-  {
-    title: "Affordable Pricing",
-    desc: "Transparent rates starting at ₹299 for students and ₹1,500 for businesses. No hidden costs.",
-    icon: Tag,
-    color: "from-pink-500 to-rose-400",
-    iconBg: "bg-pink-500/10 text-pink-400 border-pink-500/30",
-  },
-  {
-    title: "Free Initial Consultation",
-    desc: "Discuss your ideas, tech stack options, and project roadmap upfront with zero obligation.",
-    icon: MessageCircleQuestion,
-    color: "from-amber-500 to-yellow-400",
-    iconBg: "bg-amber-500/10 text-amber-400 border-amber-500/30",
-  },
-];
+import { ArrowUpRight, CheckCircle2, Code2, Sparkles, Layers, ShieldCheck } from "lucide-react";
 
 export function TrustIndicators() {
+  const pillars = [
+    {
+      num: "01",
+      title: "Engineered For Impact",
+      desc: "We don't assemble bloated templates. We write clean, typed TypeScript and modern Next.js systems engineered for sub-second performance and real business conversions.",
+    },
+    {
+      num: "02",
+      title: "Radically Transparent",
+      desc: "Fixed, honest pricing from ₹299 for student resumes to ₹1,500+ for production business applications. Zero hidden retainer fees, zero surprises.",
+    },
+    {
+      num: "03",
+      title: "Direct Engineering Access",
+      desc: "Work directly with lead builders, not non-technical project managers. From initial discovery to deployment on Vercel and Supabase.",
+    },
+  ];
+
   return (
-    <section className="py-12 border-y border-slate-800/80 bg-[#060919]/60 relative z-20">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {indicators.map((item, idx) => {
-            const Icon = item.icon;
-            return (
+    <section className="py-20 lg:py-28 border-y border-white/[0.08] bg-[#0E0F12] relative z-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Editorial Statement & Philosophy */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#315BFF] uppercase tracking-widest">
+              <span>{"// STUDIO PHILOSOPHY"}</span>
+            </div>
+
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.12]">
+              GOOD IDEAS DESERVE{" "}
+              <span className="font-serif italic font-normal text-white/90">GREAT</span>{" "}
+              EXECUTION.
+            </h2>
+
+            <p className="text-base sm:text-lg text-[#A2A6B2] leading-relaxed">
+              At Vision Verse24, we believe great software is an art of thoughtful subtraction: clean code,
+              instinctive interfaces, and uncompromising reliability. Whether you are a student launching
+              your first engineering portfolio, a business needing a high-converting storefront, or a team
+              building an AI application — we treat your vision with the craftsmanship it deserves.
+            </p>
+
+            <div className="pt-2">
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#315BFF] hover:text-white transition-colors group"
+              >
+                <span>Read our full story & manifesto</span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Column: Editorial Pillars */}
+          <div className="lg:col-span-6 space-y-6">
+            {pillars.map((pillar, idx) => (
               <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                key={pillar.num}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group p-5 rounded-2xl bg-[#0D1127] border border-purple-500/15 hover:border-purple-400/40 transition-all duration-300 hover:-translate-y-1 shadow-card-glass"
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                className="p-6 rounded-xl bg-[#15171C] border border-white/[0.08] hover:border-white/20 transition-all duration-200"
               >
-                <div className="flex items-center gap-4">
-                  <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center border shrink-0 ${item.iconBg} group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-white group-hover:text-purple-300 transition-colors">
-                      {item.title}
+                <div className="flex items-start gap-4">
+                  <span className="font-mono text-sm font-bold text-[#315BFF] pt-0.5">
+                    {pillar.num}
+                  </span>
+                  <div className="space-y-1.5">
+                    <h3 className="text-base font-bold text-white">
+                      {pillar.title}
                     </h3>
-                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                      {item.desc}
+                    <p className="text-xs sm:text-sm text-[#777982] leading-relaxed">
+                      {pillar.desc}
                     </p>
                   </div>
                 </div>
               </motion.div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>

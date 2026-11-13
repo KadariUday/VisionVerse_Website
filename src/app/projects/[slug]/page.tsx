@@ -9,16 +9,14 @@ import {
   ExternalLink,
   Github,
   ArrowLeft,
-  Calendar,
-  Layers,
-  CheckCircle2,
+  ArrowUpRight,
   AlertCircle,
   Lightbulb,
-  ShieldCheck,
   Crown,
-  Smartphone,
+  Layers,
   BarChart3,
   Star,
+  Check,
 } from "lucide-react";
 
 interface Props {
@@ -62,31 +60,35 @@ export default function ProjectDetailsPage({ params }: Props) {
   const isSRJewellery = project.slug === "sr-jewellery-collections";
 
   return (
-    <div className="pt-28 pb-20 space-y-16">
+    <div className="pt-28 pb-20 space-y-16 bg-[#101114]">
       {/* Top Breadcrumb & Back Link */}
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 font-mono text-xs text-[#777982] hover:text-white transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to All Projects</span>
+          <span>&larr; BACK TO ALL PROJECTS</span>
         </Link>
       </div>
 
       {/* Hero Case Study Header */}
-      <section className="container mx-auto px-4 md:px-6">
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto space-y-6 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#111633] border border-purple-500/30 text-xs font-semibold text-purple-300">
-            {isSRJewellery ? <Crown className="w-3.5 h-3.5 text-amber-400 fill-amber-400" /> : <Layers className="w-3.5 h-3.5 text-cyan-400" />}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#15171C] border border-white/[0.08] font-mono text-xs uppercase tracking-wider text-[#A2A6B2]">
+            {isSRJewellery ? (
+              <Crown className="w-3.5 h-3.5 text-[#D9A441] fill-[#D9A441]" />
+            ) : (
+              <Layers className="w-3.5 h-3.5 text-[#315BFF]" />
+            )}
             <span>{project.category} CASE STUDY</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight">
+          <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.08]">
             {project.title}
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-[#A2A6B2] max-w-2xl mx-auto leading-relaxed">
             {project.tagline}
           </p>
 
@@ -97,14 +99,14 @@ export default function ProjectDetailsPage({ params }: Props) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold transition-all duration-300 hover:scale-105 active:scale-95 ${
+                className={`inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 shadow-studio ${
                   isSRJewellery
-                    ? "text-black bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 shadow-glow-gold"
-                    : "text-white bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 shadow-glow-md"
+                    ? "text-black bg-[#D9A441] hover:bg-[#F5E6BE] shadow-glow-gold"
+                    : "text-white bg-[#315BFF] hover:bg-[#2546CC]"
                 }`}
               >
-                <span>View Live Project</span>
-                <ExternalLink className="w-4 h-4" />
+                <span>View Live Deployment</span>
+                <ExternalLink className="w-3.5 h-3.5" />
               </a>
             )}
 
@@ -113,10 +115,10 @@ export default function ProjectDetailsPage({ params }: Props) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-slate-200 bg-[#111633] hover:bg-[#18204A] border border-purple-500/30 hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider text-[#F7F6F2] bg-[#15171C] hover:bg-[#1B1E26] border border-white/[0.12] transition-colors"
               >
                 <Github className="w-4 h-4" />
-                <span>View Repository</span>
+                <span>View GitHub Repository</span>
               </a>
             )}
           </div>
@@ -124,9 +126,15 @@ export default function ProjectDetailsPage({ params }: Props) {
       </section>
 
       {/* Main Banner / Visual Preview */}
-      <section className="container mx-auto px-4 md:px-6">
-        <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden border border-purple-500/30 bg-[#0D1127] p-4 md:p-8 shadow-2xl relative">
-          <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-slate-900 border border-slate-800">
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          className={`max-w-5xl mx-auto rounded-3xl overflow-hidden p-4 sm:p-8 shadow-studio relative border ${
+            isSRJewellery
+              ? "bg-[#14080B] border-[#D9A441]/30"
+              : "bg-[#15171C] border-white/[0.08]"
+          }`}
+        >
+          <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-black border border-white/10">
             <Image
               src={project.bannerImage || project.thumbnail}
               alt={project.title}
@@ -137,64 +145,71 @@ export default function ProjectDetailsPage({ params }: Props) {
           </div>
 
           {/* Metadata quick stats bar */}
-          <div className="mt-6 pt-6 border-t border-slate-800 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          <div className="mt-6 pt-6 border-t border-white/[0.08] grid grid-cols-2 md:grid-cols-4 gap-4 text-center font-mono">
             <div>
-              <div className="text-[11px] font-semibold text-slate-400 uppercase">Client / Scope</div>
-              <div className="text-sm font-bold text-white mt-0.5">{project.client}</div>
+              <div className="text-[10px] text-[#777982] uppercase tracking-wider">Client / Scope</div>
+              <div className="text-xs sm:text-sm font-bold text-white mt-1">{project.client}</div>
             </div>
             <div>
-              <div className="text-[11px] font-semibold text-slate-400 uppercase">Year Delivered</div>
-              <div className="text-sm font-bold text-white mt-0.5">{project.completedAt}</div>
+              <div className="text-[10px] text-[#777982] uppercase tracking-wider">Year Delivered</div>
+              <div className="text-xs sm:text-sm font-bold text-white mt-1">{project.completedAt}</div>
             </div>
             <div>
-              <div className="text-[11px] font-semibold text-slate-400 uppercase">Category</div>
-              <div className="text-sm font-bold text-cyan-400 mt-0.5">{project.category}</div>
+              <div className="text-[10px] text-[#777982] uppercase tracking-wider">Category</div>
+              <div className="text-xs sm:text-sm font-bold text-[#315BFF] mt-1">{project.category}</div>
             </div>
             <div>
-              <div className="text-[11px] font-semibold text-slate-400 uppercase">Deployment</div>
-              <div className="text-sm font-bold text-emerald-400 mt-0.5">Vercel Edge Global</div>
+              <div className="text-[10px] text-[#777982] uppercase tracking-wider">Production Status</div>
+              <div className="text-xs sm:text-sm font-bold text-emerald-400 mt-1">
+                {project.isLive ? "Live Edge Active" : "Verified Repo"}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Deep Case Study Body */}
-      <section className="container mx-auto px-4 md:px-6">
-        <div className="max-w-4xl mx-auto space-y-12">
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto space-y-14">
           {/* Project Overview */}
           <div className="space-y-4">
-            <h2 className="text-2xl sm:text-3xl font-black text-white">Project Overview</h2>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+            <div className="font-mono text-xs uppercase tracking-widest text-[#315BFF]">
+              {"// PROJECT OVERVIEW"}
+            </div>
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white">
+              The Mission & Architecture
+            </h2>
+            <p className="text-sm sm:text-base text-[#A2A6B2] leading-relaxed">
               {project.overview}
             </p>
           </div>
 
           {/* Challenges & Solutions */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-3xl bg-[#0D1127] border border-rose-500/20 space-y-3">
-              <div className="flex items-center gap-2 text-rose-400 font-bold text-base">
-                <AlertCircle className="w-5 h-5" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 rounded-2xl bg-[#15171C] border border-[#FF5D65]/20 space-y-3">
+              <div className="flex items-center gap-2 text-[#FF5D65] font-bold text-sm font-mono uppercase tracking-wider">
+                <AlertCircle className="w-4 h-4" />
                 <span>The Engineering Challenges</span>
               </div>
               <ul className="space-y-2.5 pt-2">
                 {project.challenges.map((c, i) => (
-                  <li key={i} className="text-xs text-slate-300 flex items-start gap-2 leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0 mt-1.5" />
+                  <li key={i} className="text-xs text-[#D3D5DC] flex items-start gap-2.5 leading-relaxed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF5D65] shrink-0 mt-1.5" />
                     <span>{c}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="p-6 rounded-3xl bg-[#0D1127] border border-emerald-500/20 space-y-3">
-              <div className="flex items-center gap-2 text-emerald-400 font-bold text-base">
-                <Lightbulb className="w-5 h-5" />
+            <div className="p-6 rounded-2xl bg-[#15171C] border border-emerald-500/20 space-y-3">
+              <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm font-mono uppercase tracking-wider">
+                <Lightbulb className="w-4 h-4" />
                 <span>Our Architectural Solutions</span>
               </div>
               <ul className="space-y-2.5 pt-2">
                 {project.solutions.map((s, i) => (
-                  <li key={i} className="text-xs text-slate-300 flex items-start gap-2 leading-relaxed">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <li key={i} className="text-xs text-[#D3D5DC] flex items-start gap-2.5 leading-relaxed">
+                    <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                     <span>{s}</span>
                   </li>
                 ))}
@@ -204,18 +219,23 @@ export default function ProjectDetailsPage({ params }: Props) {
 
           {/* Key Implemented Features */}
           <div className="space-y-6">
-            <h2 className="text-2xl sm:text-3xl font-black text-white">Key Features Implemented</h2>
+            <div className="font-mono text-xs uppercase tracking-widest text-[#315BFF]">
+              {"// FEATURE IMPLEMENTATION"}
+            </div>
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white">
+              Key Features & Capabilities
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {project.keyFeatures.map((feat, idx) => (
                 <div
                   key={idx}
-                  className="p-5 rounded-2xl bg-[#0D1127] border border-purple-500/20 space-y-1.5"
+                  className="p-5 rounded-2xl bg-[#15171C] border border-white/[0.08] space-y-1.5"
                 >
                   <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <Check className="w-4 h-4 text-[#315BFF] shrink-0" />
                     <span>{feat.title}</span>
                   </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed pl-6">
+                  <p className="text-xs text-[#A2A6B2] leading-relaxed pl-6">
                     {feat.description}
                   </p>
                 </div>
@@ -225,18 +245,19 @@ export default function ProjectDetailsPage({ params }: Props) {
 
           {/* Admin Operations Portal (For SR Jewellery) */}
           {project.adminFeatures && project.adminFeatures.length > 0 && (
-            <div className="p-8 rounded-3xl bg-gradient-to-r from-[#181308] to-[#0E0C06] border border-amber-500/30 space-y-4">
-              <div className="flex items-center gap-2 text-amber-400 font-bold text-lg">
+            <div className="p-8 rounded-3xl bg-[#14080B] border border-[#D9A441]/30 space-y-4 shadow-studio">
+              <div className="flex items-center gap-2 text-[#D9A441] font-bold text-base font-mono uppercase tracking-wider">
                 <BarChart3 className="w-5 h-5" />
-                <span>Admin Operations & Back-Office Infrastructure</span>
+                <span>Admin Operations & Backoffice Infrastructure</span>
               </div>
-              <p className="text-xs text-slate-300">
-                To enable non-technical business owners to run their business without developer assistance, we built a dedicated admin control suite:
+              <p className="text-xs text-[#C8C2BC] leading-relaxed">
+                To enable non-technical business owners to manage operations without developer friction,
+                we engineered a dedicated administrative control portal:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 {project.adminFeatures.map((feat, i) => (
-                  <div key={i} className="text-xs text-amber-100 flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <div key={i} className="text-xs text-[#E5E0DA] flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#D9A441] shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </div>
                 ))}
@@ -245,15 +266,15 @@ export default function ProjectDetailsPage({ params }: Props) {
           )}
 
           {/* Technology Badges */}
-          <div className="space-y-4 pt-4 border-t border-slate-800">
-            <h3 className="text-base font-bold text-white uppercase tracking-wider text-xs">
+          <div className="space-y-4 pt-4 border-t border-white/[0.08]">
+            <h3 className="text-xs font-mono uppercase tracking-wider text-[#777982]">
               Complete Technology Stack & Dependencies:
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1 rounded-lg text-xs font-mono bg-[#111633] text-purple-300 border border-purple-500/30"
+                  className="px-3 py-1 rounded-md text-xs font-mono bg-[#15171C] text-[#D3D5DC] border border-white/[0.08]"
                 >
                   {t}
                 </span>
@@ -263,15 +284,15 @@ export default function ProjectDetailsPage({ params }: Props) {
 
           {/* Results & Impact */}
           {project.results && project.results.length > 0 && (
-            <div className="space-y-4 pt-4 border-t border-slate-800">
-              <h2 className="text-2xl font-black text-white">Project Impact & Deliverables</h2>
+            <div className="space-y-4 pt-4 border-t border-white/[0.08]">
+              <h2 className="font-heading text-2xl font-bold text-white">Project Impact & Deliverables</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {project.results.map((res, i) => (
                   <div
                     key={i}
-                    className="p-4 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-200 flex items-start gap-2.5"
+                    className="p-4 rounded-xl bg-[#15171C] border border-white/[0.08] text-xs text-[#D3D5DC] flex items-start gap-2.5"
                   >
-                    <Star className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5 fill-yellow-400" />
+                    <Star className="w-4 h-4 text-[#D9A441] shrink-0 mt-0.5 fill-[#D9A441]" />
                     <span>{res}</span>
                   </div>
                 ))}
