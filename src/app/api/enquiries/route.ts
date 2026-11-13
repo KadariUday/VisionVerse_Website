@@ -2,7 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { enquirySchema } from "@/lib/validations/enquiry";
 import { getServiceRoleClient } from "@/lib/supabase/server";
 import { saveLocalEnquiry, getLocalEnquiries } from "@/lib/supabase/mock-db";
-import { formatWhatsAppMessage, buildWhatsAppUrl } from "@/lib/whatsapp/format";
+import {
+  formatWhatsAppMessage,
+  buildWhatsAppUrl,
+  buildMailtoUrl,
+  buildGmailWebUrl,
+  formatEmailBody,
+  formatInstagramMessage,
+  buildInstagramUrl,
+} from "@/lib/whatsapp/format";
 import { siteConfig } from "@/config/site";
 
 // Simple in-memory rate-limiter by IP (10 requests per minute per IP)
@@ -138,16 +146,34 @@ export async function POST(req: NextRequest) {
       enquiryNumber = savedLocal.enquiry_number;
     }
 
-    // Format WhatsApp message and URL
-    const message = formatWhatsAppMessage(data, enquiryNumber);
+    // Format communication channels payloads
     const ownerWhatsApp = process.env.NEXT_PUBLIC_OWNER_WHATSAPP_NUMBER || siteConfig.owner.whatsapp;
-    const whatsappUrl = buildWhatsAppUrl(ownerWhatsApp, message);
+    const ownerEmail = process.env.NEXT_PUBLIC_OWNER_EMAIL || siteConfig.owner.email;
+    const instagramHandle = siteConfig.socials.instagramHandle || "vision_verse24";
+
+    const whatsappMessage = formatWhatsAppMessage(data, enquiryNumber);
+    const whatsappUrl = buildWhatsAppUrl(ownerWhatsApp, whatsappMessage);
+
+    const mailtoUrl = buildMailtoUrl(ownerEmail, data, enquiryNumber);
+    const gmailWebUrl = buildGmailWebUrl(ownerEmail, data, enquiryNumber);
+    const emailBody = formatEmailBody(data, enquiryNumber);
+
+    const instagramMessage = formatInstagramMessage(data, enquiryNumber);
+    const instagramUrl = buildInstagramUrl(instagramHandle);
 
     return NextResponse.json({
       success: true,
       enquiryId,
       enquiryNumber,
+      contactPreference: data.contactPreference,
       whatsappUrl,
+      whatsappMessage,
+      mailtoUrl,
+      gmailWebUrl,
+      emailBody,
+      ownerEmail,
+      instagramUrl,
+      instagramMessage,
       message: "Enquiry submitted and secured successfully!",
     });
   } catch (error: any) {

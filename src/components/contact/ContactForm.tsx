@@ -19,6 +19,9 @@ import {
   Calendar,
   Link as LinkIcon,
   Sparkles,
+  Mail,
+  Instagram,
+  ArrowUpRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -31,10 +34,19 @@ export function ContactForm({ initialService }: ContactFormProps) {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [successData, setSuccessData] = useState<{
     enquiryNumber: string;
-    whatsappUrl: string;
+    contactPreference: "WhatsApp" | "Email" | "Instagram";
+    whatsappUrl?: string;
+    whatsappMessage?: string;
+    mailtoUrl?: string;
+    gmailWebUrl?: string;
+    emailBody?: string;
+    ownerEmail?: string;
+    instagramUrl?: string;
+    instagramMessage?: string;
     values: EnquiryFormValues;
   } | null>(null);
-  const [copied, setCopied] = useState(false);
+  const [copiedId, setCopiedId] = useState(false);
+  const [copiedBrief, setCopiedBrief] = useState(false);
 
   const {
     register,
@@ -57,6 +69,8 @@ export function ContactForm({ initialService }: ContactFormProps) {
       referenceUrl: "",
     },
   });
+
+  const selectedPreference = watch("contactPreference");
 
   // If initialService prop changes, update form
   useEffect(() => {
@@ -84,10 +98,20 @@ export function ContactForm({ initialService }: ContactFormProps) {
         throw new Error(resData.error || "Failed to submit enquiry");
       }
 
-      // Success
+      const channel = values.contactPreference;
+
+      // Success data payload
       setSuccessData({
         enquiryNumber: resData.enquiryNumber,
+        contactPreference: channel,
         whatsappUrl: resData.whatsappUrl,
+        whatsappMessage: resData.whatsappMessage,
+        mailtoUrl: resData.mailtoUrl,
+        gmailWebUrl: resData.gmailWebUrl,
+        emailBody: resData.emailBody,
+        ownerEmail: resData.ownerEmail || siteConfig.owner.email,
+        instagramUrl: resData.instagramUrl || "https://ig.me/m/vision_verse24",
+        instagramMessage: resData.instagramMessage,
         values,
       });
 
@@ -102,11 +126,29 @@ export function ContactForm({ initialService }: ContactFormProps) {
         // Confetti optional
       }
 
-      // Automatically open WhatsApp in a new tab
-      if (resData.whatsappUrl) {
-        const win = window.open(resData.whatsappUrl, "_blank");
-        if (!win) {
-          // If popup blocked, user will click the explicit continue button in the success view
+      // Automatically dispatch or open selected communication channel
+      if (channel === "Email") {
+        if (resData.mailtoUrl) {
+          // Open default user email client
+          window.location.href = resData.mailtoUrl;
+        }
+      } else if (channel === "Instagram") {
+        // Automatically copy formatted message to clipboard for effortless paste in IG DM
+        if (resData.instagramMessage) {
+          try {
+            await navigator.clipboard.writeText(resData.instagramMessage);
+            setCopiedBrief(true);
+          } catch (e) {
+            // Clipboard write might require user gesture in some browsers
+          }
+        }
+        // Launch Instagram DM in a new tab
+        const igUrl = resData.instagramUrl || "https://ig.me/m/vision_verse24";
+        window.open(igUrl, "_blank");
+      } else {
+        // Default: WhatsApp direct chat
+        if (resData.whatsappUrl) {
+          window.open(resData.whatsappUrl, "_blank");
         }
       }
     } catch (err: any) {
@@ -122,22 +164,58 @@ export function ContactForm({ initialService }: ContactFormProps) {
   const handleCopyId = () => {
     if (successData?.enquiryNumber) {
       navigator.clipboard.writeText(successData.enquiryNumber);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setCopiedId(true);
+      setTimeout(() => setCopiedId(false), 2000);
+    }
+  };
+
+  const handleCopyBrief = (text?: string) => {
+    const content = text || successData?.emailBody || successData?.instagramMessage || "";
+    if (content) {
+      navigator.clipboard.writeText(content);
+      setCopiedBrief(true);
+      setTimeout(() => setCopiedBrief(false), 2500);
     }
   };
 
   // SUCCESS CONFIRMATION SCREEN
   if (successData) {
+    const channel = successData.contactPreference;
+
     return (
-      <div className="rounded-2xl bg-[#15171C] border border-emerald-500/30 p-8 md:p-12 shadow-studio-elevated text-center space-y-6">
-        <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mx-auto">
-          <CheckCircle2 className="w-8 h-8" />
+      <div className="rounded-2xl bg-[#15171C] border border-white/15 p-8 md:p-12 shadow-studio-elevated text-center space-y-6">
+        {/* Status Indicator by Channel */}
+        <div
+          className={cn(
+            "w-16 h-16 rounded-2xl flex items-center justify-center mx-auto border",
+            channel === "Email"
+              ? "bg-[#315BFF]/10 border-[#315BFF]/30 text-[#315BFF]"
+              : channel === "Instagram"
+              ? "bg-[#FF5D65]/10 border-[#FF5D65]/30 text-[#FF5D65]"
+              : "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
+          )}
+        >
+          {channel === "Email" ? (
+            <Mail className="w-8 h-8" />
+          ) : channel === "Instagram" ? (
+            <Instagram className="w-8 h-8" />
+          ) : (
+            <CheckCircle2 className="w-8 h-8" />
+          )}
         </div>
 
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono font-medium text-emerald-400">
-            COMMISSION REGISTERED
+          <div
+            className={cn(
+              "inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium border",
+              channel === "Email"
+                ? "bg-[#315BFF]/10 border-[#315BFF]/20 text-[#315BFF]"
+                : channel === "Instagram"
+                ? "bg-[#FF5D65]/10 border-[#FF5D65]/20 text-[#FF5D65]"
+                : "bg-emerald-500/10 border-emerald-500/20 text-emerald-400"
+            )}
+          >
+            COMMISSION REGISTERED · {channel.toUpperCase()} CHANNEL
           </div>
           <h3 className="font-heading text-2xl md:text-3xl font-bold text-white">
             Thank You, {successData.values.fullName}
@@ -157,41 +235,167 @@ export function ContactForm({ initialService }: ContactFormProps) {
             title="Copy Enquiry ID"
             aria-label="Copy identifier"
           >
-            {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-[#A0A2AD]" />}
+            {copiedId ? (
+              <Check className="w-4 h-4 text-emerald-400" />
+            ) : (
+              <Copy className="w-4 h-4 text-[#A0A2AD]" />
+            )}
           </button>
         </div>
 
-        {/* WhatsApp Continuation Prompt */}
-        <div className="p-6 rounded-xl bg-[#0C0D10] border border-emerald-500/20 max-w-lg mx-auto space-y-4 text-left">
-          <div className="flex items-start gap-3">
-            <MessageSquareCode className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-            <div>
-              <h4 className="text-sm font-semibold text-white">
-                Immediate Engineering Consultation
-              </h4>
-              <p className="text-xs text-[#A0A2AD] mt-1 leading-relaxed">
-                We've pre-filled your project parameters. Tap below to launch WhatsApp and connect directly with lead engineer Kadari Uday.
-              </p>
+        {/* CHANNEL 1: EMAIL DISPATCH ACTION BOX */}
+        {channel === "Email" && (
+          <div className="p-6 rounded-xl bg-[#0C0D10] border border-[#315BFF]/30 max-w-lg mx-auto space-y-4 text-left">
+            <div className="flex items-start gap-3">
+              <Mail className="w-5 h-5 text-[#315BFF] shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-semibold text-white">
+                  Next Step: Dispatch Email Specification
+                </h4>
+                <p className="text-xs text-[#A0A2AD] mt-1 leading-relaxed">
+                  We&apos;ve pre-formatted your complete project brief addressed to{" "}
+                  <strong className="text-white">{successData.ownerEmail}</strong>. If your email application did not launch automatically, choose an option below:
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-2 pt-1">
+              {/* Primary: Default Mail App */}
+              {successData.mailtoUrl && (
+                <a
+                  href={successData.mailtoUrl}
+                  className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-medium text-xs text-white bg-[#315BFF] hover:bg-[#2546cc] transition-all shadow-studio"
+                >
+                  <Mail className="w-4 h-4" />
+                  <span>Launch Default Email App</span>
+                </a>
+              )}
+
+              {/* Secondary: Gmail Web Compose */}
+              {successData.gmailWebUrl && (
+                <a
+                  href={successData.gmailWebUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-medium text-xs text-[#E4E4E7] bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Compose Directly in Gmail Web</span>
+                </a>
+              )}
+
+              {/* Tertiary: Copy Email Brief to Clipboard */}
+              <button
+                type="button"
+                onClick={() => handleCopyBrief(successData.emailBody)}
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-mono text-[#A0A2AD] hover:text-white bg-transparent hover:bg-white/5 transition-colors"
+              >
+                {copiedBrief ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-emerald-400">Specification Copied to Clipboard!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5" />
+                    <span>Copy Full Email Text</span>
+                  </>
+                )}
+              </button>
             </div>
           </div>
+        )}
 
-          <a
-            href={successData.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-medium text-sm text-black bg-gradient-to-r from-emerald-400 to-green-500 hover:from-emerald-300 hover:to-green-400 transition-all shadow-glow-sm"
-          >
-            <span>Continue on WhatsApp (+91-9392438853)</span>
-            <ExternalLink className="w-4 h-4" />
-          </a>
-        </div>
+        {/* CHANNEL 2: INSTAGRAM DM ACTION BOX */}
+        {channel === "Instagram" && (
+          <div className="p-6 rounded-xl bg-[#0C0D10] border border-[#FF5D65]/30 max-w-lg mx-auto space-y-4 text-left">
+            <div className="flex items-start gap-3">
+              <Instagram className="w-5 h-5 text-[#FF5D65] shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-semibold text-white">
+                  Next Step: Direct Message @vision_verse24 on Instagram
+                </h4>
+                <p className="text-xs text-[#A0A2AD] mt-1 leading-relaxed">
+                  Your complete project brief has been automatically copied to your clipboard. Tap below to launch your chat with <strong className="text-white">@vision_verse24</strong> and simply paste the text.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-2 pt-1">
+              <a
+                href={successData.instagramUrl || "https://ig.me/m/vision_verse24"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-medium text-xs text-white bg-gradient-to-r from-purple-600 via-pink-600 to-rose-500 hover:opacity-90 transition-all shadow-studio"
+              >
+                <Instagram className="w-4 h-4" />
+                <span>Open Instagram DM (@vision_verse24)</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+
+              <button
+                type="button"
+                onClick={() => handleCopyBrief(successData.instagramMessage)}
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-mono text-[#A0A2AD] hover:text-white bg-white/5 hover:bg-white/10 transition-colors"
+              >
+                {copiedBrief ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-emerald-400">Project Brief Copied to Clipboard!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5" />
+                    <span>Re-copy Project Specification</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* CHANNEL 3: WHATSAPP ACTION BOX */}
+        {channel === "WhatsApp" && (
+          <div className="p-6 rounded-xl bg-[#0C0D10] border border-emerald-500/30 max-w-lg mx-auto space-y-4 text-left">
+            <div className="flex items-start gap-3">
+              <MessageSquareCode className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-sm font-semibold text-white">
+                  Immediate Engineering Consultation
+                </h4>
+                <p className="text-xs text-[#A0A2AD] mt-1 leading-relaxed">
+                  We&apos;ve pre-filled your project parameters. Tap below to launch WhatsApp and connect directly with lead engineer Kadari Uday.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href={successData.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-medium text-sm text-black bg-gradient-to-r from-emerald-400 to-green-500 hover:from-emerald-300 hover:to-green-400 transition-all shadow-glow-sm"
+            >
+              <span>Continue on WhatsApp (+91-9392438853)</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
+        )}
 
         {/* Fallback Option */}
         <div className="text-xs text-[#777982] pt-2 space-y-2">
           <p>
-            Prefer asynchronous email? Message us at{" "}
+            Need to reach us through an alternative channel? Direct WhatsApp:{" "}
             <a
-              href={`mailto:${siteConfig.owner.email}?subject=Project Enquiry ${successData.enquiryNumber}`}
+              href={`https://wa.me/${siteConfig.owner.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#315BFF] hover:underline"
+            >
+              +91-9392438853
+            </a>{" "}
+            · Email:{" "}
+            <a
+              href={`mailto:${siteConfig.owner.email}`}
               className="text-[#315BFF] hover:underline"
             >
               {siteConfig.owner.email}
@@ -223,7 +427,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
           Define Your Project Scope
         </h3>
         <p className="text-xs text-[#A0A2AD]">
-          Provide your specifications below. Submissions are committed to our database and open immediately in WhatsApp.
+          Provide your specifications below. Submissions are committed to our database and dispatched through your chosen channel.
         </p>
       </div>
 
@@ -241,7 +445,9 @@ export function ContactForm({ initialService }: ContactFormProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="space-y-2">
           <label className="text-xs font-medium text-[#E4E4E7] flex items-center justify-between">
-            <span>Full Name <span className="text-[#315BFF]">*</span></span>
+            <span>
+              Full Name <span className="text-[#315BFF]">*</span>
+            </span>
             <span className="text-[10px] text-[#777982]">e.g. Rahul Sharma</span>
           </label>
           <input
@@ -260,7 +466,9 @@ export function ContactForm({ initialService }: ContactFormProps) {
 
         <div className="space-y-2">
           <label className="text-xs font-medium text-[#E4E4E7] flex items-center justify-between">
-            <span>WhatsApp Number <span className="text-[#315BFF]">*</span></span>
+            <span>
+              WhatsApp Number <span className="text-[#315BFF]">*</span>
+            </span>
             <span className="text-[10px] text-[#777982]">10-digit mobile number</span>
           </label>
           <input
@@ -367,7 +575,9 @@ export function ContactForm({ initialService }: ContactFormProps) {
       {/* Row 4: Project Description */}
       <div className="space-y-2">
         <label className="text-xs font-medium text-[#E4E4E7] flex items-center justify-between">
-          <span>Project Specification <span className="text-[#315BFF]">*</span></span>
+          <span>
+            Project Specification <span className="text-[#315BFF]">*</span>
+          </span>
           <span className="text-[10px] text-[#777982]">Goals, features, or deadlines</span>
         </label>
         <textarea
@@ -394,9 +604,9 @@ export function ContactForm({ initialService }: ContactFormProps) {
             {...register("contactPreference")}
             className="w-full px-4 py-3 rounded-xl bg-[#0C0D10] border border-white/10 text-sm text-white focus:outline-none focus:border-[#315BFF] focus:ring-1 focus:ring-[#315BFF] transition-all"
           >
-            <option value="WhatsApp">WhatsApp (Fastest)</option>
-            <option value="Email">Email</option>
-            <option value="Instagram">Instagram DM</option>
+            <option value="WhatsApp">WhatsApp (Fastest / Real-time)</option>
+            <option value="Email">Email (kadariudaycl@gmail.com)</option>
+            <option value="Instagram">Instagram DM (@vision_verse24)</option>
           </select>
         </div>
 
@@ -439,7 +649,7 @@ export function ContactForm({ initialService }: ContactFormProps) {
         <span>Client confidentiality guaranteed. We never distribute specifications or contact info.</span>
       </div>
 
-      {/* Big Submit Button */}
+      {/* Big Submit Button dynamically customized for the selected channel */}
       <button
         type="submit"
         disabled={submitting}
@@ -448,12 +658,32 @@ export function ContactForm({ initialService }: ContactFormProps) {
         {submitting ? (
           <>
             <Loader2 className="w-4 h-4 animate-spin" />
-            <span>Securing Specification & Launching WhatsApp...</span>
+            <span>
+              {selectedPreference === "Email"
+                ? "Securing Specification & Preparing Email..."
+                : selectedPreference === "Instagram"
+                ? "Securing Specification & Launching Instagram..."
+                : "Securing Specification & Launching WhatsApp..."}
+            </span>
           </>
         ) : (
           <>
-            <MessageSquareCode className="w-4 h-4" />
-            <span>Submit Specification & Connect on WhatsApp</span>
+            {selectedPreference === "Email" ? (
+              <>
+                <Mail className="w-4 h-4 text-cyan-300" />
+                <span>Submit Specification & Send Email</span>
+              </>
+            ) : selectedPreference === "Instagram" ? (
+              <>
+                <Instagram className="w-4 h-4 text-pink-300" />
+                <span>Submit Specification & Open Instagram DM</span>
+              </>
+            ) : (
+              <>
+                <MessageSquareCode className="w-4 h-4 text-emerald-300" />
+                <span>Submit Specification & Connect on WhatsApp</span>
+              </>
+            )}
           </>
         )}
       </button>
