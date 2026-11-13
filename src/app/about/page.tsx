@@ -77,22 +77,69 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden border border-purple-500/30 bg-[#0D1127] p-6 shadow-2xl space-y-4">
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900">
-              <Image
-                src="/team/team-poster-3.png"
-                alt="Vision Verse24 Co-Founders Team"
-                fill
-                className="object-cover"
-              />
+          {/* Interactive Engineering & Team Lead Card */}
+          <div className="relative rounded-3xl overflow-hidden border border-purple-500/30 bg-[#0D1127] p-6 md:p-8 shadow-2xl space-y-6">
+            {/* Top Terminal Bar */}
+            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-rose-500/80" />
+                <span className="w-3 h-3 rounded-full bg-amber-500/80" />
+                <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                <span className="ml-2 font-mono text-xs text-slate-400">agency.manifesto.ts</span>
+              </div>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Live Engineering Hub
+              </span>
             </div>
-            <div className="p-2 text-center">
-              <div className="text-sm font-bold text-white">
-                Kadari Uday • Rajoju Sreeja • Rapalli Venkat Dathadri
+
+            {/* Team Leads Quick Grid */}
+            <div className="space-y-3">
+              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                Founding Engineering Leads
               </div>
-              <div className="text-xs text-cyan-400 mt-0.5 font-medium">
-                B.Tech CSE (AI & ML), 2027 Batch — IARE Hyderabad
+              <div className="grid grid-cols-1 gap-2.5">
+                {siteConfig.coFounders.map((member) => (
+                  <div
+                    key={member.name}
+                    className="p-3 rounded-xl bg-[#080B1C] border border-slate-800 flex items-center justify-between gap-3 hover:border-purple-500/40 transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-purple-400/40 shrink-0 bg-slate-800">
+                        <Image
+                          src={member.avatar}
+                          alt={member.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold text-white">{member.name}</div>
+                        <div className="text-[11px] text-cyan-400">{member.role}</div>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-400 hidden sm:inline">
+                      2027 Batch
+                    </span>
+                  </div>
+                ))}
               </div>
+            </div>
+
+            {/* Technical Highlights */}
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-2">
+              <div className="text-xs font-bold text-purple-300">
+                Our Code Guarantee:
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                Every project is crafted with semantic HTML, modern Tailwind CSS, and strict TypeScript types. No bloated drag-and-drop website builders, no lock-in.
+              </p>
+            </div>
+
+            <div className="text-center pt-1">
+              <span className="text-xs text-slate-400 font-medium">
+                Institute of Aeronautical Engineering, Dundigal, Hyderabad
+              </span>
             </div>
           </div>
         </div>
