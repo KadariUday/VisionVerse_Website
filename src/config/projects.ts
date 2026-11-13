@@ -8,7 +8,7 @@ export const projectsData: ProjectItem[] = [
     client: "SR Jewellery Collections",
     tagline: "A premium jewellery e-commerce platform crafted to deliver luxury, trust & elegance.",
     description:
-      "A complete e-commerce platform designed to deliver a luxurious, seamless and secure online jewellery shopping experience with end-to-end customer features and an operational admin dashboard.",
+      "Full-stack luxury Indian heritage jewellery e-commerce platform & admin portal with Next.js 14, direct 0% fee dynamic UPI checkout, reviews, and live order tracking.",
     category: "E-Commerce",
     featured: true,
     published: true,
@@ -32,8 +32,8 @@ export const projectsData: ProjectItem[] = [
       "Supabase (PostgreSQL)",
       "Vercel Deployment",
     ],
-    liveUrl: "https://sr-jewellery-collections.vercel.app/",
-    githubUrl: "https://github.com/KadariUday",
+    liveUrl: "https://sr-jewellery-collections.vercel.app",
+    githubUrl: "https://github.com/KadariUday/SR-Jewellery-Collections",
     completedAt: "2026",
     overview:
       "SR Jewellery Collections is a production-grade digital storefront created for an exclusive jewellery brand. The client needed a modern, mobile-first web application that conveys the prestige of traditional Indian craftsmanship while offering contemporary e-commerce standards: instantaneous search, curated collections, persistent cart & wishlist, UPI dynamic payment verification, and a comprehensive backend operations portal.",
@@ -98,6 +98,289 @@ export const projectsData: ProjectItem[] = [
     ],
   },
   {
+    id: "proj-careerforge-ai",
+    title: "CareerForge AI",
+    slug: "careerforge-ai",
+    client: "AI Intelligence Project",
+    tagline: "AI-Powered career and resume intelligence platform for students and job seekers.",
+    description:
+      "Intelligent career acceleration tool that analyzes resumes, matches skills to current tech market vacancies, and generates ATS-optimized career profiles.",
+    category: "AI Application",
+    featured: true,
+    published: true,
+    thumbnail: "/projects/careerforge-ai.png",
+    screenshots: ["/projects/careerforge-ai.png"],
+    technologies: ["JavaScript", "React", "Node.js", "Tailwind CSS", "OpenAI / LLM API", "Vercel"],
+    liveUrl: "https://career-forge-ai-eight.vercel.app",
+    githubUrl: "https://github.com/KadariUday/CareerForge-AI",
+    completedAt: "2026",
+    overview:
+      "CareerForge AI was built to solve the modern job search bottleneck. It leverages AI models to review student resumes against target job descriptions, highlight missing keywords, and provide actionable rewrite recommendations.",
+    challenges: [
+      "Parsing diverse resume formats and complex PDF text flows accurately.",
+      "Structuring prompt outputs into actionable scoring categories (ATS Match, Grammar, Skills Gap).",
+    ],
+    solutions: [
+      "Built structured prompt chains with JSON response validation.",
+      "Implemented a clean, interactive glassmorphic dashboard for visualizing skill gaps.",
+    ],
+    keyFeatures: [
+      {
+        title: "ATS Compatibility Scoring",
+        description: "Evaluates resume text against standard Applicant Tracking Systems.",
+      },
+      {
+        title: "Missing Skill Identifier",
+        description: "Compares current profile against real tech job postings and suggests required certifications.",
+      },
+    ],
+  },
+  {
+    id: "proj-samvidha-attendance",
+    title: "Samvidha Attendance Automation",
+    slug: "samvidha-attendance",
+    client: "IARE College Student Utility",
+    tagline: "Automated academic attendance calculations and biometric tracking tool for students.",
+    description:
+      "Provides students with an instant, accurate summary of their academic standing, including an adjusted biometric percentage that accounts for specific portal formatting.",
+    category: "Academic",
+    featured: false,
+    published: true,
+    thumbnail: "/projects/samvidha-attendance.png",
+    screenshots: ["/projects/samvidha-attendance.png"],
+    technologies: ["JavaScript", "HTML5", "CSS3", "DOM Parser", "Vercel"],
+    liveUrl: "https://samvidha-attendance-98tm.vercel.app/",
+    githubUrl: "https://github.com/KadariUday/Samvidha_Attendance",
+    completedAt: "2026",
+    overview:
+      "Developed for students at Institute of Aeronautical Engineering (IARE) to demystify complex attendance calculations, biometric adjustments, and condonation thresholds.",
+    challenges: [
+      "Parsing university portal HTML tables with erratic markup.",
+      "Accurately projecting required hours to reach 75% attendance.",
+    ],
+    solutions: [
+      "Engineered a lightweight client-side parser that calculates margin classes needed for safe eligibility.",
+    ],
+    keyFeatures: [
+      {
+        title: "Biometric Adjustment Calculation",
+        description: "Correctly accounts for lab credits and biometric punch rules.",
+      },
+      {
+        title: "Safe Class Bunk Calculator",
+        description: "Calculates how many sessions a student can safely miss while remaining above 75%.",
+      },
+    ],
+  },
+  {
+    id: "proj-lumina-weather-ai",
+    title: "Lumina Weather AI",
+    slug: "lumina-weather-ai",
+    client: "Full-Stack Meteorological App",
+    tagline: "Professional-grade weather platform delivering real-time meteorological analytics.",
+    description:
+      "Full-stack weather web application designed to deliver real-time meteorological data with an immersive user experience using Python Flask and modern responsive UI.",
+    category: "AI Application",
+    featured: false,
+    published: true,
+    thumbnail: "/projects/lumina-weather-ai.png",
+    screenshots: ["/projects/lumina-weather-ai.png"],
+    technologies: ["Python", "Flask", "JavaScript", "HTML5/CSS3", "REST Weather APIs", "Vercel"],
+    liveUrl: "https://lumina-weather-ai.vercel.app",
+    githubUrl: "https://github.com/KadariUday/Lumina-Weather-AI",
+    completedAt: "2026",
+    overview:
+      "Lumina Weather AI connects global meteorological telemetry with an animated front-end, providing atmospheric pressure, UV index, wind compass, and multi-day predictive models.",
+    challenges: [
+      "Normalizing diverse international weather station data feeds.",
+      "Rendering weather-reactive visual themes without client performance lag.",
+    ],
+    solutions: [
+      "Designed a Flask caching layer and CSS hardware-accelerated animated weather backdrops.",
+    ],
+    keyFeatures: [
+      {
+        title: "Hyper-Local Forecasting",
+        description: "Minute-by-minute precipitation tracking and multi-day radar metrics.",
+      },
+      {
+        title: "Dynamic Visual Ambience",
+        description: "Interface lighting shifts realistically based on sunrise, sunset, and storm conditions.",
+      },
+    ],
+  },
+  {
+    id: "proj-diabcare",
+    title: "DiabCare+ Diet & Insulin Platform",
+    slug: "diabetic-diet-and-insulin",
+    client: "Healthcare Informatics Project",
+    tagline: "Interactive healthcare web application for personalized diet planning and insulin dosing.",
+    description:
+      "Interactive healthcare web application designed to demonstrate how personalized diet planning and insulin calculations help in managing diabetes effectively.",
+    category: "Academic",
+    featured: false,
+    published: true,
+    thumbnail: "/projects/diabcare-plus.png",
+    screenshots: ["/projects/diabcare-plus.png"],
+    technologies: ["JavaScript", "HTML5", "CSS3", "Medical Formula Calculations", "Vercel"],
+    liveUrl: "https://diabetic-diet-and-insulin-managemen.vercel.app",
+    githubUrl: "https://github.com/KadariUday/Diabetic-Diet-and-Insulin-Management",
+    completedAt: "2026",
+    overview:
+      "DiabCare+ educates users and students on the clinical relationship between macronutrient intake, glycemic index, and insulin dosing units.",
+    challenges: [
+      "Ensuring accurate mathematical model implementations of insulin-to-carb ratios.",
+    ],
+    solutions: [
+      "Implemented step-by-step clinical calculation formulas with disclaimers for educational usage.",
+    ],
+    keyFeatures: [
+      {
+        title: "Carbohydrate to Insulin Ratio Calculator",
+        description: "Calculates bolus requirements based on meal composition.",
+      },
+      {
+        title: "Interactive Meal Diary",
+        description: "Visualizes glycemic impact across breakfast, lunch, and dinner.",
+      },
+    ],
+  },
+  {
+    id: "proj-phishing-detection",
+    title: "AI Phishing & Scam Detection Platform",
+    slug: "ai-phishing-scam-detection",
+    client: "Cybersecurity & AI Wing",
+    tagline: "Machine learning classifier detecting suspicious URLs and malicious digital communications.",
+    description:
+      "An intelligent cybersecurity platform that inspects URL lexical features, SSL certificate anomalies, and NLP heuristics to flag phishing scams in real time.",
+    category: "AI Application",
+    featured: false,
+    published: true,
+    thumbnail: "/projects/phishing-detection.png",
+    screenshots: ["/projects/phishing-detection.png"],
+    technologies: ["TypeScript", "Python", "Machine Learning", "Scikit-Learn", "FastAPI", "Next.js"],
+    githubUrl: "https://github.com/KadariUday/AI-Phishing-Scam-Detection-Platform",
+    completedAt: "2026",
+    overview:
+      "Designed as a frontline defense against social engineering, this platform scans suspicious domains, analyzes redirect hops, and delivers risk scores to protect end users.",
+    challenges: [
+      "Mitigating false positives on shortened or promotional URLs.",
+      "Running heuristic checks with low latency.",
+    ],
+    solutions: [
+      "Trained ensemble classifiers on Kaggle and PhishTank datasets, paired with an asynchronous inspection pipeline.",
+    ],
+    keyFeatures: [
+      {
+        title: "Lexical & Domain Age Analysis",
+        description: "Scrutinizes punycode spoofing, WHOIS registration age, and DNS records.",
+      },
+      {
+        title: "Threat Breakdown Matrix",
+        description: "Visual risk rating indicating specific vulnerabilities identified in the tested link.",
+      },
+    ],
+  },
+  {
+    id: "proj-plagiarism-checker",
+    title: "Plagiarism Detection Suite",
+    slug: "plagiarism-checker-suite",
+    client: "Academic Natural Language Processing",
+    tagline: "Academic text similarity analysis engine with cosine similarity and report generation.",
+    description:
+      "Semantic plagiarism detection engine featuring cosine text similarity algorithms, document comparison, and visual highlight reporting.",
+    category: "Academic",
+    featured: false,
+    published: true,
+    thumbnail: "/projects/plagiarism-checker.png",
+    screenshots: ["/projects/plagiarism-checker.png"],
+    technologies: ["TypeScript", "Python", "NLP", "Flask", "React", "Tailwind CSS"],
+    liveUrl: "https://plagarism-checker-frontend-ruby.vercel.app",
+    githubUrl: "https://github.com/KadariUday/Plagarism-Checker-Frontend-",
+    completedAt: "2026",
+    overview:
+      "Built for academic departments and students to verify thesis originality, identify matching text chunks, and ensure ethical citation standards.",
+    challenges: [
+      "Handling synonym replacements and sentence structure shuffling.",
+    ],
+    solutions: [
+      "Applied N-gram tokenization and TF-IDF vectorization for semantic similarity matching.",
+    ],
+    keyFeatures: [
+      {
+        title: "Side-by-Side Comparison",
+        description: "Synchronized dual view highlighting identical and paraphrased text segments.",
+      },
+      {
+        title: "Similarity Percentage Gauge",
+        description: "Instant numerical score ready for university submission verification.",
+      },
+    ],
+  },
+  {
+    id: "proj-promptpilot",
+    title: "PromptPilot AI",
+    slug: "promptpilot-ai",
+    client: "Productivity AI Platform",
+    tagline: "Turn natural language prompts into automated code, workflows, and web designs.",
+    description:
+      "Multi-functional prompt execution platform that converts natural language instructions into functional code snippets, content summaries, and UI mockups.",
+    category: "AI Application",
+    featured: false,
+    published: true,
+    thumbnail: "/projects/promptpilot.png",
+    screenshots: ["/projects/promptpilot.png"],
+    technologies: ["CSS", "JavaScript", "AI Prompt Engineering", "Node.js", "OpenAI"],
+    githubUrl: "https://github.com/KadariUday/PromptPilot",
+    completedAt: "2025",
+    overview:
+      "PromptPilot was created to accelerate developer workflow, acting as an intelligent prompt workbench that executes multi-step prompt chains.",
+    challenges: [
+      "Prompt drift and inconsistent responses across different model generations.",
+    ],
+    solutions: [
+      "Curated few-shot prompting libraries and output sanitizer guards.",
+    ],
+    keyFeatures: [
+      {
+        title: "Actionable Prompt Templates",
+        description: "Pre-tested prompt templates for web design, SQL queries, and bug fixes.",
+      },
+    ],
+  },
+  {
+    id: "proj-student-docs",
+    title: "Student Photo & Emergency Docs Finder",
+    slug: "student-emergency-docs-finder",
+    client: "IARE Campus Administration Tool",
+    tagline: "Instant roll-number student identity and academic document lookup utility.",
+    description:
+      "Lightweight web application that allows university staff and students to quickly view essential student credentials using roll numbers.",
+    category: "Academic",
+    featured: false,
+    published: true,
+    thumbnail: "/projects/student-docs.png",
+    screenshots: ["/projects/student-docs.png"],
+    technologies: ["HTML5", "CSS3", "JavaScript", "REST APIs", "Vercel"],
+    liveUrl: "https://student-emergency-docs-finder.vercel.app",
+    githubUrl: "https://github.com/KadariUday/Student_Emergency_Docs_Finder",
+    completedAt: "2025",
+    overview:
+      "A fast campus utility created to speed up identity lookups during college registration and emergencies.",
+    challenges: [
+      "Ensuring sub-second response times on campus Wi-Fi networks.",
+    ],
+    solutions: [
+      "Zero-dependency pure HTML/JavaScript implementation with instant CDN delivery.",
+    ],
+    keyFeatures: [
+      {
+        title: "Roll-Number Direct Query",
+        description: "Instant lookup without logging into cumbersome ERP portals.",
+      },
+    ],
+  },
+  {
     id: "proj-kadari-portfolio",
     title: "Kadari Uday — Personal Portfolio",
     slug: "kadari-uday-portfolio",
@@ -108,11 +391,11 @@ export const projectsData: ProjectItem[] = [
     category: "Portfolio",
     featured: false,
     published: true,
-    thumbnail: "/team/kadari-uday-poster.png",
-    screenshots: ["/team/kadari-uday-poster.png"],
+    thumbnail: "/team/kadari-uday.png",
+    screenshots: ["/team/kadari-uday.png"],
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
-    liveUrl: "https://portfolio-kadariudays-projects.vercel.app/",
-    githubUrl: "https://github.com/KadariUday",
+    liveUrl: "https://portfolio-kadariudays-projects.vercel.app",
+    githubUrl: "https://github.com/KadariUday/Portfolio",
     completedAt: "2026",
     overview:
       "Official portfolio website for Kadari Uday, Lead Full-Stack and AI Developer at Vision Verse24. Built to showcase engineering projects, technical skillsets, and academic milestones from IARE Hyderabad.",
@@ -208,45 +491,6 @@ export const projectsData: ProjectItem[] = [
       {
         title: "Interactive Connect",
         description: "Direct links to LinkedIn, GitHub, and phone contact.",
-      },
-    ],
-  },
-  {
-    id: "proj-academic-ai",
-    title: "AI & Full-Stack Academic Projects",
-    slug: "academic-projects-suite",
-    client: "Vision Verse24 Academic Wing",
-    tagline: "Curated academic project solutions with code, viva prep, and comprehensive documentation.",
-    description:
-      "Complete college project packages built for B.Tech / BCA / MCA students featuring AI/ML algorithms, web dashboards, database architecture, and ready-to-present documentation.",
-    category: "Academic",
-    featured: false,
-    published: true,
-    thumbnail: "/images/ai-smart-solutions.png",
-    screenshots: ["/images/ai-smart-solutions.png"],
-    technologies: ["Python", "FastAPI", "React", "Next.js", "MySQL", "MongoDB", "Scikit-Learn"],
-    githubUrl: "https://github.com/KadariUday",
-    completedAt: "2026",
-    overview:
-      "Vision Verse24 provides students with genuine, hands-on academic projects. Unlike static download repositories, every project is delivered with a complete working codebase, local setup guidance, architecture diagrams, and a 1-on-1 code walkthrough session.",
-    challenges: [
-      "Students often struggle with complex local dependency installation, outdated codebases, and lack of viva preparation.",
-    ],
-    solutions: [
-      "Developed robust, containerized and pre-configured templates with clean documentation and mock viva questions.",
-    ],
-    keyFeatures: [
-      {
-        title: "Tested Working Codebase",
-        description: "Fully debugged frontend, backend and database scripts with zero missing dependencies.",
-      },
-      {
-        title: "Project Synopsis & Blackbook Report",
-        description: "Standard IEEE / university-format documentation with ER diagrams and flowcharts.",
-      },
-      {
-        title: "1-on-1 Mentorship Walkthrough",
-        description: "Direct video session explaining how the code functions line-by-line for viva defense.",
       },
     ],
   },

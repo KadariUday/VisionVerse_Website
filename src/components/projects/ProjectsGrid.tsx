@@ -24,7 +24,7 @@ interface ProjectsGridProps {
 export function ProjectsGrid({ initialLimit = 4, showFilters = true }: ProjectsGridProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const categories = ["All", "E-Commerce", "Portfolio", "Academic"];
+  const categories = ["All", "E-Commerce", "AI Application", "Academic", "Portfolio"];
 
   const filteredProjects = projectsData.filter((project) => {
     if (selectedCategory === "All") return true;
