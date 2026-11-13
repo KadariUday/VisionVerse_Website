@@ -82,7 +82,6 @@ export const siteConfig = {
     { name: "About Us", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Our Projects", href: "/projects" },
-    { name: "Pricing", href: "/pricing" },
     { name: "Our Process", href: "/process" },
     { name: "Contact Us", href: "/contact" },
   ],

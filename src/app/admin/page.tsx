@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { Enquiry, EnquiryStatus } from "@/types";
 import { projectsData } from "@/config/projects";
-import { servicesData } from "@/config/services";
 import { formatDate } from "@/lib/utils";
 import {
   Lock,
@@ -19,7 +18,6 @@ import {
   Eye,
   RefreshCw,
   FolderGit2,
-  DollarSign,
   Shield,
   Layers,
   Database,
@@ -37,7 +35,7 @@ export default function AdminPage() {
   // Dashboard Data State
   const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
   const [loading, setLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState<"enquiries" | "projects" | "services" | "system">("enquiries");
+  const [activeTab, setActiveTab] = useState<"enquiries" | "projects" | "system">("enquiries");
   
   // Filters & Search
   const [searchQuery, setSearchQuery] = useState("");
@@ -297,7 +295,6 @@ export default function AdminPage() {
         {[
           { key: "enquiries", label: `Enquiries (${enquiries.length})`, icon: MessageSquareCode },
           { key: "projects", label: `Projects (${projectsData.length})`, icon: FolderGit2 },
-          { key: "services", label: `Services (${servicesData.length})`, icon: DollarSign },
           { key: "system", label: "Infrastructure & DB", icon: Database },
         ].map((tab) => {
           const Icon = tab.icon;
@@ -525,38 +522,6 @@ export default function AdminPage() {
         </div>
       )}
 
-      {/* TAB 3: SERVICES */}
-      {activeTab === "services" && (
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-bold text-white">Central Service Catalogue & Pricing</h3>
-            <span className="text-xs text-slate-400 font-mono">
-              Source: src/config/services.ts
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {servicesData.map((srv) => (
-              <div
-                key={srv.id}
-                className="p-6 rounded-2xl bg-[#0D1127] border border-purple-500/20 space-y-3"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-400">{srv.category}</span>
-                  <span className="text-sm font-black text-emerald-400 font-mono">
-                    {srv.priceFormatted}
-                  </span>
-                </div>
-                <h4 className="text-base font-bold text-white">{srv.title}</h4>
-                <p className="text-xs text-slate-300">{srv.description}</p>
-                <div className="pt-2 border-t border-slate-800 text-[11px] text-slate-400">
-                  {srv.features.length} Features Included
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* TAB 4: SYSTEM & INFRASTRUCTURE */}
       {activeTab === "system" && (
