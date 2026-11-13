@@ -71,7 +71,10 @@ export interface ProjectItem {
   client: string;
   tagline: string;
   description: string;
-  category: 'E-Commerce' | 'Portfolio' | 'AI Application' | 'Academic' | 'Business';
+  category: 'E-Commerce' | 'Portfolio' | 'AI Application' | 'Academic' | 'Business' | 'Healthcare' | 'Cybersecurity' | 'Utility' | 'Multi-Agent';
+  badge?: string;
+  isLive?: boolean;
+  iconName?: string;
   featured: boolean;
   published: boolean;
   thumbnail: string;

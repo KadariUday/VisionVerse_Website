@@ -54,7 +54,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <ProjectsGrid initialLimit={3} showFilters={false} />
+          <ProjectsGrid initialLimit={6} showFilters={false} />
         </div>
       </section>
 
